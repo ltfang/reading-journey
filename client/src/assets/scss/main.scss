@@ -1,7 +1,11 @@
 @import "./foundation/settings";
 @import "~foundation-sites/scss/foundation";
 @include foundation-everything;
+@import "./stylesheets/Colors.scss";
+@import "./stylesheets/Fonts.scss";
+@import "./stylesheets/HomePage.scss";
 // place global css here
+
 *,
 *::before,
 *::after {
@@ -11,4 +15,63 @@
 :root {
   -moz-tab-size: 4;
   tab-size: 4;
+}
+
+body {
+  font-family: $sans-serif;
+}
+
+.header {
+  font-size: 2.8em;
+  font-family: $serif;
+  text-align: center;
+  margin: 1em;
+  color: $lightest;
+}
+
+.link {
+  color: $stroke;
+}
+
+.link:hover {
+  color: #003736;
+}
+
+.app-callout {
+  width: 600px;
+  background-color: $secondary;
+  border: 3px solid $stroke;
+  border-radius: 20px; 
+  padding: 1em;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  color: $stroke;
+  justify-content: center;
+  align-items: center;
+}
+
+.app-btn {
+  background-color: $highlight;
+  border: 3px solid $stroke;
+  padding: .5em 1em;
+  color: $stroke;
+  border-radius: 30px;
+  font-weight: bold;
+  text-align: center;
+  font-size: 1em;
+}
+
+.app-btn:hover {
+  background-color: #fcd08d;
+}
+
+label {
+  color: $stroke;
+  font-size: 1em;
+  font-weight: bold;
+}
+
+.input-div {
+  width: 60%;
 }
