@@ -11,13 +11,18 @@ const TopBar = ({ user }) => {
       <Link to="/users/new" className="button">
         Sign Up
       </Link>
-    </li>,
+    </li>
   ];
 
   const authenticatedListItems = [
+    <li key="calendar">
+      <Link to="/calendar" className="button">
+        Reading Log
+      </Link>
+    </li>,
     <li key="sign-out">
       <SignOutButton />
-    </li>,
+    </li>
   ];
 
   return (
