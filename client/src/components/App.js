@@ -8,6 +8,7 @@ import RegistrationForm from "./registration/RegistrationForm";
 import SignInForm from "./authentication/SignInForm";
 import TopBar from "./layout/TopBar";
 import HomePage from "./layout/HomePage";
+import Calendar from "./layout/Calendar"
 
 const App = (props) => {
   const [currentUser, setCurrentUser] = useState(null);
@@ -33,6 +34,7 @@ const App = (props) => {
         </Route>
         <Route exact path="/users/new" component={RegistrationForm} />
         <Route exact path="/user-sessions/new" component={SignInForm} />
+        <Route exact path="/calendar" component={Calendar} />
       </Switch>
     </Router>
   );

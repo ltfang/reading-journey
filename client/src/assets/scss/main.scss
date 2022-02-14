@@ -4,6 +4,7 @@
 @import "./stylesheets/Colors.scss";
 @import "./stylesheets/Fonts.scss";
 @import "./stylesheets/HomePage.scss";
+@import "./stylesheets/Calendar.scss";
 // place global css here
 
 *,
@@ -25,7 +26,7 @@ body {
   font-size: 2.8em;
   font-family: $serif;
   text-align: center;
-  margin: 1em;
+  margin: .7em;
   color: $lightest;
 }
 
