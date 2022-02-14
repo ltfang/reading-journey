@@ -1,0 +1,35 @@
+body {
+  background: $primary;
+}
+
+.unauth-text {
+  font-size: 1.5em;
+  padding: 1em;
+}
+
+.sign-up-btn {
+  width: 380px;
+  font-size: 2em;
+}
+
+.existing-user-sign-in {
+  font-size: 1em;
+  margin: .5em;
+}
+
+.greeting {
+  font-family: $serif;
+}
+
+.greeting-ul {
+  list-style-type: none;
+}
+
+.homepage-list {
+  border: 2px solid $stroke;
+  padding: .5em;
+  margin: .5em;
+  border-radius: 30px;
+  background-color: $highlight;
+  font-weight: bold;
+}

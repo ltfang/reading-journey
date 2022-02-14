@@ -10,7 +10,7 @@ const SignInForm = () => {
   const validateInput = (payload) => {
     setErrors({});
     const { email, password } = payload;
-    const emailRegexp = config.validation.email.regexp;
+    const emailRegexp = config.validation.email.regexp.emailRegex;
     let newErrors = {};
     if (!email.match(emailRegexp)) {
       newErrors = {
@@ -27,30 +27,33 @@ const SignInForm = () => {
     }
 
     setErrors(newErrors);
+    if (Object.keys(newErrors).length === 0){
+      return true
+    }
+    return false
   };
 
   const onSubmit = async (event) => {
     event.preventDefault()
-    validateInput(userPayload)
-    try {
-      if (Object.keys(errors).length === 0) {
-        const response = await fetch("/api/v1/user-sessions", {
-          method: "post",
-          body: JSON.stringify(userPayload),
-          headers: new Headers({
-            "Content-Type": "application/json",
+    if (validateInput(userPayload)) {
+      try {
+          const response = await fetch("/api/v1/user-sessions", {
+            method: "post",
+            body: JSON.stringify(userPayload),
+            headers: new Headers({
+              "Content-Type": "application/json",
+            })
           })
-        })
-        if(!response.ok) {
-          const errorMessage = `${response.status} (${response.statusText})`
-          const error = new Error(errorMessage)
-          throw(error)
-        }
-        const userData = await response.json()
-        setShouldRedirect(true)
+          if(!response.ok) {
+            const errorMessage = `${response.status} (${response.statusText})`
+            const error = new Error(errorMessage)
+            throw(error)
+          }
+          const userData = await response.json()
+          setShouldRedirect(true)
+      } catch(err) {
+        console.error(`Error in fetch: ${err.message}`)
       }
-    } catch(err) {
-      console.error(`Error in fetch: ${err.message}`)
     }
   }
 
@@ -67,16 +70,16 @@ const SignInForm = () => {
 
   return (
     <div className="grid-container" onSubmit={onSubmit}>
-      <h1>Sign In</h1>
-      <form>
-        <div>
+      <h1 className="header">Sign In</h1>
+      <form className="app-callout">
+        <div className="input-div">
           <label>
             Email
             <input type="text" name="email" value={userPayload.email} onChange={onInputChange} />
             <FormError error={errors.email} />
           </label>
         </div>
-        <div>
+        <div className="input-div">
           <label>
             Password
             <input
@@ -89,7 +92,7 @@ const SignInForm = () => {
           </label>
         </div>
         <div>
-          <input type="submit" className="button" value="Sign In" />
+          <input type="submit" className="app-btn" value="Sign In" />
         </div>
       </form>
     </div>
