@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react'
 import { DateTime } from 'luxon'
 import ReadingSessionTile from './ReadingSessionTile'
+import ReadingSessionForm from './ReadingSessionForm'
 
 const ReadingSessions = (props) => {
-  // Need to fetch all existing reading sessions for the day
   const [readingSessions, setReadingSessions] = useState([])
 
   const date = DateTime.fromFormat(props.match.params.date, 'yyyyMMdd')
@@ -26,6 +26,30 @@ const ReadingSessions = (props) => {
     getReadingSessions()
   }, [])
 
+  const postReadingSession = async (newReadingSession) =>{
+    try {
+      console.log("newReadingSession", newReadingSession)
+      const response = await fetch(`/api/v1/log/${props.match.params.date}`, {
+        method:"POST",
+        headers: new Headers ({
+          "Content-Type" : "application/json"
+        }),
+        body: JSON.stringify(newReadingSession),
+      });
+      if(!response.ok){
+        if(response.status === 422){
+          const responseBody = await response.json()
+        } else{
+          throw (new Error(`${response.status} ${response.statusText}`))
+        }
+      }
+      const responseBody = await response.json()
+      setReadingSessions([...readingSessions, responseBody.newReadingSession])
+    } catch (error) {
+      console.error(`Error in fetch: ${error.message}`)
+    }
+  }
+
   const readingSessionList = readingSessions.map(readingSession => {
     return (
       <ReadingSessionTile 
@@ -38,9 +62,18 @@ const ReadingSessions = (props) => {
 
   return (
     <div>
-      <h1 className="header">Reading Sessions</h1>
-      <h2 className="header2">{formattedDate}</h2>
-      {readingSessionList}
+      <h1 className="header">{formattedDate}</h1>
+      <div className="grid-x grid-margin-x reading-session-bottom">
+        <div className="reading-session-list cell small-6">
+          {readingSessionList}
+        </div>
+        <div className="cell small-6 form-container">
+          <ReadingSessionForm 
+            date={date}
+            postReadingSession={postReadingSession}
+          />
+        </div>
+      </div>
     </div>
   )
 }

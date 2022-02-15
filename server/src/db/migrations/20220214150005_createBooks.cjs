@@ -8,6 +8,7 @@
 exports.up = async (knex) => {
   return knex.schema.createTable("books", table => {
     table.bigIncrements("id")
+    table.string("googleBooksId").notNullable().unique()
     table.string("author").notNullable()
     table.string("title").notNullable()
     table.string("thumbnailUrl")
