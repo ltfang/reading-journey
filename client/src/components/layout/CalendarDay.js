@@ -15,13 +15,13 @@ const CalendarDay = ({ date, anchorDate }) => {
     dateNumberClass += ' other-month'
   }
 
-  const dateString = date.toFormat('yyyymmdd')
+  const dateString = date.toFormat('yyyyMMdd')
   
   return (
     <div className="calendarDay">
       <div className={dateNumberClass}>{date.day}</div>
       <Link to={`/log/${dateString}`}>
-        Link to Form
+        Link to Sessions
       </Link>
     </div>
   )

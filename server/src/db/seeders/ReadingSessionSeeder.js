@@ -5,6 +5,7 @@ import ReadingSession from "../../models/ReadingSession.js"
 class ReadingSessionSeeder {
   static async seed() {
     const noah = await User.query().findOne({ email: "noah@noah.com" })
+    const abc = await User.query().findOne({ email: "abc@abc.com" })
     const cat = await Book.query().findOne({ title: "The Cat in the Hat" })
     const llama = await Book.query().findOne({ title: "Llama Llama Red Pajama" })
     const gruffalo = await Book.query().findOne({ title: "The Gruffalo" })
@@ -21,6 +22,18 @@ class ReadingSessionSeeder {
         bookId: llama.id,
         date: '2022-02-14',
         minutesRead: 8
+      },
+      {
+        userId: abc.id,
+        bookId: cat.id,
+        date: '2022-02-15',
+        minutesRead: 7
+      },
+      {
+        userId: abc.id,
+        bookId: gruffalo.id,
+        date: '2022-02-15',
+        minutesRead: 9
       }
     ]
 
