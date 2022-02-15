@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react'
+import { Link } from 'react-router-dom'
 import { DateTime } from 'luxon'
 
 const CalendarDay = ({ date, anchorDate }) => {
@@ -14,13 +15,16 @@ const CalendarDay = ({ date, anchorDate }) => {
     dateNumberClass += ' other-month'
   }
 
+  const dateString = date.toFormat('yyyyMMdd')
+  
   return (
     <div className="calendarDay">
       <div className={dateNumberClass}>{date.day}</div>
+      <Link to={`/log/${dateString}`}>
+        Link to Sessions
+      </Link>
     </div>
   )
 }
 
 export default CalendarDay
-
-//{firstDay.toLocaleString(DateTime.DATE_MED_WITH_WEEKDAY)}

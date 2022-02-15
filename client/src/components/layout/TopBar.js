@@ -16,7 +16,7 @@ const TopBar = ({ user }) => {
 
   const authenticatedListItems = [
     <li key="calendar">
-      <Link to="/calendar" className="button">
+      <Link to="/log" className="button">
         Reading Log
       </Link>
     </li>,

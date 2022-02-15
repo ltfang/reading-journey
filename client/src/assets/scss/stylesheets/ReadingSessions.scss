@@ -1,0 +1,32 @@
+.reading-session-tile {
+  display: flex;
+  background-color: $secondary;
+  margin: .5em;
+  border: 2px solid $stroke;
+}
+
+.session-thumbnail {
+  width: 100px;
+  margin: 1em;
+  padding: .5em;
+  background-color: $stroke;
+}
+
+.tile-right {
+  margin: 1em;
+  padding: 0;
+}
+
+.title {
+  font-size: 2em;
+  font-weight: bold;
+}
+
+.minutes {
+  font-size: 1.3em;
+  span {
+    background-color: $highlight;
+    padding: 0 .3em;
+    font-weight: bold;
+  }
+}
