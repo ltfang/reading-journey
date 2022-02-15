@@ -1,3 +1,37 @@
+.reading-session-bottom {
+  margin: 1em;
+}
+
+.form-container {
+  margin: 1em;
+  background-color: $secondary;
+  padding: 1em;
+  font-family: $sans-serif;
+}
+
+.add-read-header {
+  color: $stroke;
+  font-size: 2em;
+  font-weight: bold;
+  font-family: $sans-serif;
+}
+
+.search-submit-container {
+  display: flex;
+  .search-input {
+    width: 300px;
+    margin-right: 1em;
+  }
+  .search-submit {
+    width: 100px;
+    height: 2.5em;
+  }
+}
+
+.minutesRead {
+  width: 200px;
+}
+
 .reading-session-tile {
   display: flex;
   background-color: $secondary;
@@ -20,6 +54,10 @@
 .title {
   font-size: 2em;
   font-weight: bold;
+}
+
+.author {
+  padding: .2em 0 .4em 0;
 }
 
 .minutes {
