@@ -1,9 +1,8 @@
-import express from "express";
-import { Book, ReadingSession } from "../../../models/index.js";
-import convertDateString from "../../../../services/convertDateString.js";
-import ReadingSessionSerializer from "../../../../serializers/ReadingSessionSerializer.js";
-import BookSerializer from "../../../../serializers/BookSerializer.js";
-import { DateTime } from "luxon";
+import express from "express"
+import { ReadingSession } from "../../../models/index.js"
+import ReadingSessionSerializer from "../../../../serializers/ReadingSessionSerializer.js"
+import BookSerializer from "../../../../serializers/BookSerializer.js"
+import { DateTime } from "luxon"
 
 const readingSessionsRouter = new express.Router();
 
@@ -18,7 +17,7 @@ readingSessionsRouter.get("/:date", async (req, res) => {
   } catch (error) {
     return res.status(500).json({ errors: error });
   }
-});
+})
 
 readingSessionsRouter.post("/:date", async (req, res) => {
   const { date, minutesRead, book} = req.body
@@ -36,6 +35,19 @@ readingSessionsRouter.post("/:date", async (req, res) => {
 
     return res.status(500).json({ errors: error });
   }
-});
+})
 
-export default readingSessionsRouter;
+readingSessionsRouter.delete('/:date', async (req, res) => {
+  console.log('in router')
+  try {
+    const readingSessionId = req.body.id
+    console.log(req.body)
+    console.log('readingSessionId', readingSessionId)
+    await ReadingSession.query().deleteById(readingSessionId)
+    return res.status(201).json({ message: 'Successful Delete' })
+  } catch (error) {
+    return res.status(500).json({ errors: error })
+  }
+})
+
+export default readingSessionsRouter

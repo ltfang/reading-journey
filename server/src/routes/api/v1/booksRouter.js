@@ -1,21 +1,20 @@
 import express from "express"
-import GoogleBooksClient from "../../../apiClient/GoogleBooksClient.js"
 import BookSerializer from "../../../../serializers/BookSerializer.js"
+import { User } from "../../../models/index.js"
 
 const booksRouter = new express.Router()
 
-booksRouter.get("/", async (req, res) => {
-  const searchTerms = req.query.searchTerms
+booksRouter.get("/search", async (req, res) => {
   try {
-    const response = await GoogleBooksClient.getBooks(searchTerms)
-    const fullBookData = JSON.parse(response)
-    const bookData = BookSerializer.summarizeGoogleBooksData(fullBookData)
+    const searchTerms = req.query.searchTerms
+    const books = await BookSerializer.getUserBooks(req.user.id)
+    const searchedBookData = BookSerializer.searchBookTitles(books, searchTerms) 
     return res
       .set({ "Content-Type": "application/json" })
       .status(200)
-      .json(bookData)
+      .json( searchedBookData )
   } catch (error) {
-    return res.status(401).json({ errors: error })
+    return res.status(500).json({ errors: error })
   }
 })
 
