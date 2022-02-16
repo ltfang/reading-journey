@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { DateTime } from 'luxon'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faStar } from '@fortawesome/free-solid-svg-icons'
 
-const CalendarDay = ({ date, anchorDate }) => {
-
+const CalendarDay = ({ date, anchorDate, totalMinutes }) => {
   let dateNumberClass = 'dateNumber'
 
   if (
@@ -16,11 +17,21 @@ const CalendarDay = ({ date, anchorDate }) => {
   }
 
   const dateString = date.toFormat('yyyyMMdd')
-  
+
+  let minutesDisplay
+  if (totalMinutes > 0) {
+    minutesDisplay = 
+    <div>
+      <FontAwesomeIcon icon={faStar} className="calendar-star fa-2xl" />
+      <div className="calendar-minute">{totalMinutes}</div>
+    </div>
+  }
+
   return (
     <div className="calendarDay">
       <div className={dateNumberClass}>{date.day}</div>
-      <Link to={`/log/${dateString}`}>
+      {minutesDisplay}
+      <Link to= {`/log/${dateString}`}>
         Link to Sessions
       </Link>
     </div>
