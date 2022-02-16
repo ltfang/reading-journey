@@ -1,5 +1,7 @@
 import React, { useState } from 'react'
 import SingleError from './SingleError.js'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faTrashAlt, faPlusCircle, faMinusCircle } from '@fortawesome/free-solid-svg-icons'
 
 const ReadingSessionTile = ({ id, book, minutesRead, deleteReadingSession, updateReadingSession }) => {
 
@@ -7,13 +9,15 @@ const ReadingSessionTile = ({ id, book, minutesRead, deleteReadingSession, updat
   const [error, setError] = useState("")
   
   const handleDeleteClick = () => {
-    deleteReadingSession(id)
+    if (confirm('Are you sure you want to delete?')) {
+      deleteReadingSession(id)
+    }
   }
 
   const handleUpClick = () => {
     const newMinutes = minutes+1
     if (newMinutes > 0) {
-      setError("")
+      setError('')
     }
     setMinutes(newMinutes)
     updateReadingSession(id, newMinutes)
@@ -24,7 +28,7 @@ const ReadingSessionTile = ({ id, book, minutesRead, deleteReadingSession, updat
     if (minutes-1 > 0) {
       newMinutes = minutes-1
     } else {
-      setError("Minutes cannot be less than 1")
+      setError('Minutes cannot be less than 1')
     }
     setMinutes(newMinutes)
     updateReadingSession(id, newMinutes)
@@ -43,24 +47,15 @@ const ReadingSessionTile = ({ id, book, minutesRead, deleteReadingSession, updat
           <div className="author">{book.author}</div>
           <div className="minutes">
             {`${minutesRead} min`}
-            <button 
-              className='increment-btn'
-              onClick={handleUpClick}
-            >+
-            </button>
-            <button 
-              className='increment-btn'
-              onClick={handleDownClick}
-            >-
-            </button>
+            <FontAwesomeIcon icon={faPlusCircle} onClick={handleUpClick} className="plus-minus-icon" />
+            <FontAwesomeIcon icon={faMinusCircle} onClick={handleDownClick} className="plus-minus-icon" />
           </div>
         </div>
-        <button 
-          className="delete-btn"
+        <FontAwesomeIcon 
+          icon={faTrashAlt}
+          className="fa-lg trash" 
           onClick={handleDeleteClick}
-        >
-          Delete
-        </button>
+        />
       </div>
     </div>
   )
