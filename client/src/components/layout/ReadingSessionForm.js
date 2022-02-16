@@ -23,7 +23,7 @@ const ReadingSessionForm = ({ date, postReadingSession }) => {
 
   return (
     <>
-      <h2 className="add-read-header">Add New Read</h2>
+      <h2 className="add-read-header">Add a New Read</h2>
       <AddBookForm 
         setNewReadingSession={setNewReadingSession}
         newReadingSession={newReadingSession}

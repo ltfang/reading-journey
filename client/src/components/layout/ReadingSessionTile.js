@@ -1,6 +1,11 @@
 import React from 'react'
 
-const ReadingSessionTile = ({ book, minutesRead }) => {
+const ReadingSessionTile = ({ id, book, minutesRead, deleteReadingSession }) => {
+
+  const handleClick = () => {
+    deleteReadingSession(id)
+  }
+
   return (
     <div className="reading-session-tile">
       <div> 
@@ -11,6 +16,12 @@ const ReadingSessionTile = ({ book, minutesRead }) => {
         <div className="author">{book.author}</div>
         <div className="minutes">Read for <span>{minutesRead}</span> minutes</div>
       </div>
+      <button 
+        className="delete-btn"
+        onClick={handleClick}
+      >
+        Delete
+      </button>
     </div>
   )
 }

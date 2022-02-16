@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import getAuthorString from '../../services/getAuthorString.js'
+import Fetch from '../../services/Fetch.js'
 
 const AddBookForm = ({ newReadingSession, setNewReadingSession }) => {
   const [searchTerms, setSearchTerms] = useState("")
@@ -10,18 +11,8 @@ const AddBookForm = ({ newReadingSession, setNewReadingSession }) => {
   }
 
   const searchBooks = async () => {
-    try {
-      const response = await fetch(`/api/v1/books?searchTerms=${searchTerms}`);
-      if (!response.ok) {
-        const errorMessage = `${response.status} (${response.statusText})`
-        const error = new Error(errorMessage);
-        throw(error);
-      }
-      const body = await response.json();
-      setSearchResults(body)
-    } catch(err) {
-      console.error(`Error in fetch: ${err.message}`);
-    }
+    const body = await Fetch.get(`/api/v1/book-search?searchTerms=${searchTerms}`)
+    setSearchResults(body)
   }
 
   const handleSubmit = (event) => {
@@ -43,7 +34,15 @@ const AddBookForm = ({ newReadingSession, setNewReadingSession }) => {
   }
 
   const optionsArray = searchResults.map(result => {
-    const authorString = getAuthorString(result.authors)
+    let authorString = result.author
+    if (typeof authorString !== 'string') {
+      authorString = getAuthorString(result.authors)
+    }
+
+    let indicatePriorBook = ''
+    if (result.id) {
+      indicatePriorBook = '*MY BOOKSHELF*'
+    }
  
     return (
       <option 
@@ -53,7 +52,7 @@ const AddBookForm = ({ newReadingSession, setNewReadingSession }) => {
         title={result.title}
         author={authorString}
         thumbnailurl={result.thumbnailUrl}
-      >{`${result.title}, ${authorString}`}
+      >{`${result.title}, ${authorString} ${indicatePriorBook}` }
       </option>
     )
   })
@@ -72,7 +71,7 @@ const AddBookForm = ({ newReadingSession, setNewReadingSession }) => {
   return (
     <div>
       <form onSubmit={handleSubmit}>
-        <label htmlFor="searchTerms">Search for book</label>
+        <label htmlFor="searchTerms">Add book</label>
           <div className="search-submit-container">
             <input
               className="search-input"
