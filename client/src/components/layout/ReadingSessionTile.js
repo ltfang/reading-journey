@@ -1,27 +1,62 @@
-import React from 'react'
+import React, { useState } from 'react'
+import SingleError from './SingleError.js'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faTrashAlt, faPlusCircle, faMinusCircle } from '@fortawesome/free-solid-svg-icons'
 
-const ReadingSessionTile = ({ id, book, minutesRead, deleteReadingSession }) => {
+const ReadingSessionTile = ({ id, book, minutesRead, deleteReadingSession, updateReadingSession }) => {
 
-  const handleClick = () => {
-    deleteReadingSession(id)
+  const [minutes, setMinutes] = useState(minutesRead) 
+  const [error, setError] = useState("")
+  
+  const handleDeleteClick = () => {
+    if (confirm('Are you sure you want to delete?')) {
+      deleteReadingSession(id)
+    }
+  }
+
+  const handleUpClick = () => {
+    const newMinutes = minutes+1
+    if (newMinutes > 0) {
+      setError('')
+    }
+    setMinutes(newMinutes)
+    updateReadingSession(id, newMinutes)
+  }
+
+  const handleDownClick = () => {
+    let newMinutes = minutes
+    if (minutes-1 > 0) {
+      newMinutes = minutes-1
+    } else {
+      setError('Minutes cannot be less than 1')
+    }
+    setMinutes(newMinutes)
+    updateReadingSession(id, newMinutes)
   }
 
   return (
+    
     <div className="reading-session-tile">
-      <div> 
-        <img src={book.thumbnailUrl} className="session-thumbnail"/>
-      </div>  
-      <div className="tile-right">
-        <div className="title">{book.title}</div>
-        <div className="author">{book.author}</div>
-        <div className="minutes">Read for <span>{minutesRead}</span> minutes</div>
+      <SingleError error={error}/>
+      <div className="tile-main">
+        <div> 
+          <img src={book.thumbnailUrl} className="session-thumbnail"/>
+        </div>  
+        <div className="tile-right">
+          <div className="title">{book.title}</div>
+          <div className="author">{book.author}</div>
+          <div className="minutes">
+            {`${minutesRead} min`}
+            <FontAwesomeIcon icon={faPlusCircle} onClick={handleUpClick} className="plus-minus-icon" />
+            <FontAwesomeIcon icon={faMinusCircle} onClick={handleDownClick} className="plus-minus-icon" />
+          </div>
+        </div>
+        <FontAwesomeIcon 
+          icon={faTrashAlt}
+          className="fa-lg trash" 
+          onClick={handleDeleteClick}
+        />
       </div>
-      <button 
-        className="delete-btn"
-        onClick={handleClick}
-      >
-        Delete
-      </button>
     </div>
   )
 }

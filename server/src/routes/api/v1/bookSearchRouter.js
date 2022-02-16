@@ -9,6 +9,12 @@ bookSearchRouter.get("/", async (req, res) => {
   try {
     const response = await GoogleBooksClient.getBooks(searchTerms)
     const fullBookData = JSON.parse(response)
+    if (fullBookData.totalItems===0) {
+      return res
+      .set({ "Content-Type": "application/json" })
+      .status(200)
+      .json(null)
+    }
     const googleBookData = BookSerializer.summarizeGoogleBooksData(fullBookData)
     const existingBooks = await BookSerializer.getUserBooks(req.user.id)
     const existingBookData = BookSerializer.searchBookTitles(existingBooks, searchTerms)

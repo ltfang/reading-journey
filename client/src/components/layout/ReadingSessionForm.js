@@ -1,5 +1,7 @@
 import React, { useState } from 'react'
 import AddBookForm from './AddBookForm'
+import SingleError from './SingleError.js'
+import _ from 'lodash'
 
 const ReadingSessionForm = ({ date, postReadingSession }) => {
 
@@ -9,6 +11,8 @@ const ReadingSessionForm = ({ date, postReadingSession }) => {
     book: {}
   })
 
+  const [error, setError] = useState("")
+
   const handleInputChange = (event) => {
     setNewReadingSession({
       ...newReadingSession,
@@ -16,19 +20,31 @@ const ReadingSessionForm = ({ date, postReadingSession }) => {
     })
   }
 
+  const validForSubmission = () => {
+    const submitError = "Please select book"
+    if (_.isEmpty(newReadingSession.book)) {
+      setError(submitError)
+      return false
+    }
+    return true
+  }
+
   const handleSubmit = (event) => {
     event.preventDefault()
-    postReadingSession(newReadingSession)
+    if (validForSubmission()) {
+      postReadingSession(newReadingSession)
+    }
   }
 
   return (
     <>
-      <h2 className="add-read-header">Add a New Read</h2>
+      <h2 className="add-read-header">Add a New Read</h2>      
       <AddBookForm 
         setNewReadingSession={setNewReadingSession}
         newReadingSession={newReadingSession}
       />
       <form onSubmit={handleSubmit}>
+      <SingleError error={error} />
         <label htmlFor="minutesRead"> Minutes Read
           <input
             className="minutesRead"
