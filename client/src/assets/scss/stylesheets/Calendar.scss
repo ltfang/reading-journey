@@ -57,6 +57,21 @@
   align-items: start;
   justify-content: start;
   height: 13vh;
+  position: relative;
+}
+
+.calendar-minute {
+  position: absolute;
+  bottom: 13px;
+  right: 23px;
+  color: $stroke;
+}
+
+.calendar-star {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  color: $highlight;
 }
 
 .dateNumber {

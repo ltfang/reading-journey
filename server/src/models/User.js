@@ -58,11 +58,12 @@ class User extends uniqueFunc(Model) {
         relation: Model.HasManyRelation,
         modelClass: ReadingSession,
         join: {
-          from: "user.id",
+          from: "users.id",
           to: "readingSessions.userId"
         }
       }
     }
+
   }
 
   $formatJson(json) {

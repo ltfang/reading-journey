@@ -58,6 +58,28 @@ class Fetch {
     }
   }
 
+  static update = async (endpoint, id, property) =>{
+    try {
+      const response = await fetch(endpoint, {
+        method:"PATCH",
+        headers: new Headers ({
+          "Content-Type" : "application/json"
+        }),
+        body: JSON.stringify({id, property}),
+      });
+      if(!response.ok){
+        if(response.status === 422){
+          const responseBody = await response.json()
+        } else {
+          throw (new Error(`${response.status} ${response.statusText}`))
+        }
+      }
+      return true
+    } catch (error) {
+      console.error(`Error in fetch: ${error.message}`)
+    }
+  }
+
 }
 
 export default Fetch

@@ -13,7 +13,11 @@ readingSessionsRouter.get("/:date", async (req, res) => {
     const userId = req.user.id
     const readingSessions = await ReadingSession.query()
     const serializedReadingSessions = await ReadingSessionSerializer.getReadingSessions(readingSessions, userId, date)
-    return res.status(200).json({ readingSessions: serializedReadingSessions })
+    const totalMinutes = ReadingSessionSerializer.getTotalMinutes(serializedReadingSessions)
+    return res.status(200).json({ 
+      readingSessions: serializedReadingSessions,
+      totalMinutes: totalMinutes
+     })
   } catch (error) {
     return res.status(500).json({ errors: error });
   }
@@ -49,7 +53,8 @@ readingSessionsRouter.delete('/:date', async (req, res) => {
 
 readingSessionsRouter.patch('/:date', async (req, res) => {
   try {
-    const { readingSessionId, minutes } = req.body
+    const readingSessionId = req.body.id
+    const minutes = req.body.property
     const updatedReadingSession = await ReadingSession.query().patchAndFetchById(readingSessionId, { minutesRead: minutes })
     return res.status(201).json({ updatedReadingSession })
   } catch (error) {
