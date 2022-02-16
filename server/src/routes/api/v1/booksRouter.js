@@ -1,18 +1,15 @@
 import express from "express"
 import BookSerializer from "../../../../serializers/BookSerializer.js"
-import { User } from "../../../models/index.js"
 
 const booksRouter = new express.Router()
 
-booksRouter.get("/search", async (req, res) => {
+booksRouter.get("/", async (req, res) => {
   try {
-    const searchTerms = req.query.searchTerms
-    const books = await BookSerializer.getUserBooks(req.user.id)
-    const searchedBookData = BookSerializer.searchBookTitles(books, searchTerms) 
+    const bookData = await BookSerializer.getUserBooks(req.user.id)
     return res
       .set({ "Content-Type": "application/json" })
       .status(200)
-      .json( searchedBookData )
+      .json( bookData )
   } catch (error) {
     return res.status(500).json({ errors: error })
   }

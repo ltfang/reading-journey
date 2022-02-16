@@ -37,8 +37,22 @@
   background-color: $secondary;
   margin: .5em;
   border: 2px solid $stroke;
+  position: relative;
 }
 
+.delete-btn {
+  position: absolute;
+  right: 10px;
+  bottom: 10px;
+  background-color: $highlight;
+  border: 2px solid $stroke;
+  padding: 0.3em .5em;
+  color: $stroke;
+  border-radius: 20px;
+  font-weight: bold;
+  text-align: center;
+  font-size: 1em;
+}
 .session-thumbnail {
   width: 100px;
   margin: 1em;
@@ -68,3 +82,5 @@
     font-weight: bold;
   }
 }
+
+
