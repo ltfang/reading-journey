@@ -1,10 +1,12 @@
 import React, { useState } from 'react'
 import getAuthorString from '../../services/getAuthorString.js'
 import Fetch from '../../services/Fetch.js'
+import SingleError from './SingleError.js'
 
 const AddBookForm = ({ newReadingSession, setNewReadingSession }) => {
-  const [searchTerms, setSearchTerms] = useState("")
+  const [searchTerms, setSearchTerms] = useState('')
   const [searchResults, setSearchResults] = useState([])
+  const [error, setError] = useState("")
 
   const handleSearchInputChange = event => {
     setSearchTerms(event.currentTarget.value)
@@ -17,7 +19,18 @@ const AddBookForm = ({ newReadingSession, setNewReadingSession }) => {
 
   const handleSubmit = (event) => {
     event.preventDefault()
-    searchBooks()
+    if (validForSubmission()) {
+      searchBooks()
+    }
+  }
+
+  const validForSubmission = () => {
+    const submitError = "Please enter search terms"
+    if (searchTerms.trim()==="") {
+      setError(submitError)
+      return false
+    }
+    return true
   }
 
   const handleOptionChange = (event) => { 
@@ -33,40 +46,44 @@ const AddBookForm = ({ newReadingSession, setNewReadingSession }) => {
     })
   }
 
-  const optionsArray = searchResults.map(result => {
-    let authorString = result.author
-    if (typeof authorString !== 'string') {
-      authorString = getAuthorString(result.authors)
-    }
+  let optionsArray = null
+  let resultsDisplay = null
 
-    let indicatePriorBook = ''
-    if (result.id) {
-      indicatePriorBook = '*MY BOOKSHELF*'
-    }
- 
-    return (
-      <option 
+  if (searchResults===null) {
+    resultsDisplay =    
+    <div>No results</div>
+  } else if (searchResults.length>0) { 
+    optionsArray = searchResults.map(result => {
+      let authorString = result.author
+      if (typeof authorString !== 'string') {
+        authorString = getAuthorString(result.authors)
+      }
+      
+      let indicatePriorBook = ''
+      if (result.id) {
+        indicatePriorBook = '*MY BOOKSHELF*'
+      }
+      
+      return (
+        <option 
         key={result.googleBooksId}
         value={result.googleBooksId}
         googlebooksid={result.googleBooksId}
         title={result.title}
         author={authorString}
         thumbnailurl={result.thumbnailUrl}
-      >{`${result.title}, ${authorString} ${indicatePriorBook}` }
-      </option>
-    )
-  })
-
-  let resultsDisplay = null
-  if (searchResults.length>0) {
+        >{`${result.title}, ${authorString} ${indicatePriorBook}` }
+        </option>
+      )
+    })
     resultsDisplay =    
     <form>
       <select onChange={handleOptionChange}>
         <option>Search Results</option>
         {optionsArray}
       </select>
-  </form>
-  }
+    </form>
+  } 
 
   return (
     <div>
@@ -88,6 +105,7 @@ const AddBookForm = ({ newReadingSession, setNewReadingSession }) => {
             />     
           </div>  
       </form>
+      <SingleError error={error} />
       {resultsDisplay}
     </div>
   )

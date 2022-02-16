@@ -38,13 +38,20 @@ readingSessionsRouter.post("/:date", async (req, res) => {
 })
 
 readingSessionsRouter.delete('/:date', async (req, res) => {
-  console.log('in router')
   try {
     const readingSessionId = req.body.id
-    console.log(req.body)
-    console.log('readingSessionId', readingSessionId)
     await ReadingSession.query().deleteById(readingSessionId)
     return res.status(201).json({ message: 'Successful Delete' })
+  } catch (error) {
+    return res.status(500).json({ errors: error })
+  }
+})
+
+readingSessionsRouter.patch('/:date', async (req, res) => {
+  try {
+    const { readingSessionId, minutes } = req.body
+    const updatedReadingSession = await ReadingSession.query().patchAndFetchById(readingSessionId, { minutesRead: minutes })
+    return res.status(201).json({ updatedReadingSession })
   } catch (error) {
     return res.status(500).json({ errors: error })
   }

@@ -30,6 +30,31 @@ const ReadingSessions = (props) => {
     setReadingSessions(updatedReadingSessions)
   }
 
+  const updateReadingSession = async (readingSessionId, minutes) =>{
+    try {
+      const response = await fetch(`/api/v1/log/${props.match.params.date}`, {
+        method:"PATCH",
+        headers: new Headers ({
+          "Content-Type" : "application/json"
+        }),
+        body: JSON.stringify({readingSessionId, minutes}),
+      });
+      if(!response.ok){
+        if(response.status === 422){
+          const responseBody = await response.json()
+        } else {
+          throw (new Error(`${response.status} ${response.statusText}`))
+        }
+      }
+      const updatedReadingSessions = [...readingSessions]
+      const session = updatedReadingSessions.find(session => session.id === readingSessionId)
+      session.minutesRead = minutes
+      setReadingSessions(updatedReadingSessions)
+    } catch (error) {
+      console.error(`Error in fetch: ${error.message}`)
+    }
+  }
+
   const readingSessionList = readingSessions.map(readingSession => {
     return (
       <ReadingSessionTile 
@@ -38,6 +63,7 @@ const ReadingSessions = (props) => {
         book={readingSession.book}
         minutesRead={readingSession.minutesRead}
         deleteReadingSession={deleteReadingSession}
+        updateReadingSession={updateReadingSession}
       />
     )
   })
