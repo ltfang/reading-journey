@@ -1,18 +1,19 @@
-import React, { useState, useEffect } from "react";
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import { hot } from "react-hot-loader/root";
+import React, { useState, useEffect } from 'react'
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
+import { hot } from 'react-hot-loader/root'
 
-import getCurrentUser from "../services/getCurrentUser";
-import "../assets/scss/main.scss";
-import RegistrationForm from "./registration/RegistrationForm";
-import SignInForm from "./authentication/SignInForm";
-import TopBar from "./layout/TopBar";
-import HomePage from "./layout/HomePage";
-import Calendar from "./layout/Calendar"
+import getCurrentUser from '../services/getCurrentUser'
+import '../assets/scss/main.scss'
+import RegistrationForm from './registration/RegistrationForm'
+import SignInForm from './authentication/SignInForm'
+import TopBar from './layout/TopBar'
+import HomePage from './layout/HomePage'
+import Calendar from './layout/Calendar'
 import ReadingSessions from './layout/ReadingSessions'
+import TicketsPage from './layout/TicketsPage'
 
 const App = (props) => {
-  const [currentUser, setCurrentUser] = useState(null);
+  const [currentUser, setCurrentUser] = useState(null)
   const fetchCurrentUser = async () => {
     try {
       const user = await getCurrentUser()
@@ -37,6 +38,7 @@ const App = (props) => {
         <Route exact path="/user-sessions/new" component={SignInForm} />
         <Route exact path="/log" component={Calendar} />
         <Route exact path="/log/:date" component={ReadingSessions} />
+        <Route exact path="/tickets" component={TicketsPage} />
       </Switch>
     </Router>
   );

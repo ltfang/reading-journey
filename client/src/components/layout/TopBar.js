@@ -22,6 +22,11 @@ const TopBar = ({ user }) => {
         Reading Log
       </Link>
     </li>,
+    <li key="tickets">
+      <Link to="/tickets" className="button menu-btn">
+        Tickets
+      </Link>
+    </li>,
     <li key="sign-out">
       <SignOutButton />
     </li>

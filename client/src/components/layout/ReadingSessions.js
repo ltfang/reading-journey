@@ -28,20 +28,24 @@ const ReadingSessions = (props) => {
   }
 
   const deleteReadingSession = async (readingSessionId) => {
-    await Fetch.delete(`/api/v1/log/${props.match.params.date}`, readingSessionId)
-    const updatedReadingSessions = readingSessions.filter(readingSession => readingSession.id != readingSessionId)
-    const deletedReadingSession = readingSessions.find(readingSession=> readingSession.id === readingSessionId)
-    setTotalMinutes(totalMinutes-deletedReadingSession.minutesRead)
-    setReadingSessions(updatedReadingSessions)
+    const response = await Fetch.delete(`/api/v1/log/${props.match.params.date}`, readingSessionId)
+    if (response) {
+      const updatedReadingSessions = readingSessions.filter(readingSession => readingSession.id != readingSessionId)
+      const deletedReadingSession = readingSessions.find(readingSession=> readingSession.id === readingSessionId)
+      setTotalMinutes(totalMinutes-deletedReadingSession.minutesRead)
+      setReadingSessions(updatedReadingSessions)
+    }
   }
 
   const updateReadingSession = async (readingSessionId, minutes) => {
-    await Fetch.update(`/api/v1/log/${props.match.params.date}`, readingSessionId, minutes)
-    const updatedReadingSessions = [...readingSessions]
-    const session = updatedReadingSessions.find(readingSession => readingSession.id === readingSessionId)
-    setTotalMinutes(totalMinutes-(session.minutesRead-minutes))
-    session.minutesRead = minutes
-    setReadingSessions(updatedReadingSessions)
+    const response = await Fetch.update(`/api/v1/log/${props.match.params.date}`, readingSessionId, minutes)
+    if (response) {
+      const updatedReadingSessions = [...readingSessions]
+      const session = updatedReadingSessions.find(readingSession => readingSession.id === readingSessionId)
+      setTotalMinutes(totalMinutes-(session.minutesRead-minutes))
+      session.minutesRead = minutes
+      setReadingSessions(updatedReadingSessions)
+    }
   }
 
   const readingSessionList = readingSessions.map(readingSession => {

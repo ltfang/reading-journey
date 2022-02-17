@@ -53,6 +53,7 @@ class Fetch {
         const error = new Error(errorMessage)
         throw(error)
       }
+      return true
     } catch (error) {
       return console.error(`Error in fetch: ${error.message}`)
     }
