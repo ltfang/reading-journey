@@ -11,6 +11,8 @@ const ReadingSessionForm = ({ date, postReadingSession }) => {
     book: {}
   })
 
+  const [searchTerms, setSearchTerms] = useState('')
+
   const [error, setError] = useState("")
 
   const handleInputChange = (event) => {
@@ -33,7 +35,18 @@ const ReadingSessionForm = ({ date, postReadingSession }) => {
     event.preventDefault()
     if (validForSubmission()) {
       postReadingSession(newReadingSession)
+      clearForm()
     }
+  }
+
+  const clearForm = () => {
+    setSearchTerms('')
+    setNewReadingSession({
+      date: date,
+      minutesRead: 0,
+      book: {}
+    })
+    setError('')
   }
 
   return (
@@ -42,6 +55,8 @@ const ReadingSessionForm = ({ date, postReadingSession }) => {
       <AddBookForm 
         setNewReadingSession={setNewReadingSession}
         newReadingSession={newReadingSession}
+        setSearchTerms={setSearchTerms}
+        searchTerms={searchTerms}
       />
       <form onSubmit={handleSubmit}>
       <SingleError error={error} />

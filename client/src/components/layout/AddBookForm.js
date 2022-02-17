@@ -3,8 +3,7 @@ import getAuthorString from '../../services/getAuthorString.js'
 import Fetch from '../../services/Fetch.js'
 import SingleError from './SingleError.js'
 
-const AddBookForm = ({ newReadingSession, setNewReadingSession }) => {
-  const [searchTerms, setSearchTerms] = useState('')
+const AddBookForm = ({ newReadingSession, setNewReadingSession, searchTerms, setSearchTerms }) => {
   const [searchResults, setSearchResults] = useState([])
   const [error, setError] = useState("")
 
