@@ -19,7 +19,7 @@ const AddBookForm = ({ newReadingSession, setNewReadingSession }) => {
 
   const handleSubmit = (event) => {
     event.preventDefault()
-    setError("")
+    setError('')
     if (validForSubmission()) {
       searchBooks()
     }

@@ -1,14 +1,22 @@
-import TicketTransaction from "../src/models/TicketTransaction.js"
 import User from "../src/models/User.js"
 
 class TicketSerializer {
   static async getTotalTickets(userId) {
     const user = await User.query().findById(userId)
-    const ticketTransactions = await user.$relatedQuery("ticketTransactions")
-    const totalTickets = ticketTransactions.reduce((prev, current) => {
-      return prev + current.value
-    }, 0)
-    return totalTickets
+    const minutes = await user.$relatedQuery("readingSessions").sum("minutesRead")
+    const earnedTickets = minutes[0].sum
+    console.log('earnedTickets', earnedTickets)
+    const tickets = await user.$relatedQuery("ticketTransactions").sum("number") 
+    console.log('tickets', tickets)
+    const usedTickets = tickets[0].sum
+    console.log('usedtickets', usedTickets)
+    return earnedTickets - usedTickets
+  }
+
+  static async getRecentTransactions(userId, number) {
+    const user = await User.query().findById(userId)
+    const transactions = await user.$relatedQuery("ticketTransactions").orderBy('date', 'desc').limit(number)
+    return transactions
   }
 }
 

@@ -8,9 +8,9 @@ class TicketTransaction extends Model {
   static get jsonSchema() {
     return {
       type: "object",
-      required: ["value"],
+      required: ["date", "number"],
       properties: {
-        value: {type: ["integer", "string"]},
+        number: {type: ["integer", "string"]},
         date: {type: ["date", "string"]},
         description: {type: "string"}
       }
@@ -19,7 +19,6 @@ class TicketTransaction extends Model {
 
   static get relationMappings() {
     const User = require("./User.js")
-    const ReadingSession = require("./ReadingSession.js")
 
     return {
       users: {
@@ -28,14 +27,6 @@ class TicketTransaction extends Model {
         join: {
           from: "ticketTransactions.userId",
           to: "users.id"
-        }
-      }, 
-      readingSession: {
-        relation: Model.BelongsToOneRelation,
-        modelClass: ReadingSession,
-        join: {
-          from: "ticketTransactions.readingSessionId",
-          to: "readingSessions.id"
         }
       }
     }

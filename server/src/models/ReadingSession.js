@@ -19,7 +19,6 @@ class ReadingSession extends Model {
   static get relationMappings() {
     const Book = require("./Book.js")
     const User = require("./User.js")
-    const TicketTransaction = require("./TicketTransaction.js")
 
     return {
       book: {
@@ -37,15 +36,6 @@ class ReadingSession extends Model {
         join: {
           from: "readingSessions.userId",
           to: "users.id"
-        }
-      },
-
-      ticketTransaction: {
-        relation: Model.BelongsToOneRelation,
-        modelClass: TicketTransaction,
-        join: {
-          from: "readingSessions.id",
-          to: "ticketTransactions.readingSessionId"
         }
       }
     }

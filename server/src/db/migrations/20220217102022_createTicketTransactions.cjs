@@ -8,7 +8,7 @@
  exports.up = async (knex) => {
   return knex.schema.createTable("ticketTransactions", table => {
     table.bigIncrements("id")
-    table.integer("value").notNullable()
+    table.integer("number").notNullable()
     table.date("date").notNullable()
     table.string("description")
     table.bigInteger("userId")
@@ -16,10 +16,6 @@
       .unsigned()
       .index()
       .references("users.id")
-    table.bigInteger("readingSessionId")
-      .unsigned()
-      .index()
-      .references("readingSessions.id")
     table.timestamp("createdAt").notNullable().defaultTo(knex.fn.now())
     table.timestamp("updatedAt").notNullable().defaultTo(knex.fn.now())
   })
