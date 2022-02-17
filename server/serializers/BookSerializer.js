@@ -14,11 +14,15 @@ class BookSerializer {
 
   static summarizeGoogleBooksData(googleResponse) {
     const bookData = googleResponse.items.map(book => {
+      let thumbnail = book.volumeInfo.imageLinks?.thumbnail
+      if (!thumbnail) {
+        thumbnail = 'https://upload.wikimedia.org/wikipedia/commons/9/92/BookIcon.png'
+      }
       return {
         googleBooksId: book.id, 
         title: book.volumeInfo.title,
         authors: book.volumeInfo.authors,
-        thumbnailUrl: book.volumeInfo.imageLinks?.thumbnail
+        thumbnailUrl: thumbnail
       }
     })
     return bookData

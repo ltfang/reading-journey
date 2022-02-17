@@ -25,9 +25,7 @@ const Calendar = props => {
   } else {
     firstDay = date.startOf('month').startOf('week').minus({days: 1})
   }
-  const lastDay = date.endOf('month').endOf('week').minus({days: 1})
-  
-  let interval = Interval.fromDateTimes(firstDay, lastDay)
+  const lastDay = date.endOf('month').endOf('week')
 
   const getDailyMinutes = async () => {
     const startDay = firstDay.toFormat('yyyyMMdd') 
@@ -38,19 +36,18 @@ const Calendar = props => {
   
   useEffect(() => {
     getDailyMinutes()
-  }, [])
+  }, [date])
 
-  let daysToDisplay
-  if (dailyMinutes.length>0) {
-    daysToDisplay = interval.splitBy({days:1}).map((d, index) => {
-      return <CalendarDay 
-      key={d}
-      date={d.start} 
+  const daysToDisplay = dailyMinutes.map((day,index) => {
+    const dateString = Object.keys(day)[0]
+    const calendarDay = DateTime.fromFormat(dateString, 'yyyyMMdd')
+    return <CalendarDay
+      key={calendarDay.toISO()}
+      date={calendarDay}
       anchorDate={date}
-      totalMinutes={Object.values(dailyMinutes[index])[0]}
-      />
-    })
-  }
+      totalMinutes={dailyMinutes[index][dateString]}
+    />
+  })
 
   return (
     <div className="calendar">
