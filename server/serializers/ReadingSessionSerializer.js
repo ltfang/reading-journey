@@ -17,7 +17,7 @@ class ReadingSessionSerializer {
 
   static async getReadingSessions(readingSessions, userId, date) {
     const filteredReadingSessions = readingSessions.filter(readingSession => {
-      return readingSession.userId === userId && readingSession.date.toLocaleDateString() === date
+      return readingSession.userId === userId && readingSession.date.toISOString().substring(0,10) === date.toFormat('yyyy-MM-dd')
     })
     const serializedReadingSessions = await Promise.all(filteredReadingSessions.map(async (readingSession) => {
       return await ReadingSessionSerializer.getDetails(readingSession)
