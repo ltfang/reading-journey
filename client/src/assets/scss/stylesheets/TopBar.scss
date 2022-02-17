@@ -1,0 +1,18 @@
+.app-topbar {
+  background-color: $lightest;
+  ul {
+    background-color: $lightest;
+  }
+}
+
+.app-menutext {
+  color: $line;
+}
+
+.menu-btn {
+  margin: 1em;
+  background-color: $line-secondary; 
+  color: $lightest;
+  border-radius: 30px;
+  box-shadow: $box-shadow;
+}

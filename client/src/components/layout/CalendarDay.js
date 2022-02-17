@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from 'react'
-import { Link } from 'react-router-dom'
+import React from 'react'
+import { useHistory } from 'react-router-dom'
 import { DateTime } from 'luxon'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faStar } from '@fortawesome/free-solid-svg-icons'
@@ -27,13 +27,15 @@ const CalendarDay = ({ date, anchorDate, totalMinutes }) => {
     </div>
   }
 
+  const history = useHistory()
+  const handleClick = () => {
+    history.push(`/log/${dateString}`)
+  }
+
   return (
-    <div className="calendarDay">
+    <div className="calendarDay" onClick={handleClick}>
       <div className={dateNumberClass}>{date.day}</div>
       {minutesDisplay}
-      <Link to= {`/log/${dateString}`}>
-        Link to Sessions
-      </Link>
     </div>
   )
 }
