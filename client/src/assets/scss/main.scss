@@ -6,6 +6,8 @@
 @import "./stylesheets/HomePage.scss";
 @import "./stylesheets/Calendar.scss";
 @import "./stylesheets/ReadingSessions.scss";
+@import "./stylesheets/ReadingSessionTile.scss";
+@import "./stylesheets/TopBar.scss";
 // place global css here
 
 *,
@@ -21,6 +23,7 @@
 
 body {
   font-family: $sans-serif;
+  background: $background;
 }
 
 .header {
@@ -28,7 +31,7 @@ body {
   font-family: $serif;
   text-align: center;
   margin: .5em;
-  color: $lightest;
+  color: $line;
 }
 
 .header2 {

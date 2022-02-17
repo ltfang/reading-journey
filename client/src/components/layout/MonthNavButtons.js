@@ -1,5 +1,7 @@
 import React from 'react'
 import { DateTime } from 'luxon'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faCalendarDay, faArrowCircleLeft, faArrowCircleRight } from '@fortawesome/free-solid-svg-icons'
 
 const MonthNavButtons = ({ date, setDate }) => {
   const nextMonth = () => {
@@ -17,21 +19,21 @@ const MonthNavButtons = ({ date, setDate }) => {
   }
   return (
     <div className="month-btn-group">
-      <button 
-      className="month-btn"
-      onClick={prevMonth}
-      >prev
-      </button>
-      <button 
-      className="month-btn"
-      onClick={nextMonth}
-      >next
-      </button>
-      <button 
-      className="month-btn"
+      <FontAwesomeIcon 
+        icon={faArrowCircleLeft}
+        className="fa-lg month-btn"
+        onClick={prevMonth}
+      />
+      <FontAwesomeIcon 
+      icon={faCalendarDay}
+      className="fa-lg month-btn"
       onClick={thisMonth}
-      >today
-      </button>
+      />
+      <FontAwesomeIcon 
+      icon={faArrowCircleRight}
+      className="fa-lg month-btn"
+      onClick={nextMonth}
+      />
     </div>
   )
 }

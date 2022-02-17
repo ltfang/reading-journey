@@ -1,6 +1,29 @@
 $primary: #004643;
 $stroke: #001e1d;
-$lightest: #e8e4e6;
-$highlight: #f9bc60;
-$secondary: #abd1c6;
-$tertiary: #e16162;
+/*$lightest: #e8e4e6;*/
+/*$highlight: #f9bc60;*/
+/*$secondary: #abd1c6;*/
+/*$tertiary: #e16162;*/
+
+$fern-green: #4D7B37;
+$copper-red: #D3654F;
+$green-sheen: #68B8A7;
+$mango: #FABB00;
+$melon: #F0AFA3;
+$champagne: #F3E2C8;
+$snow: #FFFCFA;
+$pthalo: #043127;
+$isabelline: #ede5da;
+$dark-blue-green: #1b7b7d; 
+
+$background: $green-sheen;
+$line: $pthalo;
+$line-secondary: $dark-blue-green;
+$secondary: $copper-red;
+$lightest: white;
+$tertiary: $green-sheen;
+$tertiary2: $fern-green;
+$light-secondary: $melon;
+$highlight: $mango;
+
+$box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;

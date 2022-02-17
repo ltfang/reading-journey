@@ -23,15 +23,17 @@
 
 .month-btn {
   margin: .3em; 
-  padding: .5em .7em;
+  padding: .3em .5em;
   background-color: $highlight;
   border-radius: 10px;
-  color: $stroke;
+  color: $line;
+  box-shadow: $box-shadow;
 } 
 
 .weekday-container {
   border: 1px solid $secondary;
-  color: $secondary;
+  background-color: $light-secondary;
+  color: $line;
   display: flex;
   justify-content: space-around;
   align-items: center;
@@ -58,6 +60,11 @@
   justify-content: start;
   height: 13vh;
   position: relative;
+  background-color: $lightest;
+}
+
+.calendarDay:hover {
+  background-color: #fbeae7;
 }
 
 .calendar-minute {
@@ -79,17 +86,17 @@
   align-items: center;
   justify-content: center;
   height: 1em;
-  color: $lightest;
+  color: $secondary;
 }
 
 .other-month {
-  color: $stroke;
+  color: $light-secondary;
 }
 
 .today {
-  background-color: $highlight;
+  background-color: $tertiary;
   height: 2em;
   width: 2em;
   border-radius: 50%;
-  color: $tertiary;
+  color: $line;
 }
