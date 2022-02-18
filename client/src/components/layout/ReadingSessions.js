@@ -3,6 +3,7 @@ import { DateTime } from 'luxon'
 import ReadingSessionTile from './ReadingSessionTile'
 import ReadingSessionForm from './ReadingSessionForm'
 import Fetch from '../../services/Fetch'
+import { withRouter } from 'react-router'
 
 const ReadingSessions = (props) => {
   const [readingSessions, setReadingSessions] = useState([])
@@ -80,4 +81,4 @@ const ReadingSessions = (props) => {
   )
 }
 
-export default ReadingSessions
+export default withRouter(ReadingSessions)

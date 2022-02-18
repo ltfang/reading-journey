@@ -12,6 +12,7 @@ import Calendar from './layout/Calendar'
 import ReadingSessions from './layout/ReadingSessions'
 import TicketsPage from './layout/TicketsPage'
 import Bookshelf from './layout/Bookshelf'
+import AuthenticatedRoute from './authentication/AuthenticatedRoute'
 
 const App = (props) => {
   const [currentUser, setCurrentUser] = useState(null)
@@ -37,10 +38,11 @@ const App = (props) => {
         </Route>
         <Route exact path="/users/new" component={RegistrationForm} />
         <Route exact path="/user-sessions/new" component={SignInForm} />
-        <Route exact path="/log" component={Calendar} />
-        <Route exact path="/log/:date" component={ReadingSessions} />
-        <Route exact path="/tickets" component={TicketsPage} />
-        <Route exact path="/bookshelf" component={Bookshelf} />
+        <AuthenticatedRoute exact path="/log" component={Calendar} user={currentUser} />
+        {/*<Route exact path="/log/:date" component={ReadingSessions}/>*/}
+        <AuthenticatedRoute exact path="/log/:date" user={currentUser} component={ReadingSessions} />
+        <AuthenticatedRoute exact path="/bookshelf" component={Bookshelf} user={currentUser} />
+        <AuthenticatedRoute exact path="/tickets" component={TicketsPage} user={currentUser} />
       </Switch>
     </Router>
   );
