@@ -62,17 +62,17 @@ const ReadingSessions = (props) => {
   })
 
   return (
-    <div>
-      <h1 className="header">{formattedDate}</h1>
-      <h2 className="header2">Total reading time: {totalMinutes} min</h2>
+    <div className="reading-session-container">
+      <h1 className="rs-header">{formattedDate}</h1>
+      <h2 className="rt-header">Total reading time: {totalMinutes} min</h2>
       <div className="grid-x grid-margin-x reading-session-bottom">
-        <div className="cell small-6 form-container">
+        <div className="cell small-5 form-container">
           <ReadingSessionForm 
             date={date}
             postReadingSession={postReadingSession}
           />
         </div>
-        <div className="reading-session-list cell small-6">
+        <div className="reading-session-list cell small-7">
           {readingSessionList}
         </div>
       </div>

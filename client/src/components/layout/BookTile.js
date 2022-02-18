@@ -2,10 +2,16 @@ import React, { useState, useEffect } from 'react'
 
 const BookTile = ({ book }) => {
   return(
-    <div className="book-tile">
-      <img src={book.thumbnailUrl}/>
-      <div>{book.title}</div>
-      <div>{book.author}</div>
+    <div className="book-tile grid-y">
+      <div className="book-tile-top cell small-8">
+        <img src={book.thumbnailUrl} className="book-tile-img"/>
+      </div>
+      <div className="book-tile-bottom cell small-4">
+        <div className="book-tile-bottom-content">
+          <div className="book-tile-title">{book.title}</div>
+          <div className="book-tile-author">{book.author}</div>
+        </div>
+      </div>
     </div>
   )
 }

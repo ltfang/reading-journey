@@ -38,11 +38,11 @@ const ReadingSessionTile = ({ id, book, minutesRead, deleteReadingSession, updat
     
     <div className="reading-session-tile">
       <SingleError error={error}/>
-      <div className="tile-main">
-        <div> 
+      <div className="tile-main grid-x grid-margin-x">
+        <div className="tile-left cell small-4"> 
           <img src={book.thumbnailUrl} className="session-thumbnail"/>
         </div>  
-        <div className="tile-right">
+        <div className="tile-right cell small-8">
           <div className="title">{book.title}</div>
           <div className="author">{book.author}</div>
           <div className="minutes">

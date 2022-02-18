@@ -11,6 +11,7 @@
 @import "./stylesheets/TicketTransactionTile.scss";
 @import "./stylesheets/TicketPage.scss";
 @import "./stylesheets/Bookshelf.scss";
+@import "./stylesheets/SignInOrUp.scss";
 // place global css here
 
 *,
@@ -51,6 +52,8 @@ body {
 .link:hover {
   color: #003736;
 }
+
+
 
 .app-callout {
   width: 600px;

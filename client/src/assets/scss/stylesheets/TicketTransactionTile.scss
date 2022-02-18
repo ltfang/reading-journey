@@ -1,41 +1,40 @@
 .trx-tile {
-  border: 2px solid $secondary;
-  width: 300px;
-  background-color: $light-secondary;
-  color: $line;
-  margin: 1em;
-  padding: .85em 1em;
-  box-shadow: $box-shadow;
-}
-
-.tile-top {
-  display: flex;
-  justify-content: space-between;
-}
-
-.trx-date {
-  font-weight: bold;
+  background-color: white;
+  margin: 0.5em;
+  box-shadow: $box-shadow-sm;
+  border-radius: 10px;
+  height: 100px;
+  width: 240px;
 }
 
 .trx-tickets {
   font-weight: bold;
+  font-size: 1.2em;
+}
+
+.trx-tile-left {  
+  background-color: $bright-blue;
+  color: white;
+  border-radius: 10px 0 0 10px; 
+  padding: 1em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100px;
+}
+
+.trx-tile-right-content {
+  padding: 1em;
+  max-width: 200px;
+  overflow: hidden;
+}
+
+.trx-date {
+  font-weight: bold;
+  font-size: 1em;
 }
 
 .trx-des {
-  font-size: 2em;
+  font-size: 1em;
+  line-height: 120%;
 }
-/*
-$hole: .4em; 
-$bg: yellow;
-.trx-tile {
-  height: 2em;
-  width: 300px;
-  padding: 1em;
-  margin: 1em;
-  color: black;
-  font-size: 16px;
-  background-size: 51% 100%;
-  background-repeat: no-repeat;
-  background-image: radial-gradient(circle at 0 50%, rgba($bg,0) $hole, $bg ($hole + .1em)), radial-gradient(circle at 100% 50%, rgba($bg,0) $hole, $bg ($hole + .1em));
-  background-position: top left, top right;
-}*/

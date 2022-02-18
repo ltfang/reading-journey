@@ -98,9 +98,9 @@ const RegistrationForm = () => {
   }
 
   return (
-    <div className="grid-container">
-      <h1 className="header">Register</h1>
-      <form onSubmit={onSubmit}  className="app-callout">
+    <div className="grid-container auth-callout">
+      <h1 className="reg-header">Register</h1>
+      <form onSubmit={onSubmit}>
         <div className="input-div">
           <label>
             Name
@@ -140,7 +140,7 @@ const RegistrationForm = () => {
           </label>
         </div>
         <div>
-          <input type="submit" className="app-btn link" value="Register" />
+          <input type="submit" className="auth-btn reg-btn" value="Register" />
         </div>
       </form>
     </div>

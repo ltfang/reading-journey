@@ -2,6 +2,9 @@ import React, { useState } from 'react'
 import getAuthorString from '../../services/getAuthorString.js'
 import Fetch from '../../services/Fetch.js'
 import SingleError from './SingleError.js'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faSearch } from '@fortawesome/free-solid-svg-icons'
+
 
 const AddBookForm = ({ newReadingSession, setNewReadingSession, searchTerms, setSearchTerms }) => {
   const [searchResults, setSearchResults] = useState([])
@@ -87,7 +90,7 @@ const AddBookForm = ({ newReadingSession, setNewReadingSession, searchTerms, set
 
   return (
     <div>
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit} className="add-book-form">
         <label htmlFor="searchTerms">Add book</label>
           <div className="search-submit-container">
             <input
@@ -98,11 +101,14 @@ const AddBookForm = ({ newReadingSession, setNewReadingSession, searchTerms, set
               onChange={handleSearchInputChange}
               value={searchTerms}
             />
-            <input 
-              className="search-submit app-btn"
+            <button
               type="submit"
-              value="Search"
-            />     
+            >
+              <FontAwesomeIcon 
+                icon={faSearch}
+                className="search-icon fa-lg"
+              />
+            </button>
           </div>  
       </form>
       <SingleError error={error} />

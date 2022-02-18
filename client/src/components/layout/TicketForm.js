@@ -34,37 +34,44 @@ const TicketForm = ({ useTickets }) => {
     <div>
       <form onSubmit={handleSubmit} className="ticket-form">
         <h2 className="ticket-form-header">Use your tickets!</h2>
-        <label htmlFor="date">Date
-          <input 
-            id="date"
-            name="date"
-            type="date"
-            onChange={handleInputChange}
-            value={ticketTransaction.date}
-          />
-        </label>
-        <label htmlFor="number">Tickets to Use
-          <input 
-            id="number"
-            name="number"
-            type="number"
-            onChange={handleInputChange}
-            min={1}
-            value={ticketTransaction.number}
-          />
-        </label>
-        <label htmlFor="description">Description
-          <input 
-            id="description"
-            name="description"
-            type="text"
-            onChange={handleInputChange}
-            value={ticketTransaction.description}
-          />
-        </label>
+        <div className="input-container">
+          <label htmlFor="date">Date
+            <input 
+              id="date"
+              name="date"
+              type="date"
+              onChange={handleInputChange}
+              value={ticketTransaction.date}
+            />
+          </label>
+        </div>
+        <div className="input-container">
+          <label htmlFor="number">Tickets to Use
+            <input 
+              id="number"
+              name="number"
+              type="number"
+              onChange={handleInputChange}
+              min={1}
+              value={ticketTransaction.number}
+            />
+          </label>
+        </div>
+        <div className="input-container">
+          <label htmlFor="description">Description
+            <input 
+              id="description"
+              name="description"
+              type="text"
+              onChange={handleInputChange}
+              value={ticketTransaction.description}
+            />
+          </label>
+        </div>
           <input 
             type="submit" 
             value="Use tickets!"
+            className="ticket-submit-btn"
           />
       </form>
     </div>
