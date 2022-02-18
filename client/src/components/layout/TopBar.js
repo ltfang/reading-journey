@@ -2,12 +2,13 @@ import React from "react";
 import { Link } from "react-router-dom";
 import SignOutButton from "../authentication/SignOutButton";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faHouse, faCalendarDays, faBookCopy, faTicket } from '@fortawesome/free-solid-svg-icons'
+import { faHouseUser, faCalendar, faBookOpen, faTicketAlt } from '@fortawesome/free-solid-svg-icons'
+import { useHistory } from 'react-router-dom'
 
 const TopBar = ({ user }) => {
   const unauthenticatedListItems = [
     <li key="sign-in">
-      <Link to="/user-sessions/new">Sign In</Link>
+      <Link to="/user-sessions/new" className="sign-in-link">Sign In</Link>
     </li>,
     <li key="sign-up">
       <Link to="/users/new" className="button menu-btn">
@@ -16,34 +17,57 @@ const TopBar = ({ user }) => {
     </li>
   ];
 
+  const history = useHistory()
+  const handleHomeClick = () => {
+    history.push('/')
+  }
+
+  const handleTicketClick = () => {
+    history.push('/tickets')
+  }
+
+  const handleBookClick = () => {
+    history.push('/bookshelf')
+  }
+  
+  const handleCalendarClick = () => {
+    history.push('/log')
+  }
+
   const authenticatedListItems = [
-    <li key="calendar">
-      <Link to="/log" className="button menu-btn">
-        Reading Log
-      </Link>
+    <li key="calendar" className="cal-container icon-container" onClick={handleCalendarClick}>
+      <FontAwesomeIcon 
+        icon={faCalendar}
+        className="calendar-icon fa-2xl"
+      />
     </li>,
-    <li key="tickets">
-      <Link to="/tickets" className="button menu-btn">
-        Tickets
-      </Link>
+    <li key="bookshelf" className="book-container icon-container" onClick={handleBookClick}>
+    <FontAwesomeIcon 
+      icon={faBookOpen}
+      className="book-icon fa-2xl"
+    />
+  </li>,
+    <li key="tickets" className="ticket-container icon-container" onClick={handleTicketClick}>
+      <FontAwesomeIcon 
+        icon={faTicketAlt}
+        className="ticket-icon fa-2xl"
+      />
     </li>,
-    <li key="bookshelf">
-      <Link to="/bookshelf" className="button menu-btn">
-        Bookshelf
-      </Link>
-    </li>,
-    <li key="sign-out">
+    <li key="sign-out" className="sign-out-container">
       <SignOutButton />
     </li>
   ];
 
   return (
     <div className="top-bar app-topbar">
-      <div className="top-bar-left app-topbar">
+      <div className="top-bar-left">
         <ul className="menu">
-          <li className="menu-text app-menutext">ReadingJourney</li>
-          <li>
-            <Link to="/">Home</Link>
+          <li className="app-text">ReadingJourney</li>
+          <li className="home-container icon-container" onClick={handleHomeClick}>
+            <FontAwesomeIcon 
+              icon={faHouseUser}
+              className="home-icon fa-2xl"
+            />
           </li>
         </ul>
       </div>

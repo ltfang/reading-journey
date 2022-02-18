@@ -1,31 +1,78 @@
+.reading-session-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.rs-header {
+  font-family: $serif;
+  padding: 0.3em 1em;
+  color: black;
+  font-size: 2.2em;
+  text-align: center;
+}
+
+.rt-header {
+  font-family: $sans-serif;
+  color: black;
+  padding: 0.3em 1em;
+  font-size: 2em;
+  margin-top: -.5em;
+  text-align: center;
+}
+
 .reading-session-bottom {
   margin: 1em;
+  max-width: 1800px;
 }
 
 .form-container {
   margin: 1em;
-  background-color: $secondary;
+  background-color: white;
   padding: 1em;
   font-family: $sans-serif;
+  max-height: 600px;
+  min-width: 400px;
+  box-shadow: $box-shadow-lg;
+  padding: 3em;
+  border-radius: 10px;
+}
+
+.reading-session-list {
+  min-width: 560px;
 }
 
 .add-read-header {
-  color: $stroke;
+  color: $bright-green;
   font-size: 2em;
   font-weight: bold;
   font-family: $sans-serif;
 }
 
+.add-book-form {
+  margin-bottom: 1em;
+}
+
 .search-submit-container {
   display: flex;
+  align-items: center;
   .search-input {
     width: 300px;
-    margin-right: 1em;
+    margin: 0 1em 0 0;
   }
   .search-submit {
     width: 100px;
     height: 2.5em;
   }
+}
+
+.search-icon {
+  color: $bright-green;
+}
+
+.search-icon:hover {
+  color: $bright-green-secondary;
+  cursor: pointer;
 }
 
 .minutesRead {

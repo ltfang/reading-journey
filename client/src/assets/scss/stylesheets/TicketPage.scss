@@ -1,6 +1,68 @@
-.trx-container {
+.ticket-container-main {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.ticket-form-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.ticket-form {
+  margin: 1em;
+  background-color: white;
+  padding: 1em;
+  font-family: $sans-serif;
+  box-shadow: $box-shadow-lg;
+  padding: 3em;
+  border-radius: 10px;
+  width: 1000px;
   display: flex;
   flex-direction: column;
+  align-items: center;
+}
+
+.input-container {
+  width: 500px;
+}
+
+.ticket-form-header {
+  font-family: $sans-serif;
+  color: $bright-blue;
+  font-weight: bold;
+  text-align: center;
+}
+
+.ticket-header {
+  font-family: $serif;
+  padding: .5em;
+  text-align: center;
+}
+
+.ticket-submit-btn {
+  padding: .7em 2.5em;
+  margin: .5em 0;
+  border: none;
+  color: white;
+  border-radius: 30px;
+  font-weight: bold;
+  text-align: center;
+  font-size: 1em;
+  box-shadow: $box-shadow-sm;
+  background-color: $bright-blue;
+}
+
+.ticket-submit-btn:hover {
+  background-color: $bright-blue-secondary; 
+}
+
+.trx-container {
+  width: 1000px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   align-items: start;
 }
 
@@ -10,17 +72,10 @@
   font-family: $sans-serif;
 }
 
-.ticket-form {
-  background-color: $lightest;
-  margin: 1em;
-  padding: 2em 4em;
-}
-
-.ticket-form-header {
-  font-family: $sans-serif;
-}
-
-.ticket-header {
-  font-family: $serif;
-  padding: .5em;
+.trx-subcontainer {
+  display: flex;
+  width: 1000px;
+  flex-direction: row;
+  justify-content: start;
+  align-items: start;
 }

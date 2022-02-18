@@ -43,15 +43,17 @@ const TicketsPage = props => {
   return (
     <div>
       <h1 className="ticket-header">You have {tickets} tickets!</h1>
-      <div className="grid-x grid-margin-x">
-        <div className="cell small-8">
+      <div className="grid-y grid-margin-y ticket-container-main">
+        <div className="cell small-8 ticket-form-container">
           <TicketForm 
             useTickets={useTickets}
           />
         </div>
-        <div className="cell small-4 trx-container">
-          <h2 className="trx-header">Recent Transactions</h2>
-          {transactions}
+        <div className="cell small-4 trx-container trx-container">
+          <h2 className="trx-header">Recently:</h2>
+          <div className="trx-subcontainer">
+            {transactions}
+          </div>
         </div>
       </div>
     </div>

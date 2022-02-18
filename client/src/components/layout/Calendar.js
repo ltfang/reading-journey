@@ -51,7 +51,7 @@ const Calendar = props => {
 
   return (
     <div className="calendar">
-      <h1 className="header">My Reading Log</h1>
+      <h1 className="cal-header">My Reading Log</h1>
       <div className="calendar-header">
         <h1 className="month">{date.monthLong} {date.year}</h1>
         <MonthNavButtons 

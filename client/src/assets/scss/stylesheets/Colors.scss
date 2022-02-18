@@ -16,7 +16,7 @@ $pthalo: #043127;
 $isabelline: #ede5da;
 $dark-blue-green: #1b7b7d; 
 
-$background: $green-sheen;
+
 $line: $pthalo;
 $line-secondary: $dark-blue-green;
 $secondary: $copper-red;
@@ -26,4 +26,19 @@ $tertiary2: $fern-green;
 $light-secondary: $melon;
 $highlight: $mango;
 
-$box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+$light-gray: rgb(234, 234, 234);
+$bright-pink: rgb(228, 0, 221);
+$bright-pink-secondary: rgb(185, 0, 179);
+$dull-pink: rgb(249, 215, 248);
+$bright-green: rgb(4, 197, 4);
+$bright-green-secondary: rgb(3, 139, 3);
+$bright-blue: rgb(0, 195, 255);
+$bright-blue-secondary: rgb(4, 151, 195);
+$purple: rgb(119, 0, 149);
+$purple-secondary: rgb(86, 0, 107);
+
+
+$background: $light-gray;
+
+$box-shadow-sm: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+$box-shadow-lg: rgba(0, 0, 0, 0.24) 0px 3px 8px;

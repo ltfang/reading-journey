@@ -24,9 +24,9 @@ const Bookshelf = props => {
   })
 
   return(
-    <div>
-      <h1>My Bookshelf</h1>
-      <div className="book-container">
+    <div className="bookshelf">
+      <h1 className="bookshelf-header">My Bookshelf</h1>
+      <div className="bookshelf-container">
         {bookList}
       </div>
     </div>

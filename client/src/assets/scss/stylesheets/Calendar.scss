@@ -3,9 +3,16 @@
   height: 90vh;
 }
 
+.cal-header {
+  font-family: $serif;
+  color: black;
+  text-align: center;
+  padding: .3em;
+}
+
 .calendar-header {
   display: flex;
-  background-color: $secondary;
+  background-color: $bright-pink;
   width: 100%;
   justify-content: space-between;
   align-items: center;
@@ -18,7 +25,7 @@
   margin: 0 .5em;
   text-align: center;
   font-weight: bold;
-  color: $stroke;
+  color: white;
 }
 
 .month-btn {
@@ -26,14 +33,14 @@
   padding: .3em .5em;
   background-color: $highlight;
   border-radius: 10px;
-  color: $line;
-  box-shadow: $box-shadow;
+  color: white;
+  box-shadow: $box-shadow-sm;
 } 
 
 .weekday-container {
-  border: 1px solid $secondary;
-  background-color: $light-secondary;
-  color: $line;
+  border: 1px solid $bright-pink-secondary;
+  background-color: $bright-pink-secondary;
+  color: white;
   display: flex;
   justify-content: space-around;
   align-items: center;
@@ -45,7 +52,7 @@
 .days-container {
   display:grid;
   grid-template-columns: repeat(7, 1fr);
-  border: 0.5px solid $secondary;
+  border: 0.5px solid $bright-pink;
 }
 
 .weekday-marker {
@@ -54,24 +61,24 @@
 
 .calendarDay {
   display: flex;
-  border: 0.5px $secondary solid;
+  border: 0.5px $bright-pink-secondary solid;
   padding: 0.5em;
   align-items: start;
   justify-content: start;
   height: 13vh;
   position: relative;
-  background-color: $lightest;
+  background-color: white;
 }
 
 .calendarDay:hover {
-  background-color: #fbeae7;
+  background-color: #feeebf;
 }
 
 .calendar-minute {
   position: absolute;
   bottom: 13px;
   right: 23px;
-  color: $stroke;
+  color: $purple-secondary;
 }
 
 .calendar-star {
@@ -86,17 +93,18 @@
   align-items: center;
   justify-content: center;
   height: 1em;
-  color: $secondary;
+  color: $bright-pink-secondary;
 }
 
 .other-month {
-  color: $light-secondary;
+  color: $dull-pink;
 }
 
 .today {
-  background-color: $tertiary;
+  display: flex;
+  background-color: $bright-blue;
   height: 2em;
   width: 2em;
   border-radius: 50%;
-  color: $line;
+  color: white;
 }

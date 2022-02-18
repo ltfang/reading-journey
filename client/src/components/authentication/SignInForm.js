@@ -69,9 +69,9 @@ const SignInForm = () => {
   }
 
   return (
-    <div className="grid-container" onSubmit={onSubmit}>
-      <h1 className="header">Sign In</h1>
-      <form className="app-callout">
+    <div className="grid-container auth-callout" onSubmit={onSubmit}>
+      <h1 className="sign-in-header">Sign In</h1>
+      <form>
         <div className="input-div">
           <label>
             Email
@@ -92,7 +92,7 @@ const SignInForm = () => {
           </label>
         </div>
         <div>
-          <input type="submit" className="app-btn" value="Sign In" />
+          <input type="submit" className="auth-btn sign-in-btn" value="Sign In" />
         </div>
       </form>
     </div>
