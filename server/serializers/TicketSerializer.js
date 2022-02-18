@@ -5,11 +5,8 @@ class TicketSerializer {
     const user = await User.query().findById(userId)
     const minutes = await user.$relatedQuery("readingSessions").sum("minutesRead")
     const earnedTickets = minutes[0].sum
-    console.log('earnedTickets', earnedTickets)
     const tickets = await user.$relatedQuery("ticketTransactions").sum("number") 
-    console.log('tickets', tickets)
     const usedTickets = tickets[0].sum
-    console.log('usedtickets', usedTickets)
     return earnedTickets - usedTickets
   }
 

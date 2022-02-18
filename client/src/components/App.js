@@ -11,6 +11,7 @@ import HomePage from './layout/HomePage'
 import Calendar from './layout/Calendar'
 import ReadingSessions from './layout/ReadingSessions'
 import TicketsPage from './layout/TicketsPage'
+import Bookshelf from './layout/Bookshelf'
 
 const App = (props) => {
   const [currentUser, setCurrentUser] = useState(null)
@@ -39,6 +40,7 @@ const App = (props) => {
         <Route exact path="/log" component={Calendar} />
         <Route exact path="/log/:date" component={ReadingSessions} />
         <Route exact path="/tickets" component={TicketsPage} />
+        <Route exact path="/bookshelf" component={Bookshelf} />
       </Switch>
     </Router>
   );
