@@ -69,13 +69,13 @@ const AddBookForm = ({ newReadingSession, setNewReadingSession, searchTerms, set
       
       return (
         <option 
-        key={result.googleBooksId}
-        value={result.googleBooksId}
-        googlebooksid={result.googleBooksId}
-        title={result.title}
-        author={authorString}
-        thumbnailurl={result.thumbnailUrl}
-        >{`${result.title}, ${authorString} ${indicatePriorBook}` }
+          key={result.googleBooksId}
+          value={result.googleBooksId}
+          googlebooksid={result.googleBooksId}
+          title={result.title}
+          author={authorString}
+          thumbnailurl={result.thumbnailUrl}
+          >{`${result.title}, ${authorString} ${indicatePriorBook}`}
         </option>
       )
     })

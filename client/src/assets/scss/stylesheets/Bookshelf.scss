@@ -10,6 +10,19 @@
   padding: .5em;
 }
 
+.search-filter-container {
+  display:flex;
+  align-items: center;
+  background-color:$purple;
+  width: 100%;
+  input, select {
+    margin: 0;
+  }
+  .book-search-bar, .book-sort-bar {
+    padding: 1em;
+  }
+}
+
 .bookshelf-container {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
