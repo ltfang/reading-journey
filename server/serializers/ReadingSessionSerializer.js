@@ -1,6 +1,7 @@
 import BookSerializer from "./BookSerializer.js"
 import { DateTime, Interval } from "luxon"
 import User from "../src/models/User.js"
+import ReadingSession from "../src/models/ReadingSession.js"
 
 class ReadingSessionSerializer {
   static async getDetails(readingSession) {
@@ -23,6 +24,13 @@ class ReadingSessionSerializer {
       return await ReadingSessionSerializer.getDetails(readingSession)
     }))
     return serializedReadingSessions
+  }
+
+  static async getLastDateRead(bookId, userId) {
+    const user = await User.query().findById(userId)
+    const readingSessions = await user.$relatedQuery("readingSessions").where('bookId', bookId).orderBy('date', 'desc')
+    const lastReadingSessionDate = readingSessions[0].date
+    return lastReadingSessionDate
   }
 
   static getTotalMinutes(readingSessions) {
