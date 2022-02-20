@@ -1,0 +1,38 @@
+.achievement-box {
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: $box-shadow-lg;
+  font-family: $sans-serif;
+}
+
+.streak-tile {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  margin: 1.5em;
+}
+
+.streak-stat {
+  font-size: 3em;
+  font-weight: bold;
+  border: 5px solid black;
+  border-radius: 50%;
+  height: 2em;
+  width: 2em;
+  line-height: 2em;
+  text-align: center;
+}
+
+.streak-label {
+  margin-left: 1em;
+}
+
+.streak-name {
+  font-weight:bold;
+  color: $purple;
+}
+
+.streak-date {
+  color: gray;
+}

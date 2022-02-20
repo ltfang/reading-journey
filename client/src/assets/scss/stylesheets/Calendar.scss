@@ -70,7 +70,7 @@
   background-color: white;
 }
 
-.calendarDay:hover {
+.active:hover {
   background-color: #feeebf;
 }
 
@@ -107,4 +107,8 @@
   width: 2em;
   border-radius: 50%;
   color: white;
+}
+
+.disabled {
+  background-color: rgb(242, 242, 242);
 }

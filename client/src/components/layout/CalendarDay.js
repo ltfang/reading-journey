@@ -6,15 +6,25 @@ import { faStar } from '@fortawesome/free-solid-svg-icons'
 
 const CalendarDay = ({ date, anchorDate, totalMinutes }) => {
   let dateNumberClass = 'dateNumber'
+  const firstAllowableDate = DateTime.local(2020, 1, 1)
 
   if (
     date.day === DateTime.now().day 
     && date.month === DateTime.now().month 
-    && date.year === DateTime.now().year) {
+    && date.year === DateTime.now().year
+    ) {
     dateNumberClass += ' today'
   } else if (date.month !== anchorDate.month) {
     dateNumberClass += ' other-month'
   }
+
+  let calendarDayClass = 'calendarDay'
+  if (date > DateTime.now() || date < firstAllowableDate) {
+    calendarDayClass += ' disabled'
+  } else {
+    calendarDayClass += ' active'
+  }
+
 
   const dateString = date.toFormat('yyyyMMdd')
 
@@ -29,11 +39,13 @@ const CalendarDay = ({ date, anchorDate, totalMinutes }) => {
 
   const history = useHistory()
   const handleClick = () => {
-    history.push(`/log/${dateString}`)
+    if (date <= DateTime.now() && date >= firstAllowableDate) {
+      history.push(`/log/${dateString}`)
+    }
   }
 
   return (
-    <div className="calendarDay" onClick={handleClick}>
+    <div className={calendarDayClass} onClick={handleClick}>
       <div className={dateNumberClass}>{date.day}</div>
       {minutesDisplay}
     </div>

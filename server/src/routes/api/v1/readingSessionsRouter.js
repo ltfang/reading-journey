@@ -33,13 +33,6 @@ readingSessionsRouter.post("/:date", async (req, res) => {
       userId: req.user.id
     })
     newReadingSession.book = book
-    // await TicketTransaction.query().insertAndFetch({
-    //   userId: req.user.id,
-    //   readingSessionId: newReadingSession.id,
-    //   value: minutesRead,
-    //   date: date, 
-    //   description: "read book"       
-    // })
     return res.status(201).json({ newReadingSession });
   } catch (error) {
 
@@ -49,12 +42,7 @@ readingSessionsRouter.post("/:date", async (req, res) => {
 
 readingSessionsRouter.delete('/:date', async (req, res) => {
   try {
-    console.log('in router')
     const readingSessionId = req.body.id
-    console.log(readingSessionId)
-    // const readingSession = await ReadingSession.query().findById(readingSessionId)
-    // const ticketTransaction = await readingSession.$relatedQuery("ticketTransaction")
-    // await TicketTransaction.query().deleteById(ticketTransaction.id)
     await ReadingSession.query().deleteById(readingSessionId)
     return res.status(201).json(true)
   } catch (error) {
@@ -66,10 +54,7 @@ readingSessionsRouter.patch('/:date', async (req, res) => {
   try {
     const readingSessionId = req.body.id
     const minutes = req.body.property
-    // const readingSession = await ReadingSession.query().findById(readingSessionId)
-    // const ticketTransaction = await readingSession.$relatedQuery("ticketTransaction")
     await ReadingSession.query().patchAndFetchById(readingSessionId, { minutesRead: minutes })
-    // await TicketTransaction.query().patchAndFetchById(ticketTransaction.id, { value: minutes })
     return res.status(201).json(true)
   } catch (error) {
     return res.status(500).json({ errors: error })

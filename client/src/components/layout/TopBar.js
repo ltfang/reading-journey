@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import SignOutButton from "../authentication/SignOutButton";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faHouseUser, faCalendar, faBookOpen, faTicketAlt } from '@fortawesome/free-solid-svg-icons'
+import { faHouseUser, faCalendar, faBookOpen, faTicketAlt, faMedal } from '@fortawesome/free-solid-svg-icons'
 import { useHistory } from 'react-router-dom'
 
 const TopBar = ({ user }) => {
@@ -34,6 +34,10 @@ const TopBar = ({ user }) => {
     history.push('/log')
   }
 
+  const handleAchievementsClick = () => {
+    history.push('/achievements')
+  }
+
   const authenticatedListItems = [
     <li key="calendar" className="cal-container icon-container" onClick={handleCalendarClick}>
       <FontAwesomeIcon 
@@ -53,6 +57,12 @@ const TopBar = ({ user }) => {
         className="ticket-icon fa-2xl"
       />
     </li>,
+    <li key="achievements" className="ticket-container icon-container" onClick={handleAchievementsClick}>
+    <FontAwesomeIcon 
+      icon={faMedal}
+      className="ticket-icon fa-2xl"
+    />
+  </li>,
     <li key="sign-out" className="sign-out-container">
       <SignOutButton />
     </li>
