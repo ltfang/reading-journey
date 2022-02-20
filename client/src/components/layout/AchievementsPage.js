@@ -5,7 +5,7 @@ const AchievementsPage = props => {
   return (
     <div>
       <h1>My Achievements</h1>
-      <div className="grid-x grid-margin-x">
+      <div className="grid-x grid-margin-x achievements-wrapper">
         <div className="cell small-4 achievement-box">
           <Streaks />
         </div>

@@ -1,6 +1,7 @@
 import BookSerializer from "./BookSerializer.js"
 import { DateTime, Interval } from "luxon"
 import User from "../src/models/User.js"
+import _ from "lodash"
 
 class ReadingSessionSerializer {
   static async getDetails(readingSession) {
@@ -91,6 +92,37 @@ class ReadingSessionSerializer {
       }
     })
     return streaks
+  }
+
+  static getCurrentStreak(streaks) {
+    const currentStreak = streaks.find(streak => {
+      return streak.lastDate.equals(DateTime.now().startOf('day'))
+    })
+    return currentStreak
+  }
+
+  static getLongestStreak(streaks) {
+    const longestStreak = streaks.reduce((prev, current) => {
+      if (current.length >= prev.length) {
+        return current
+      } 
+      return prev
+    })
+    return longestStreak
+  }
+
+  static percentInInterval(streaks, intervalDays) {
+    let firstDayInInterval = DateTime.now().minus({days: intervalDays-1}).startOf('day')
+    let streaksInInterval = streaks.filter(streak => {
+      return streak.lastDate >= firstDayInInterval
+    })
+    let totalLength =  _.sumBy(streaksInInterval, 'length')
+    const firstStreak = streaksInInterval[0]
+    if (firstStreak.firstDate < firstDayInInterval) {
+      let daysInFirstStreak = firstStreak.lastDate.diff(firstDayInInterval, 'days').days+1
+      totalLength = totalLength - firstStreak.length + daysInFirstStreak
+    }
+    return totalLength/intervalDays
   }
 
 }
