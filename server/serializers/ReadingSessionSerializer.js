@@ -67,12 +67,15 @@ class ReadingSessionSerializer {
   static async getAllDailyMinutes(userId) { 
     const user = await User.query().findById(userId)
     const readingSessions = await user.$relatedQuery("readingSessions").orderBy("date")
-    const startDate = DateTime.fromJSDate(readingSessions[0].date)
-    const lastDate = DateTime.fromJSDate(readingSessions[readingSessions.length-1].date)
-    const endDate = lastDate.plus({days:1})
-    const interval = Interval.fromDateTimes(startDate, endDate)
-    const dailyMinutesArray = ReadingSessionSerializer.getDailyMinutesArray(readingSessions, interval, false)
-    return dailyMinutesArray
+    if (readingSessions.length > 0) {
+      const startDate = DateTime.fromJSDate(readingSessions[0].date)
+      const lastDate = DateTime.fromJSDate(readingSessions[readingSessions.length-1].date)
+      const endDate = lastDate.plus({days:1})
+      const interval = Interval.fromDateTimes(startDate, endDate)
+      const dailyMinutesArray = ReadingSessionSerializer.getDailyMinutesArray(readingSessions, interval, false)
+      return dailyMinutesArray
+    }
+    return []
   }
 
   static async getStreaks(userId) {

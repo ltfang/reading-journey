@@ -7,13 +7,13 @@ import { faFire } from '@fortawesome/free-solid-svg-icons'
 const Streaks = props => {
   const [streaks, setStreaks] = useState({
     currentStreak: {
-      firstDate: {},
-      lastDate: {},
+      firstDate: "",
+      lastDate: "",
       length: 0
     },
     longestStreak: {
-      firstDate: {},
-      lastDate: {},
+      firstDate: "",
+      lastDate: "",
       length: 0
     },
     percentIn30: 0,
