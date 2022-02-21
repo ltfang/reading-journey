@@ -8,11 +8,12 @@ const achievementsRouter = new express.Router()
 achievementsRouter.get("/streaks", async (req, res) => {
   try {
     const streaks = await ReadingSessionSerializer.getStreaks(req.user.id)
-    const currentStreak = ReadingSessionSerializer.getCurrentStreak(streaks)
-    const longestStreak = ReadingSessionSerializer.getLongestStreak(streaks)
-    const percentIn30 = ReadingSessionSerializer.percentInInterval(streaks, 30)
-    const percentIn7 = ReadingSessionSerializer.percentInInterval(streaks, 7)
-    return res
+    if (streaks.length>0) {
+      const currentStreak = ReadingSessionSerializer.getCurrentStreak(streaks)
+      const longestStreak = ReadingSessionSerializer.getLongestStreak(streaks)
+      const percentIn30 = ReadingSessionSerializer.percentInInterval(streaks, 30)
+      const percentIn7 = ReadingSessionSerializer.percentInInterval(streaks, 7)
+      return res
       .set({ "Content-Type": "application/json" })
       .status(200)
       .json({ 
@@ -20,6 +21,24 @@ achievementsRouter.get("/streaks", async (req, res) => {
         currentStreak, 
         percentIn30, 
         percentIn7 
+      })
+    }
+      return res
+      .set({ "Content-Type": "application/json" })
+      .status(200)
+      .json({
+        currentStreak: {
+          firstDate: "",
+          lastDate: "",
+          length: 0
+        },
+        longestStreak: {
+          firstDate: "",
+          lastDate: "",
+          length: 0
+        },
+        percentIn30: 0,
+        percentIn7: 0
       })
   } catch (error) {
     return res.status(500).json({ errors: error })
