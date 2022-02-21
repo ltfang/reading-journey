@@ -43,12 +43,13 @@ class ReadingSessionSerializer {
     let dailyMinutesArray = []
     interval.splitBy({days:1}).forEach(d => {
       const dailyReadingSessions = readingSessions.filter(readingSession => {
-        return readingSession.date.getTime() === d.start.toJSDate().getTime()
+        return readingSession.date.toISOString().substring(0,10) === d.start.toFormat('yyyy-MM-dd')
       })
+      const formattedDate = d.start.toFormat('yyyyMMdd')
       const totalMinutes = ReadingSessionSerializer.getTotalMinutes(dailyReadingSessions)
       if (includeZeros || totalMinutes > 0) {
         dailyMinutesArray.push({
-          date: d.start,
+          date: formattedDate,
           totalMinutes: totalMinutes
         })
       }
@@ -61,6 +62,7 @@ class ReadingSessionSerializer {
     const interval = Interval.fromDateTimes(startDate, endDate)
     const readingSessions = await user.$relatedQuery("readingSessions")
     const dailyMinutesArray = ReadingSessionSerializer.getDailyMinutesArray(readingSessions, interval, true)
+    console.log('dailyMinutesArray', dailyMinutesArray)
     return dailyMinutesArray
   }
 

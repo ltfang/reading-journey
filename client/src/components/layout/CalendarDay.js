@@ -25,7 +25,6 @@ const CalendarDay = ({ date, anchorDate, totalMinutes }) => {
     calendarDayClass += ' active'
   }
 
-
   const dateString = date.toFormat('yyyyMMdd')
 
   let minutesDisplay
