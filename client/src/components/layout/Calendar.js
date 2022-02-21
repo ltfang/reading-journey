@@ -24,8 +24,10 @@ const Calendar = props => {
     firstDay = date.startOf('month')
   } else {
     firstDay = date.startOf('month').startOf('week').minus({days: 1})
+    //1/30/2022 12 AM
   }
   const lastDay = date.endOf('month').endOf('week')
+  // 3/6/2022 11:59 PM
 
   const getDailyMinutes = async () => {
     const startDay = firstDay.toFormat('yyyyMMdd') 
