@@ -1,0 +1,8 @@
+.medals-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 1em;
+  justify-content: center;
+  max-height: 600px;
+  overflow-y: auto;
+}

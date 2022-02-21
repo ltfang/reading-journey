@@ -1,0 +1,95 @@
+$seven-medal: #f9ad0e;
+$five-medal: #d1d7da;
+$three-medal: #c66e03;
+
+$seven-ribbon: blue;
+$five-ribbon: red;
+$three-ribbon: green;
+
+.medal {
+  position: relative;
+  margin: .7em;
+}
+
+.medal-circle {
+  font-family: $sans-serif;
+  font-size: 28px;
+  font-weight: 500;
+  width: 56px;
+  height: 56px;
+  border-radius: 100%;
+  color: white;
+  text-align: center;
+  line-height: 46px;
+  vertical-align: middle;
+  position: relative;
+  border-width: 0.2em;
+  border-style: solid;
+  z-index: 1;
+
+  &.medal-circle-three {
+    border-color: lighten($three-medal, 5%);
+    text-shadow: 0 0 4px darken($three-medal, 20%);
+    background: linear-gradient(to bottom right, $three-medal 50%, darken($three-medal, 15%));
+  }
+
+  &.medal-circle-five {
+    border-color: lighten($five-medal, 5%);
+    text-shadow: 0 0 4px darken($five-medal, 20%);
+    background: linear-gradient(to bottom right, $five-medal 50%, darken($five-medal, 15%));
+  }
+
+  &.medal-circle-seven {
+    border-color: lighten($seven-medal, 5%);
+    text-shadow: 0 0 4px darken($seven-medal, 20%);
+    background: linear-gradient(to bottom right, $seven-medal 50%, darken($seven-medal, 15%));
+  }
+}
+
+.medal-ribbon {
+  content: "";
+  display: block;
+  position: absolute;
+  border-style: solid;
+  border-width: 6px 10px;
+  width: 0;
+  height: 20px;
+  top: 50px;
+}
+
+.medal-ribbon-left-three {
+  border-color: $three-ribbon $three-ribbon transparent $three-ribbon;
+  left: 8px;
+  transform: rotate(20deg) translateZ(-32px);
+}
+
+.medal-ribbon-right-three {
+  left: 28px;
+  border-color: darken($three-ribbon, 15%) darken($three-ribbon, 15%) transparent darken($three-ribbon, 15%);
+  transform: rotate(-20deg) translateZ(-48px);
+}
+
+.medal-ribbon-left-five {
+  border-color: $five-ribbon $five-ribbon transparent $five-ribbon;
+  left: 8px;
+  transform: rotate(20deg) translateZ(-32px);
+}
+
+.medal-ribbon-right-five {
+  left: 28px;
+  border-color: darken($five-ribbon, 15%) darken($five-ribbon, 15%) transparent darken($five-ribbon, 15%);
+  transform: rotate(-20deg) translateZ(-48px);
+}
+
+.medal-ribbon-left-seven {
+  border-color: $seven-ribbon $seven-ribbon transparent $seven-ribbon;
+  left: 8px;
+  transform: rotate(20deg) translateZ(-32px);
+}
+
+.medal-ribbon-right-seven {
+  left: 28px;
+  border-color: darken($seven-ribbon, 15%) darken($seven-ribbon, 15%) transparent darken($seven-ribbon, 15%);
+  transform: rotate(-20deg) translateZ(-48px);
+}
+

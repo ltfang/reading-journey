@@ -43,5 +43,18 @@ achievementsRouter.get("/rank", async (req, res) => {
   }
 })
 
+achievementsRouter.get("/medals", async (req, res) => {
+  try {
+    const streaks = await ReadingSessionSerializer.getStreaks(req.user.id)
+    const medals = ReadingSessionSerializer.getMedals(streaks)
+    return res
+      .set({ "Content-Type": "application/json" })
+      .status(200)
+      .json(medals)
+  } catch (error) {
+    return res.status(500).json({ errors: error })
+  }
+})
+
 
 export default achievementsRouter

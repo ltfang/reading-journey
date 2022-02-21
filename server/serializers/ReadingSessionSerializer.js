@@ -152,6 +152,26 @@ class ReadingSessionSerializer {
       maxMinutes: currentRank.minutesMax
     }
   }
+
+  static getMedals(streaks) {
+    const medals = {
+      three: 0,
+      five: 0,
+      seven: 0
+    }
+    streaks.forEach(streak => {
+      if (streak.length>=3) {
+        medals.three++
+      }
+      if (streak.length>=5) {
+        medals.five++
+      }
+      if (streak.length>=7) {
+        medals.seven++
+      }
+    })
+    return medals
+  }
 }
 
 export default ReadingSessionSerializer

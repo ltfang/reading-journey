@@ -27,10 +27,11 @@ const Rank = props => {
 
   return(
     <>
+      <h2 className="panel-header">My Rank</h2>
+      <h3 className="panel-subheader">Earn your next rank based on your total reading time!</h3>
       <div className="cell small-8 main-badge-wrapper">
         <MainRankBadge />
       </div>
-      <div className="keep-reading">Keep reading to earn your next rank!</div>
       <div className="cell small-4 badge-list-wrapper">
         {badgeList}
       </div>

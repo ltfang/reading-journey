@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react'
 import Fetch from '../../services/Fetch'
 import { DateTime } from 'luxon'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faFire } from '@fortawesome/free-solid-svg-icons'
 
 const Streaks = props => {
   const [streaks, setStreaks] = useState({
@@ -42,15 +44,29 @@ const Streaks = props => {
   return (
 
     <div>
+      <h2 className="panel-header">My Streaks</h2>
+      <h3 className="panel-subheader">How many days in a row can you read? Keep reading for a new record!</h3>
       <div className="streak-tile">
-        <div className="streak-stat">{streaks.currentStreak.length}</div>
+        <div className="streak-icon-name">
+          <FontAwesomeIcon 
+            icon={faFire}
+            className="streak-icon fa-3x"
+          />
+          <div className="streak-stat">{streaks.currentStreak.length}</div>
+        </div>
         <div className="streak-label">
           <div className="streak-name">Current Streak</div>
           <div className="streak-date">{formatDateRange(streaks.currentStreak.firstDate,streaks.currentStreak.lastDate)}</div>
         </div>
       </div>
       <div className="streak-tile">
-        <div className="streak-stat">{streaks.longestStreak.length}</div>
+        <div className="streak-icon-name">
+          <FontAwesomeIcon 
+          icon={faFire}
+          className="streak-icon fa-3x"
+          />
+          <div className="streak-stat">{streaks.longestStreak.length}</div>
+        </div>
         <div className="streak-label">
           <div className="streak-name">Longest Streak</div>
           <div className="streak-date">{formatDateRange(streaks.longestStreak.firstDate,streaks.longestStreak.lastDate)}</div>
@@ -59,13 +75,13 @@ const Streaks = props => {
       <div className="streak-tile">
         <div className="streak-stat">{formatPercentage(streaks.percentIn7)}</div>
         <div className="streak-label">
-          <div className="streak-name">of Last 7 Days Read</div>
+          <div className="streak-name">of Last 7 Days</div>
         </div>
       </div>
       <div className="streak-tile">
         <div className="streak-stat">{formatPercentage(streaks.percentIn30)}</div>
         <div className="streak-label">
-          <div className="streak-name">of Last 30 Days Read</div>
+          <div className="streak-name">of Last 30 Days</div>
         </div>
       </div>
     </div>
