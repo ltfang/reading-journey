@@ -38,14 +38,14 @@ const Calendar = props => {
     getDailyMinutes()
   }, [date])
 
-  const daysToDisplay = dailyMinutes.map((day,index) => {
-    const dateString = Object.keys(day)[0]
-    const calendarDay = DateTime.fromFormat(dateString, 'yyyyMMdd')
+  const daysToDisplay = dailyMinutes.map(day => {
+    const dateString = day.date
+    const calendarDay = DateTime.fromISO(day.date)
     return <CalendarDay
-      key={calendarDay.toISO()}
+      key={dateString}
       date={calendarDay}
       anchorDate={date}
-      totalMinutes={dailyMinutes[index][dateString]}
+      totalMinutes={day.totalMinutes}
     />
   })
 

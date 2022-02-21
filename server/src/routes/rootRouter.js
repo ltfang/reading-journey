@@ -6,6 +6,7 @@ import bookSearchRouter from './api/v1/bookSearchRouter.js'
 import booksRouter from './api/v1/booksRouter.js'
 import minutesRouter from './api/v1/minutesRouter.js'
 import ticketsRouter from './api/v1/ticketsRouter.js'
+import achievementsRouter from './api/v1/achievementsRouter.js'
 import clientRouter from './clientRouter.js'
 
 const rootRouter = new express.Router()
@@ -18,5 +19,6 @@ rootRouter.use('/api/v1/book-search', bookSearchRouter)
 rootRouter.use('/api/v1/books', booksRouter)
 rootRouter.use('/api/v1/minutes', minutesRouter)
 rootRouter.use('/api/v1/tickets', ticketsRouter)
+rootRouter.use('/api/v1/achievements', achievementsRouter)
 
 export default rootRouter;

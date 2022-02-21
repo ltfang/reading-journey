@@ -15,7 +15,7 @@ minutesRouter.get("/", async (req, res) => {
       .status(200)
       .json(dailyMinutesArray)
   } catch (error) {
-    return res.status(401).json({ errors: error })
+    return res.status(500).json({ errors: error })
   }
 })
 
