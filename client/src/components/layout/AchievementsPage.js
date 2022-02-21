@@ -1,5 +1,7 @@
 import React from 'react'
 import Streaks from './Streaks'
+import Rank from './Rank'
+
 
 const AchievementsPage = props => {
   return (
@@ -10,7 +12,9 @@ const AchievementsPage = props => {
           <Streaks />
         </div>
         <div className="cell small-4 achievement-box">
-          Box2
+          <div className="grid-y rank-wrapper">
+            <Rank />
+          </div>
         </div>
         <div className="cell small-4 achievement-box">
           Box3

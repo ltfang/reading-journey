@@ -3,6 +3,7 @@ import { connection } from "../boot.js"
 import BookSeeder from "./seeders/BookSeeder.js"
 import UserSeeder from "./seeders/UserSeeder.js"
 import ReadingSessionSeeder from "./seeders/ReadingSessionSeeder.js"
+import BadgeSeeder from "./seeders/BadgeSeeder.js"
 
 class Seeder {
   static async seed() {
@@ -15,6 +16,9 @@ class Seeder {
 
     console.log("Seeding reading sessions...")
     await ReadingSessionSeeder.seed()
+
+    console.log("Seeding badges...")
+    await BadgeSeeder.seed()
 
     console.log("Done!")
     await connection.destroy()

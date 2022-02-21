@@ -1,5 +1,7 @@
 import express from "express"
 import ReadingSessionSerializer from "../../../../serializers/ReadingSessionSerializer.js"
+import Badge from "../../../models/Badge.js"
+import BadgeSerializer from "../../../../serializers/BadgeSerializer.js"
 
 const achievementsRouter = new express.Router()
 
@@ -23,5 +25,23 @@ achievementsRouter.get("/streaks", async (req, res) => {
     return res.status(500).json({ errors: error })
   }
 })
+
+achievementsRouter.get("/rank", async (req, res) => {
+  try {
+    const badges = await Badge.query()
+    const serializedBadges = badges.map(badge => BadgeSerializer.getSummary(badge))
+    const rank = await ReadingSessionSerializer.getRankAndProgress(req.user.id, serializedBadges)
+    return res
+      .set({ "Content-Type": "application/json" })
+      .status(200)
+      .json({ 
+        rank: rank,
+        badges: serializedBadges
+      })
+  } catch (error) {
+    return res.status(500).json({ errors: error })
+  }
+})
+
 
 export default achievementsRouter

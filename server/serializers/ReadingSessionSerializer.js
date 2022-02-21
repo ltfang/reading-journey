@@ -98,7 +98,14 @@ class ReadingSessionSerializer {
     const currentStreak = streaks.find(streak => {
       return streak.lastDate.equals(DateTime.now().startOf('day'))
     })
-    return currentStreak
+    if (currentStreak) {
+      return currentStreak
+    }
+    return {
+      firstDate: "",
+      lastDate: "",
+      length: 0
+    }
   }
 
   static getLongestStreak(streaks) {
@@ -125,6 +132,26 @@ class ReadingSessionSerializer {
     return totalLength/intervalDays
   }
 
+  static async getTotalMinutesByUser(userId) {
+    const user = await User.query().findById(userId)
+    const totalMinutes = await user.$relatedQuery('readingSessions').sum('minutesRead')
+    return totalMinutes[0].sum
+  }
+
+  static async getRankAndProgress(userId, badges) {
+    const totalMinutes = await ReadingSessionSerializer.getTotalMinutesByUser(userId)
+    let currentRank = badges[0]
+    for (const badge of badges) {
+      if (totalMinutes >= badge.minutesMin && totalMinutes <= badge.minutesMax) {
+        currentRank = badge
+      }
+    }
+    return { 
+      currentRank: currentRank.rank, 
+      currentMinutes: parseInt(totalMinutes),
+      maxMinutes: currentRank.minutesMax
+    }
+  }
 }
 
 export default ReadingSessionSerializer

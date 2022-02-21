@@ -27,8 +27,11 @@ const Streaks = props => {
     getStreaks()
   }, [])
 
-  const formatDate = (date) => {
-    return DateTime.fromISO(date).toLocaleString(DateTime.DATE_SHORT)
+  const formatDateRange = (date1, date2) => {
+    if (date1!=="") {
+      return `${DateTime.fromISO(date1).toLocaleString(DateTime.DATE_SHORT)} - ${DateTime.fromISO(date2).toLocaleString(DateTime.DATE_SHORT)}` 
+    }
+    return ""
   }
   
   const formatPercentage = (number) => {
@@ -43,14 +46,14 @@ const Streaks = props => {
         <div className="streak-stat">{streaks.currentStreak.length}</div>
         <div className="streak-label">
           <div className="streak-name">Current Streak</div>
-          <div className="streak-date">{formatDate(streaks.currentStreak.firstDate)}-{formatDate(streaks.currentStreak.lastDate)}</div>
+          <div className="streak-date">{formatDateRange(streaks.currentStreak.firstDate,streaks.currentStreak.lastDate)}</div>
         </div>
       </div>
       <div className="streak-tile">
         <div className="streak-stat">{streaks.longestStreak.length}</div>
         <div className="streak-label">
           <div className="streak-name">Longest Streak</div>
-          <div className="streak-date">{formatDate(streaks.longestStreak.firstDate)}-{formatDate(streaks.longestStreak.lastDate)}</div>
+          <div className="streak-date">{formatDateRange(streaks.longestStreak.firstDate,streaks.longestStreak.lastDate)}</div>
         </div>
       </div>
       <div className="streak-tile">
