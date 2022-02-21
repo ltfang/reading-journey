@@ -62,7 +62,6 @@ class ReadingSessionSerializer {
     const interval = Interval.fromDateTimes(startDate, endDate)
     const readingSessions = await user.$relatedQuery("readingSessions")
     const dailyMinutesArray = ReadingSessionSerializer.getDailyMinutesArray(readingSessions, interval, true)
-    console.log('dailyMinutesArray', dailyMinutesArray)
     return dailyMinutesArray
   }
 
@@ -81,7 +80,11 @@ class ReadingSessionSerializer {
   }
 
   static async getStreaks(userId) {
-    const dailyMinutesArray = await ReadingSessionSerializer.getAllDailyMinutes(userId)
+    let dailyMinutesArray = await ReadingSessionSerializer.getAllDailyMinutes(userId)
+    dailyMinutesArray = dailyMinutesArray.map(record => {
+      record.date = DateTime.fromFormat(record.date, 'yyyyMMdd')
+      return record
+    })
     let streaks = []
     dailyMinutesArray.forEach((record, index) => {
       if (index===0 || !record.date.minus({days:1}).equals(dailyMinutesArray[index-1].date)) {
