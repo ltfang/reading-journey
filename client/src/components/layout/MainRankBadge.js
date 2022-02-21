@@ -5,6 +5,7 @@ const MainRankBadge = props => {
   const [rank, setRank] = useState("")
   const [currentMinutes, setCurrentMinutes] = useState(0)
   const [maxMinutes, setMaxMinutes] = useState(100)
+  const [nextRank, setNextRank] = useState("")
 
 
   const getRank = async () => {
@@ -12,6 +13,7 @@ const MainRankBadge = props => {
     setRank(body.rank.currentRank)
     setCurrentMinutes(body.rank.currentMinutes)
     setMaxMinutes(body.rank.maxMinutes)
+    setNextRank(body.rank.nextRank)
   }
 
   useEffect(() => {
@@ -25,7 +27,7 @@ const MainRankBadge = props => {
   const fillerStyles = {
     height: '100%',
     width: `${percentageComplete}%`,
-    backgroundColor: 'purple',
+    backgroundColor: '#8023AD',
     borderRadius: 'inherit',
     textAlign: 'right',
     transition: 'width 1s ease-in-out'
@@ -45,7 +47,7 @@ const MainRankBadge = props => {
         </div>
       </div>
       <div className="progress-bar-label">
-        {`${maxMinutes+1-currentMinutes} mins to next rank`}
+        {`${maxMinutes+1-currentMinutes} mins to the ${nextRank} rank`}
       </div>
     </div>
   )

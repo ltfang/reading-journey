@@ -17,6 +17,10 @@ const HomePage = ({ user }) => {
     history.push('/log')
   }
 
+  const handleAchievementsClick = () => {
+    history.push('/achievements')
+  }
+
   const unauthenticatedWelcome = 
     <div>
       <p className="unauth-text">
@@ -43,10 +47,13 @@ const HomePage = ({ user }) => {
         <li 
           className="homepage-list box2"
           onClick={handleBookClick}
-        >Check out your bookshelf</li>
+        >Browse your bookshelf</li>
         <li className="homepage-list box3"
           onClick={handleTicketClick}
         >Use your tickets</li>
+        <li className="homepage-list box4"
+          onClick={handleAchievementsClick}
+        >Check out your achievements</li>
       </ul>
     </div>
 

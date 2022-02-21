@@ -53,7 +53,7 @@ const Bookshelf = props => {
           setSortCriterion={setSortCriterion}
         />
       </div>
-      <h1 className="bookshelf-header">My Bookshelf</h1>
+      <h1 className="page-header">My Bookshelf</h1>
       <div className="bookshelf-container">
         {bookList}
       </div>

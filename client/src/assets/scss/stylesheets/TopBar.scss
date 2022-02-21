@@ -7,7 +7,7 @@
 }
 
 .sign-in-link {
-  color: $purple;
+  color: $ksu-purple;
 }
 
 .calendar-icon, .ticket-icon, .book-icon, .home-icon {
@@ -25,35 +25,43 @@
 }
 
 .cal-container {
-  background-color: $bright-pink; 
+  background-color: $portland-orange; 
 }
 
 .cal-container:hover {
-  background-color: $bright-pink-secondary;
-}
-
-.ticket-container {
-  background-color: $bright-blue; 
-}
-
-.ticket-container:hover {
-  background-color: $bright-blue-secondary; 
+  background-color: darken($portland-orange, 15%);
 }
 
 .book-container {
-  background-color: $bright-green; 
+  background-color: $brick-red; 
 }
 
 .book-container:hover {
-  background-color: $bright-green-secondary; 
+  background-color: darken($brick-red, 15%);
+}
+
+.ticket-container {
+  background-color: $fandango; 
+}
+
+.ticket-container:hover {
+  background-color: darken($fandango, 15%); 
+}
+
+.medal-container {
+  background-color: $violet; 
+}
+
+.medal-container:hover {
+  background-color: darken($violet, 15%);
 }
 
 .home-container {
-  background-color: $purple; 
+  background-color: $ksu-purple;
 }
 
 .home-container:hover {
-  background-color: $purple-secondary; 
+  background-color: darken($ksu-purple, 15%);
 }
 
 .sign-out-container {
@@ -63,17 +71,17 @@
 }
 
 .menu-btn {
-  background-color: $purple; 
+  background-color: $ksu-purple; 
   margin: 0 1em;
   border-radius: 30px;
 }
 
 .menu-btn:hover {
-  background-color: $purple-secondary; 
+  background-color: darken($ksu-purple, 15%);
 }
 
 .app-text {
-  color: $purple;
+  color: $ksu-purple;
   display: flex;
   align-items: center;
   font-weight: bold;

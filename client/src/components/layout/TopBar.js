@@ -57,7 +57,7 @@ const TopBar = ({ user }) => {
         className="ticket-icon fa-2xl"
       />
     </li>,
-    <li key="achievements" className="ticket-container icon-container" onClick={handleAchievementsClick}>
+    <li key="achievements" className="medal-container icon-container" onClick={handleAchievementsClick}>
     <FontAwesomeIcon 
       icon={faMedal}
       className="ticket-icon fa-2xl"

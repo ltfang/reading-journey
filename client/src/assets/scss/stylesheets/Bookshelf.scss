@@ -4,23 +4,18 @@
   align-items: center;
 }
 
-.bookshelf-header {
-  font-family: $serif;
-  text-align: center;
-  padding: .5em;
-}
-
 .search-filter-container {
   display:flex;
   align-items: center;
-  background-color:$purple;
+  background-color:$portland-orange;
   width: 100%;
   input, select {
     margin: 0;
   }
   .book-search-bar, .book-sort-bar {
-    padding: 1em;
+    padding: 0.5em;
   }
+  box-shadow: $box-shadow-sm;
 }
 
 .bookshelf-container {
@@ -35,6 +30,7 @@
   box-shadow: $box-shadow-lg;
   max-width: 250px;
   overflow: auto;
+  background-color: $violet;
 }
 
 .book-tile-top {
@@ -52,13 +48,12 @@
 }
 
 .book-tile-bottom {
-  background-color: $purple;
+  background-color: $violet;
   margin: 0;
   border-radius: 0 0 10px 10px;
 }
 
 .book-tile-bottom-content {
-
   text-align: center;
   color: white;
   padding: 1em;

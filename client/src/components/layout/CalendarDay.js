@@ -30,8 +30,8 @@ const CalendarDay = ({ date, anchorDate, totalMinutes }) => {
   let minutesDisplay
   if (totalMinutes > 0) {
     minutesDisplay = 
-    <div>
-      <FontAwesomeIcon icon={faStar} className="calendar-star fa-2xl" />
+    <div className="minutes-wrapper">
+      <FontAwesomeIcon icon={faStar} className="calendar-star fa-2x" />
       <div className="calendar-minute">{totalMinutes}</div>
     </div>
   }

@@ -42,7 +42,7 @@ const TicketsPage = props => {
 
   return (
     <div>
-      <h1 className="ticket-header">You have {tickets} tickets!</h1>
+      <h1 className="page-header">My Tickets - {tickets} tickets</h1>
       <div className="grid-y grid-margin-y ticket-container-main">
         <div className="cell small-8 ticket-form-container">
           <TicketForm 

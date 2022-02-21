@@ -3,6 +3,7 @@
   margin: 4em auto;
   padding: 2em 4em;
   box-shadow: $box-shadow-lg;
+  border-radius: 10px;
 }
 
 .auth-btn {
@@ -18,58 +19,30 @@
 }
 
 .sign-in-btn {
-  background-color: $bright-pink;
+  background-color: $portland-orange;
 }
 
 .sign-in-btn:hover {
-  background-color: $bright-pink-secondary;
+  background-color: darken($portland-orange, 15%);
 }
 
 .reg-btn {
-  background-color: $bright-green;
+  background-color: $portland-orange;
 }
 
 .reg-btn:hover {
-  background-color: $bright-green-secondary;
+  background-color: darken($portland-orange, 15%);
 }
 
 .sign-in-header {
-  font-family: $sans-serif;
+  font-family: $headline;
   margin-bottom: 1em;
-  color: $bright-pink;
+  color: $ksu-purple;
 }
 
 .reg-header {
-  font-family: $sans-serif;
+  font-family: $headline;
   margin-bottom: 1em;
-  color: $bright-green;
+  color: $ksu-purple;
 }
 
-/*
-.sign-in {
-  background-color: white;
-  margin: 4em 3em;
-  padding: 2em 4em;
-  box-shadow: $box-shadow-lg;
-  h1 {
-    font-family: $sans-serif;
-    margin-bottom: 1em;
-    color: $bright-pink;
-  }
-  .sign-in-btn {
-    background-color: $bright-pink;
-    padding: .7em 2.5em;
-    margin: .5em 0;
-    border: none;
-    color: white;
-    border-radius: 30px;
-    font-weight: bold;
-    text-align: center;
-    font-size: 1em;
-    box-shadow: $box-shadow-sm;
-  }
-  .sign-in-btn:hover {
-    background-color: $bright-pink-secondary;
-  }
-}
-*/

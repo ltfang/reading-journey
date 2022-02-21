@@ -5,7 +5,6 @@ import Fetch from '../../services/Fetch'
 
 const Rank = props => {
   const [badges, setBadges] = useState([])
-  const [mainBadge, setMainBadge] = useState({})
 
   const getBadges = async () => {
     const body = await Fetch.get('/api/v1/achievements/rank')

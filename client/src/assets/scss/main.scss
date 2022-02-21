@@ -36,12 +36,12 @@ body {
   background: $background;
 }
 
-.header {
+.page-header {
   font-size: 2.8em;
-  font-family: $serif;
+  font-family: $headline;
   text-align: center;
   margin: .5em;
-  color: $line;
+  color: $indigo;
 }
 
 .header2 {
@@ -59,8 +59,6 @@ body {
   color: #003736;
 }
 
-
-
 .app-callout {
   width: 600px;
   background-color: $secondary;
@@ -75,21 +73,6 @@ body {
   align-items: center;
 }
 
-.app-btn {
-  background-color: $highlight;
-  border: 3px solid $stroke;
-  padding: .5em 1em;
-  color: $stroke;
-  border-radius: 30px;
-  font-weight: bold;
-  text-align: center;
-  font-size: 1em;
-}
-
-.app-btn:hover {
-  background-color: #fcd08d;
-}
-
 label {
   color: $stroke;
   font-size: 1em;
@@ -98,4 +81,21 @@ label {
 
 .input-div {
   width: 60%;
+}
+
+.app-btn {
+  padding: .7em 2.5em;
+  margin: .5em 0;
+  border: none;
+  color: white;
+  border-radius: 30px;
+  font-weight: bold;
+  text-align: center;
+  font-size: 1em;
+  box-shadow: $box-shadow-sm;
+  background-color: $portland-orange;
+}
+
+.app-btn:hover {
+  background-color: darken($portland-orange, 15%);
 }
