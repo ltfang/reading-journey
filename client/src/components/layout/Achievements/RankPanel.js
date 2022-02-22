@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react'
 import SmallRankBadge from './SmallRankBadge'
 import MainRankBadge from './MainRankBadge'
-import Fetch from '../../services/Fetch'
+import Fetch from '../../../services/Fetch'
 
-const Rank = props => {
+const RankPanel = props => {
   const [badges, setBadges] = useState([])
 
   const getBadges = async () => {
@@ -38,4 +38,4 @@ const Rank = props => {
   )
 }
 
-export default Rank
+export default RankPanel

@@ -8,12 +8,12 @@ import RegistrationForm from './registration/RegistrationForm'
 import SignInForm from './authentication/SignInForm'
 import TopBar from './layout/TopBar'
 import HomePage from './layout/HomePage'
-import Calendar from './layout/Calendar'
-import ReadingSessions from './layout/ReadingSessions'
-import TicketsPage from './layout/TicketsPage'
-import Bookshelf from './layout/Bookshelf'
+import Calendar from './layout/ReadingLog/Calendar'
+import ReadingSessions from './layout/ReadingLog/ReadingSessions'
+import TicketsPage from './layout/Tickets/TicketsPage'
+import Bookshelf from './layout/Bookshelf/Bookshelf'
 import AuthenticatedRoute from './authentication/AuthenticatedRoute'
-import AchievementsPage from './layout/AchievementsPage'
+import AchievementsPage from './layout/Achievements/AchievementsPage'
 
 const App = (props) => {
   const [currentUser, setCurrentUser] = useState(null)

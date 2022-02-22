@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { DateTime } from 'luxon'
 import ReadingSessionTile from './ReadingSessionTile'
 import ReadingSessionForm from './ReadingSessionForm'
-import Fetch from '../../services/Fetch'
+import Fetch from '../../../services/Fetch'
 import { withRouter } from 'react-router'
 
 const ReadingSessions = (props) => {

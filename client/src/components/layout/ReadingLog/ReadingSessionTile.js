@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import SingleError from './SingleError.js'
+import SingleError from '../SingleError'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faTrashAlt, faPlusCircle, faMinusCircle } from '@fortawesome/free-solid-svg-icons'
 

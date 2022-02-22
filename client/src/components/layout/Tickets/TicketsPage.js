@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import Fetch from '../../services/Fetch'
+import Fetch from '../../../services/Fetch'
 import TicketForm from './TicketForm'
 import TicketTransactionTile from './TicketTransactionTile'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
