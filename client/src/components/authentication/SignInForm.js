@@ -45,6 +45,12 @@ const SignInForm = () => {
             })
           })
           if(!response.ok) {
+            if (response.status===401) {
+              let newErrors = {
+                invalid: "Invalid email or password"
+              }
+              setErrors(newErrors)
+            }
             const errorMessage = `${response.status} (${response.statusText})`
             const error = new Error(errorMessage)
             throw(error)
@@ -91,6 +97,7 @@ const SignInForm = () => {
             <FormError error={errors.password} />
           </label>
         </div>
+        <FormError error={errors.invalid} />
         <div className="submit-wrapper">
           <input type="submit" className="app-btn" value="Sign In" />
         </div>
