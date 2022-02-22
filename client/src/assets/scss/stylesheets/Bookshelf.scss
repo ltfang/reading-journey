@@ -13,7 +13,8 @@
     margin: 0;
   }
   .book-search-bar, .book-sort-bar {
-    padding: 0.5em;
+    padding: 0.8em 1em;
+    width: 250px;
   }
   box-shadow: $box-shadow-sm;
 }
@@ -28,7 +29,8 @@
   margin: 1em; 
   border-radius: 10px;
   box-shadow: $box-shadow-lg;
-  max-width: 250px;
+  height: 300px;
+  width: 250px;
   overflow: auto;
   background-color: $violet;
 }
@@ -43,7 +45,7 @@
 }
 
 .book-tile-img {
-  margin: 1em;
+  padding: 1em;
   height: 150px;
 }
 

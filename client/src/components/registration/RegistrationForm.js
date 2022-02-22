@@ -99,8 +99,8 @@ const RegistrationForm = () => {
 
   return (
     <div className="grid-container auth-callout">
-      <h1 className="reg-header">Register</h1>
-      <form onSubmit={onSubmit}>
+      <h1 className="auth-header">Register</h1>
+      <form onSubmit={onSubmit} className="auth-form">
         <div className="input-div">
           <label>
             Name
@@ -139,8 +139,8 @@ const RegistrationForm = () => {
             <FormError error={errors.passwordConfirmation} />
           </label>
         </div>
-        <div>
-          <input type="submit" className="auth-btn reg-btn" value="Register" />
+        <div className="submit-wrapper">
+          <input type="submit" className="app-btn" value="Register" />
         </div>
       </form>
     </div>

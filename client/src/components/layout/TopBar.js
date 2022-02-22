@@ -11,7 +11,7 @@ const TopBar = ({ user }) => {
       <Link to="/user-sessions/new" className="sign-in-link">Sign In</Link>
     </li>,
     <li key="sign-up">
-      <Link to="/users/new" className="button menu-btn">
+      <Link to="/users/new" className="app-btn">
         Sign Up
       </Link>
     </li>
@@ -81,7 +81,7 @@ const TopBar = ({ user }) => {
           </li>
         </ul>
       </div>
-      <div className="top-bar-right">
+      <div className="top-bar-right nav-right">
         <ul className="menu">{user ? authenticatedListItems : unauthenticatedListItems}</ul>
       </div>
     </div>

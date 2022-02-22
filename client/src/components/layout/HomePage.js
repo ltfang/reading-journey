@@ -26,8 +26,8 @@ const HomePage = ({ user }) => {
       <p className="unauth-text">
         Start your reading adventure by tracking how much you read each day.  Earn tickets every time you read!
       </p>
-      <div className="link-container">
-        <Link to="/users/new" className="homepage-btn">Sign up to get started!</Link>
+      <div className="sign-up-btn-container">
+        <Link to="/users/new" className="app-btn">Sign up to get started!</Link>
       </div>
       <div className="existing-user-sign-in">
         Existing user? 
@@ -53,7 +53,7 @@ const HomePage = ({ user }) => {
         >Use your tickets</li>
         <li className="homepage-list box4"
           onClick={handleAchievementsClick}
-        >Check out your achievements</li>
+        >Track your achievements</li>
       </ul>
     </div>
 

@@ -31,6 +31,11 @@
   box-shadow: $box-shadow-sm;
 } 
 
+.month-btn:hover {
+  background-color: darken($portland-orange, 15%);
+  cursor:pointer;
+}
+
 .weekday-container {
   border: 1px solid darken($violet, 15%);
   background-color: darken($violet, 15%);
@@ -66,6 +71,7 @@
 
 .active:hover {
   background-color: #fff4f1;
+  cursor:pointer;
 }
 
 .minutes-wrapper {

@@ -4,45 +4,19 @@
   padding: 2em 4em;
   box-shadow: $box-shadow-lg;
   border-radius: 10px;
+  width: 800px;
 }
 
-.auth-btn {
-  padding: .7em 2.5em;
-  margin: .5em 0;
-  border: none;
-  color: white;
-  border-radius: 30px;
-  font-weight: bold;
-  text-align: center;
-  font-size: 1em;
-  box-shadow: $box-shadow-sm;
-}
-
-.sign-in-btn {
-  background-color: $portland-orange;
-}
-
-.sign-in-btn:hover {
-  background-color: darken($portland-orange, 15%);
-}
-
-.reg-btn {
-  background-color: $portland-orange;
-}
-
-.reg-btn:hover {
-  background-color: darken($portland-orange, 15%);
-}
-
-.sign-in-header {
+.auth-header {
   font-family: $headline;
   margin-bottom: 1em;
   color: $ksu-purple;
 }
 
-.reg-header {
-  font-family: $headline;
+.auth-form {
   margin-bottom: 1em;
-  color: $ksu-purple;
 }
 
+.submit-wrapper {
+  margin-top: 2em;
+}

@@ -22,7 +22,7 @@ const MainRankBadge = props => {
 
   let formattedRank = rank.toLowerCase()
   let badgeClass = `main-badge ${formattedRank}`
-  let percentageComplete = Math.round(currentMinutes/maxMinutes*100)
+  let percentageComplete = Math.round(currentMinutes/(maxMinutes+1)*100)
   
   const fillerStyles = {
     height: '100%',

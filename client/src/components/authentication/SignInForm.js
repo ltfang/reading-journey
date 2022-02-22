@@ -70,8 +70,8 @@ const SignInForm = () => {
 
   return (
     <div className="grid-container auth-callout" onSubmit={onSubmit}>
-      <h1 className="sign-in-header">Sign In</h1>
-      <form>
+      <h1 className="auth-header">Sign In</h1>
+      <form className="auth-form">
         <div className="input-div">
           <label>
             Email
@@ -91,8 +91,8 @@ const SignInForm = () => {
             <FormError error={errors.password} />
           </label>
         </div>
-        <div>
-          <input type="submit" className="auth-btn sign-in-btn" value="Sign In" />
+        <div className="submit-wrapper">
+          <input type="submit" className="app-btn" value="Sign In" />
         </div>
       </form>
     </div>

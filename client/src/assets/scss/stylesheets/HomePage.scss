@@ -8,7 +8,7 @@
 }
 
 .homepage-header {
-  font-family: $sans-serif;
+  font-family: $headline;
   text-align: center;
   color: $ksu-purple;
 }
@@ -19,25 +19,9 @@
   text-align: center;
 }
 
-.link-container {
+.sign-up-btn-container {
   display: flex;
-}
-
-.homepage-btn {
-  padding: .7em 2.5em;
-  margin: .5em auto;
-  border: none;
-  color: white;
-  border-radius: 30px;
-  font-weight: bold;
-  text-align: center;
-  font-size: 1em;
-  box-shadow: $box-shadow-sm;
-  background-color: $portland-orange;
-}
-
-.homepage-btn:hover {
-  background-color: darken($portland-orange, 15%);
+  justify-content: center;
 }
 
 .existing-user-sign-in {
@@ -82,6 +66,7 @@
 
 .box1:hover {
   background-color: darken($portland-orange, 15%);
+  cursor:pointer;
 }
 
 .box2 {
@@ -90,6 +75,7 @@
 
 .box2:hover {
   background-color: darken($brick-red, 15%);
+  cursor:pointer;
 }
 
 .box3 {
@@ -98,6 +84,7 @@
 
 .box3:hover {
   background-color: darken($fandango, 15%);
+  cursor:pointer;
 }
 
 .box4 {
@@ -106,4 +93,5 @@
 
 .box4:hover {
   background-color: darken($violet, 15%);
+  cursor:pointer;
 }

@@ -30,6 +30,7 @@
 
 .cal-container:hover {
   background-color: darken($portland-orange, 15%);
+  cursor:pointer;
 }
 
 .book-container {
@@ -38,6 +39,7 @@
 
 .book-container:hover {
   background-color: darken($brick-red, 15%);
+  cursor:pointer;
 }
 
 .ticket-container {
@@ -54,6 +56,7 @@
 
 .medal-container:hover {
   background-color: darken($violet, 15%);
+  cursor:pointer;
 }
 
 .home-container {
@@ -62,6 +65,7 @@
 
 .home-container:hover {
   background-color: darken($ksu-purple, 15%);
+  cursor:pointer;
 }
 
 .sign-out-container {
@@ -78,6 +82,7 @@
 
 .menu-btn:hover {
   background-color: darken($ksu-purple, 15%);
+  cursor:pointer;
 }
 
 .app-text {
@@ -86,4 +91,9 @@
   align-items: center;
   font-weight: bold;
   font-size: 1.5em;
+}
+
+.nav-right {
+  display: flex;
+  align-items: center;
 }
