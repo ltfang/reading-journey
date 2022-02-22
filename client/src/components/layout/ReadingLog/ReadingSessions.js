@@ -39,7 +39,7 @@ const ReadingSessions = (props) => {
   }
 
   const updateReadingSession = async (readingSessionId, minutes) => {
-    const response = await Fetch.update(`/api/v1/log/${props.match.params.date}`, readingSessionId, minutes)
+    const response = await Fetch.update(`/api/v1/log/${props.match.params.date}`, { readingSessionId, minutes })
     if (response) {
       const updatedReadingSessions = [...readingSessions]
       const session = updatedReadingSessions.find(readingSession => readingSession.id === readingSessionId)
