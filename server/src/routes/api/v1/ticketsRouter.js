@@ -18,7 +18,7 @@ ticketsRouter.get("/total", async (req, res) => {
 
 ticketsRouter.get("/recent", async (req, res) => {
   try {
-    const recentTransactions = await TicketSerializer.getRecentTransactions(req.user.id, 5)
+    const recentTransactions = await TicketSerializer.getRecentTransactions(req.user.id, 4)
     return res
       .set({ "Content-Type": "application/json" })
       .status(200)
@@ -38,12 +38,38 @@ ticketsRouter.post("/", async (req, res) => {
       return res.status(201).json({error: 'Not enough tickets!'})
     }
     await TicketTransaction.query().insertAndFetch({ date, number, description, userId })
-    
     return res.status(201).json({ totalTickets: newTotal })
   } catch (error) {
-
     return res.status(500).json({ errors: error })
   }
 })
+
+ticketsRouter.patch("/", async (req, res) => {
+  const { id, date, number, description } = req.body
+  try {
+    const transactionToBeUpdated = await TicketTransaction.query().findById(id)
+    const totalTickets = await TicketSerializer.getTotalTickets(req.user.id)
+    const newTotal = totalTickets+transactionToBeUpdated.number-number
+    if (newTotal < 0) {
+      return res.status(201).json({error: 'Not enough tickets!'})
+    }
+    await TicketTransaction.query().patchAndFetchById(id, { date, number, description })    
+    return res.status(201).json({ totalTickets: newTotal })
+  } catch (error) {
+    return res.status(500).json({ errors: error })
+  }
+})
+
+ticketsRouter.delete('/', async (req, res) => {
+  try {
+    const ticketTransactionId = req.body.id
+    await TicketTransaction.query().deleteById(ticketTransactionId)
+    const totalTickets = await TicketSerializer.getTotalTickets(req.user.id) 
+    return res.status(201).json({ totalTickets })
+  } catch (error) {
+    return res.status(500).json({ errors: error })
+  }
+})
+
 
 export default ticketsRouter

@@ -52,8 +52,7 @@ readingSessionsRouter.delete('/:date', async (req, res) => {
 
 readingSessionsRouter.patch('/:date', async (req, res) => {
   try {
-    const readingSessionId = req.body.id
-    const minutes = req.body.property
+    const { readingSessionId, minutes } = req.body
     await ReadingSession.query().patchAndFetchById(readingSessionId, { minutesRead: minutes })
     return res.status(201).json(true)
   } catch (error) {

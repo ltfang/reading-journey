@@ -53,20 +53,21 @@ class Fetch {
         const error = new Error(errorMessage)
         throw(error)
       }
-      return true
+      const responseBody = await response.json()
+      return responseBody
     } catch (error) {
       return console.error(`Error in fetch: ${error.message}`)
     }
   }
 
-  static update = async (endpoint, id, property) =>{
+  static update = async (endpoint, body) =>{
     try {
       const response = await fetch(endpoint, {
         method:"PATCH",
         headers: new Headers ({
           "Content-Type" : "application/json"
         }),
-        body: JSON.stringify({id, property}),
+        body: JSON.stringify(body),
       });
       if(!response.ok){
         if(response.status === 422){
@@ -75,7 +76,8 @@ class Fetch {
           throw (new Error(`${response.status} ${response.statusText}`))
         }
       }
-      return true
+      const responseBody = await response.json()
+      return responseBody 
     } catch (error) {
       console.error(`Error in fetch: ${error.message}`)
     }

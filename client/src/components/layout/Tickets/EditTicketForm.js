@@ -1,12 +1,14 @@
 import React, { useState } from 'react'
 import { DateTime } from 'luxon'
 
-const TicketForm = ({ useTickets }) => {
-  
+const EditTicketForm = ({ transaction, editTicketUse, setModalIsOpen }) => {
+  const transactionDateObject = DateTime.fromISO(transaction.date)
+
   const [ticketTransaction, setTicketTransaction] = useState({
-    date: DateTime.now().toFormat('yyyy-MM-dd'),
-    number: 0,
-    description: ""
+    id: transaction.id,
+    date: transactionDateObject.toFormat('yyyy-MM-dd'),
+    number: transaction.number,
+    description: transaction.description
   })
 
   const handleInputChange = (event) => {
@@ -18,25 +20,23 @@ const TicketForm = ({ useTickets }) => {
 
   const handleSubmit = (event) => {
     event.preventDefault()
-    if(useTickets(ticketTransaction)) {
-      clearForm()
+    const result = editTicketUse(ticketTransaction)
+    console.log('result', result)
+    if(result) {
+      setModalIsOpen(false)
     }
-  }
-
-  const clearForm = () => {
-    setTicketTransaction({
-      date: DateTime.now().toFormat('yyyy-MM-dd'),
-      number: 0,
-      description: ""
-    })
   }
 
   return(
     <div>
-      <form onSubmit={handleSubmit} className="ticket-form">
-        <h2 className="ticket-form-header">Use your tickets!</h2>
+      <form onSubmit={handleSubmit} className="edit-ticket-form">
+        <h2 className="edit-ticket-form-header">Edit your ticket use from {transactionDateObject.toLocaleString({
+          weekday: 'short',
+          month: 'short',
+          day: '2-digit'
+        })}</h2>
         <div className="input-container">
-          <label htmlFor="date">When are you using them?
+          <label htmlFor="date">When did you use them?
             <input 
               id="date"
               name="date"
@@ -47,7 +47,7 @@ const TicketForm = ({ useTickets }) => {
           </label>
         </div>
         <div className="input-container">
-          <label htmlFor="number">How many are you using?
+          <label htmlFor="number">How many did you use?
             <input 
               id="number"
               name="number"
@@ -59,7 +59,7 @@ const TicketForm = ({ useTickets }) => {
           </label>
         </div>
         <div className="input-container">
-          <label htmlFor="description">What are you using them for?
+          <label htmlFor="description">What did you use them for?
             <input 
               id="description"
               name="description"
@@ -71,7 +71,7 @@ const TicketForm = ({ useTickets }) => {
         </div>
           <input 
             type="submit" 
-            value="Use tickets!"
+            value="Submit"
             className="app-btn"
           />
       </form>
@@ -79,4 +79,4 @@ const TicketForm = ({ useTickets }) => {
   )
 }
 
-export default TicketForm
+export default EditTicketForm

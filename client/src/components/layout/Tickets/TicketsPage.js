@@ -33,11 +33,28 @@ const TicketsPage = props => {
     }
   }
 
+  const editTicketUse = async (ticketTransaction) => {
+    const responseBody = await Fetch.update('/api/v1/tickets', ticketTransaction)
+    if (responseBody.error) {
+      alert('You do not have enough tickets!')
+      return false
+    } else {
+      setTickets(responseBody.totalTickets)
+    }
+  }
+
+  const deleteTicketUse = async (body) => { 
+    const responseBody = await Fetch.delete('/api/v1/tickets', body)
+    setTickets(responseBody.totalTickets)
+  }
+
   const transactions = recentTransactions.map(transaction => {
     return (
       <TicketTransactionTile
         key={transaction.id}
         transaction={transaction}
+        editTicketUse={editTicketUse}
+        deleteTicketUse={deleteTicketUse}
       />
     )
   })

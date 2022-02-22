@@ -3,8 +3,8 @@
   margin: 0.5em;
   box-shadow: $box-shadow-sm;
   border-radius: 10px;
-  height: 100px;
-  width: 240px;
+  height: 125px;
+  width: 300px;
 }
 
 .trx-tickets {
@@ -20,11 +20,17 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 100px;
+  height: 125px;
+}
+
+.trx-tile-right {
+  height: 125px;
+  position: relative;
 }
 
 .trx-tile-right-content {
   padding: 1em;
+  height: 125px;
   max-width: 200px;
   overflow: hidden;
 }
@@ -37,4 +43,15 @@
 .trx-des {
   font-size: 1em;
   line-height: 120%;
+}
+
+.ticket-icon-wrapper {
+  position: absolute;
+  right: 1em;
+  bottom: 1em;
+}
+
+.ticket-pen-icon, .ticket-trash-icon {
+  margin: 0 3px -4px 3px;
+  color: $portland-orange;
 }
