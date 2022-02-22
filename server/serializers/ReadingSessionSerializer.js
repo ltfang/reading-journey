@@ -154,8 +154,10 @@ class ReadingSessionSerializer {
         currentRank = badge
       }
     }
+    const nextRank = badges[badges.indexOf(currentRank)+1]
     return { 
       currentRank: currentRank.rank, 
+      nextRank: nextRank.rank,
       currentMinutes: parseInt(totalMinutes),
       maxMinutes: currentRank.minutesMax
     }

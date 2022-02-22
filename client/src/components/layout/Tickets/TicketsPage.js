@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from 'react'
-import Fetch from '../../services/Fetch'
+import Fetch from '../../../services/Fetch'
 import TicketForm from './TicketForm'
 import TicketTransactionTile from './TicketTransactionTile'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faTicketAlt } from '@fortawesome/free-solid-svg-icons'
 
 const TicketsPage = props => {
   const [tickets, setTickets] = useState(0)
@@ -42,7 +44,14 @@ const TicketsPage = props => {
 
   return (
     <div>
-      <h1 className="ticket-header">You have {tickets} tickets!</h1>
+      <h1 className="page-header">My Tickets</h1>
+      <div className="ticket-page-icon-wrapper">
+        <FontAwesomeIcon 
+          icon={faTicketAlt}
+          className="fa-7x ticket-page-icon"
+        />
+        <h2 className="total-tickets">{tickets}</h2>
+      </div>
       <div className="grid-y grid-margin-y ticket-container-main">
         <div className="cell small-8 ticket-form-container">
           <TicketForm 
@@ -50,7 +59,7 @@ const TicketsPage = props => {
           />
         </div>
         <div className="cell small-4 trx-container trx-container">
-          <h2 className="trx-header">Recently:</h2>
+          <h2 className="trx-header">Recent usages:</h2>
           <div className="trx-subcontainer">
             {transactions}
           </div>

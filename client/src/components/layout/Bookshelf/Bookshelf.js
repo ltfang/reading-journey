@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react'
 import BookTile from './BookTile'
-import Fetch from '../../services/Fetch'
+import Fetch from '../../../services/Fetch'
 import BookSearch from './BookSearch'
 import BookSort from './BookSort'
 import _ from 'lodash'
-import SortBooks from '../../services/SortBooks'
+import SortBooks from '../../../services/SortBooks.js'
 
 const Bookshelf = props => {
   const [books, setBooks] = useState([])
@@ -53,7 +53,7 @@ const Bookshelf = props => {
           setSortCriterion={setSortCriterion}
         />
       </div>
-      <h1 className="bookshelf-header">My Bookshelf</h1>
+      <h1 className="page-header">My Bookshelf</h1>
       <div className="bookshelf-container">
         {bookList}
       </div>

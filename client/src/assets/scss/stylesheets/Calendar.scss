@@ -3,20 +3,14 @@
   height: 90vh;
 }
 
-.cal-header {
-  font-family: $serif;
-  color: black;
-  text-align: center;
-  padding: .3em;
-}
-
 .calendar-header {
   display: flex;
-  background-color: $bright-pink;
+  background-color: $violet;
   width: 100%;
   justify-content: space-between;
   align-items: center;
   padding: 1em;
+  border-radius: 10px 10px 0 0;
 }
 
 .month {
@@ -30,16 +24,21 @@
 
 .month-btn {
   margin: .3em; 
-  padding: .3em .5em;
-  background-color: $highlight;
+  padding: .3em .5em .5em .5em;
+  background-color: $portland-orange;
   border-radius: 10px;
   color: white;
   box-shadow: $box-shadow-sm;
 } 
 
+.month-btn:hover {
+  background-color: darken($portland-orange, 15%);
+  cursor:pointer;
+}
+
 .weekday-container {
-  border: 1px solid $bright-pink-secondary;
-  background-color: $bright-pink-secondary;
+  border: 1px solid darken($violet, 15%);
+  background-color: darken($violet, 15%);
   color: white;
   display: flex;
   justify-content: space-around;
@@ -52,7 +51,7 @@
 .days-container {
   display:grid;
   grid-template-columns: repeat(7, 1fr);
-  border: 0.5px solid $bright-pink;
+  border: 0.5px solid darken($violet, 15%);
 }
 
 .weekday-marker {
@@ -61,7 +60,7 @@
 
 .calendarDay {
   display: flex;
-  border: 0.5px $bright-pink-secondary solid;
+  border: 0.5px darken($violet, 15%) solid;
   padding: 0.5em;
   align-items: start;
   justify-content: start;
@@ -71,21 +70,34 @@
 }
 
 .active:hover {
-  background-color: #feeebf;
+  background-color: #fff4f1;
+  cursor:pointer;
+}
+
+.minutes-wrapper {
+  position: absolute;
+  bottom: 3px;
+  right: 3px;
+  display: grid;
+  grid-template: 1fr / 1fr;
+  place-items: center;
 }
 
 .calendar-minute {
-  position: absolute;
-  bottom: 13px;
-  right: 23px;
-  color: $purple-secondary;
+  grid-column: 1 / 1;
+  grid-row: 1 / 1;
+  z-index: 3;
+  color: $indigo;
+  text-align: center;
+  margin-top: 3px;
+  font-size: .8em;
 }
 
 .calendar-star {
-  position: absolute;
-  bottom: 10px;
-  right: 10px;
-  color: $highlight;
+  grid-column: 1 / 1;
+  grid-row: 1 / 1;
+  z-index: 2;
+  color: $mango;
 }
 
 .dateNumber {
@@ -93,16 +105,16 @@
   align-items: center;
   justify-content: center;
   height: 1em;
-  color: $bright-pink-secondary;
+  color: darken($violet, 15%);
 }
 
 .other-month {
-  color: $dull-pink;
+  color: lighten($violet, 15%);
 }
 
 .today {
   display: flex;
-  background-color: $bright-blue;
+  background-color: $portland-orange;
   height: 2em;
   width: 2em;
   border-radius: 50%;
@@ -110,5 +122,5 @@
 }
 
 .disabled {
-  background-color: rgb(242, 242, 242);
+  background-color: #f8f5fb;
 }

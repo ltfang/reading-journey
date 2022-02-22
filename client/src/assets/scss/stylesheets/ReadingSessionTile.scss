@@ -1,5 +1,5 @@
 .reading-session-tile {
-  background-color: $lightest;
+  background-color: white;
   margin: 1em .5em; 
   border-radius: 10px;
   border: none;
@@ -12,7 +12,7 @@
 }
 
 .tile-left {
-  background-color: $bright-green;
+  background-color: $violet;
   border-radius: 10px 0 0 10px;
   display: flex;
   align-items: center;
@@ -50,12 +50,12 @@
 
 .plus-minus-icon {
   padding: .2em;
-  color: rgb(170, 170, 170);
+  color: #fccabc;
 }
 
 .trash {
   position: absolute;
   right: 30px;
   bottom: 20px;
-  color: rgb(170, 170, 170);
+  color: #fccabc;
 }

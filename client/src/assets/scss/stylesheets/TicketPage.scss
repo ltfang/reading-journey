@@ -4,6 +4,29 @@
   justify-content: center;
 }
 
+.ticket-page-icon-wrapper {
+  display: grid;
+  grid-template: 1fr / 1fr;
+  place-items: center;
+  margin-top: -2em;
+}
+
+.ticket-page-icon {
+  grid-column: 1 / 1;
+  grid-row: 1 / 1;
+  z-index: 1;
+  color: lighten($fandango, 10%);
+}
+
+.total-tickets {
+  grid-column: 1 / 1;
+  grid-row: 1 / 1;
+  z-index: 2;
+  color: $indigo;
+  font-size: 2em;
+  margin-top: 5px;
+}
+
 .ticket-form-container {
   display: flex;
   justify-content: center;
@@ -30,32 +53,9 @@
 
 .ticket-form-header {
   font-family: $sans-serif;
-  color: $bright-blue;
+  color: $violet;
   font-weight: bold;
   text-align: center;
-}
-
-.ticket-header {
-  font-family: $serif;
-  padding: .5em;
-  text-align: center;
-}
-
-.ticket-submit-btn {
-  padding: .7em 2.5em;
-  margin: .5em 0;
-  border: none;
-  color: white;
-  border-radius: 30px;
-  font-weight: bold;
-  text-align: center;
-  font-size: 1em;
-  box-shadow: $box-shadow-sm;
-  background-color: $bright-blue;
-}
-
-.ticket-submit-btn:hover {
-  background-color: $bright-blue-secondary; 
 }
 
 .trx-container {
@@ -64,10 +64,11 @@
   flex-direction: column;
   justify-content: center;
   align-items: start;
+  margin-top: -3em;
 }
 
 .trx-header {
-  color: $line;
+  color: $indigo;
   font-size: 1.5em;
   font-family: $sans-serif;
 }

@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { DateTime, Interval } from 'luxon'
 import CalendarDay from './CalendarDay'
 import MonthNavButtons from './MonthNavButtons'
-import Fetch from '../../services/Fetch'
+import Fetch from '../../../services/Fetch'
 
 const Calendar = props => {
   const [date, setDate] = useState(DateTime.now())
@@ -24,10 +24,8 @@ const Calendar = props => {
     firstDay = date.startOf('month')
   } else {
     firstDay = date.startOf('month').startOf('week').minus({days: 1})
-    //1/30/2022 12 AM
   }
   const lastDay = date.endOf('month').endOf('week')
-  // 3/6/2022 11:59 PM
 
   const getDailyMinutes = async () => {
     const startDay = firstDay.toFormat('yyyyMMdd') 
@@ -53,7 +51,7 @@ const Calendar = props => {
 
   return (
     <div className="calendar">
-      <h1 className="cal-header">My Reading Log</h1>
+      <h1 className="page-header">My Reading Log</h1>
       <div className="calendar-header">
         <h1 className="month">{date.monthLong} {date.year}</h1>
         <MonthNavButtons 

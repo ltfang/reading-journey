@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
-import getAuthorString from '../../services/getAuthorString.js'
-import Fetch from '../../services/Fetch.js'
-import SingleError from './SingleError.js'
+import getAuthorString from '../../../services/getAuthorString.js'
+import Fetch from '../../../services/Fetch.js'
+import SingleError from '../SingleError.js'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faSearch } from '@fortawesome/free-solid-svg-icons'
 

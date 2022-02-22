@@ -35,7 +35,7 @@ const TicketForm = ({ useTickets }) => {
       <form onSubmit={handleSubmit} className="ticket-form">
         <h2 className="ticket-form-header">Use your tickets!</h2>
         <div className="input-container">
-          <label htmlFor="date">Date
+          <label htmlFor="date">When are you using them?
             <input 
               id="date"
               name="date"
@@ -46,7 +46,7 @@ const TicketForm = ({ useTickets }) => {
           </label>
         </div>
         <div className="input-container">
-          <label htmlFor="number">Tickets to Use
+          <label htmlFor="number">How many are you using?
             <input 
               id="number"
               name="number"
@@ -58,7 +58,7 @@ const TicketForm = ({ useTickets }) => {
           </label>
         </div>
         <div className="input-container">
-          <label htmlFor="description">Description
+          <label htmlFor="description">What are you using them for?
             <input 
               id="description"
               name="description"
@@ -71,7 +71,7 @@ const TicketForm = ({ useTickets }) => {
           <input 
             type="submit" 
             value="Use tickets!"
-            className="ticket-submit-btn"
+            className="app-btn"
           />
       </form>
     </div>

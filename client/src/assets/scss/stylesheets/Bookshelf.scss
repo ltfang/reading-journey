@@ -4,23 +4,19 @@
   align-items: center;
 }
 
-.bookshelf-header {
-  font-family: $serif;
-  text-align: center;
-  padding: .5em;
-}
-
 .search-filter-container {
   display:flex;
   align-items: center;
-  background-color:$purple;
+  background-color:$portland-orange;
   width: 100%;
   input, select {
     margin: 0;
   }
   .book-search-bar, .book-sort-bar {
-    padding: 1em;
+    padding: 0.8em 1em;
+    width: 250px;
   }
+  box-shadow: $box-shadow-sm;
 }
 
 .bookshelf-container {
@@ -33,8 +29,10 @@
   margin: 1em; 
   border-radius: 10px;
   box-shadow: $box-shadow-lg;
-  max-width: 250px;
+  height: 300px;
+  width: 250px;
   overflow: auto;
+  background-color: $violet;
 }
 
 .book-tile-top {
@@ -47,18 +45,17 @@
 }
 
 .book-tile-img {
-  margin: 1em;
+  padding: 1em;
   height: 150px;
 }
 
 .book-tile-bottom {
-  background-color: $purple;
+  background-color: $violet;
   margin: 0;
   border-radius: 0 0 10px 10px;
 }
 
 .book-tile-bottom-content {
-
   text-align: center;
   color: white;
   padding: 1em;

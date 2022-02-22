@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import AddBookForm from './AddBookForm'
-import SingleError from './SingleError.js'
+import SingleError from '../SingleError'
 import _ from 'lodash'
 
 const ReadingSessionForm = ({ date, postReadingSession }) => {

@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react'
-import Fetch from '../../services/Fetch'
+import Fetch from '../../../services/Fetch'
 import { DateTime } from 'luxon'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faFire } from '@fortawesome/free-solid-svg-icons'
 
-const Streaks = props => {
+const StreaksPanel = props => {
   const [streaks, setStreaks] = useState({
     currentStreak: {
       firstDate: "",
@@ -88,4 +88,4 @@ const Streaks = props => {
   )
 }
 
-export default Streaks
+export default StreaksPanel

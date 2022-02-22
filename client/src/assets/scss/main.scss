@@ -33,69 +33,43 @@
 
 body {
   font-family: $sans-serif;
-  background: $background;
+  background: $web;
 }
 
-.header {
+.page-header {
   font-size: 2.8em;
-  font-family: $serif;
+  font-family: $headline;
   text-align: center;
   margin: .5em;
-  color: $line;
-}
-
-.header2 {
-  font-size: 2em;
-  font-family: $sans-serif;
-  text-align: center;
-  color: $lightest;
-}
-
-.link {
-  color: $stroke;
-}
-
-.link:hover {
-  color: #003736;
-}
-
-
-
-.app-callout {
-  width: 600px;
-  background-color: $secondary;
-  border: 3px solid $stroke;
-  border-radius: 20px; 
-  padding: 1em;
-  margin: 0 auto;
-  display: flex;
-  flex-direction: column;
-  color: $stroke;
-  justify-content: center;
-  align-items: center;
-}
-
-.app-btn {
-  background-color: $highlight;
-  border: 3px solid $stroke;
-  padding: .5em 1em;
-  color: $stroke;
-  border-radius: 30px;
-  font-weight: bold;
-  text-align: center;
-  font-size: 1em;
-}
-
-.app-btn:hover {
-  background-color: #fcd08d;
+  color: $indigo;
 }
 
 label {
-  color: $stroke;
-  font-size: 1em;
-  font-weight: bold;
+  color: black;
+  font-size: 1.2em;
 }
 
 .input-div {
   width: 60%;
 }
+
+.app-btn {
+  padding: .7em 2.5em;
+  margin: 0;
+  border: none;
+  color: white;
+  border-radius: 30px;
+  font-weight: bold;
+  text-align: center;
+  font-size: 1em;
+  box-shadow: $box-shadow-sm;
+  background-color: $portland-orange;
+}
+
+.app-btn:hover {
+  background-color: darken($portland-orange, 15%);
+  color: white;
+  cursor: pointer;
+}
+
+

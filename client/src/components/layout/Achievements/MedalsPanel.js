@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import Medal from './Medal'
-import Fetch from '../../services/Fetch'
+import Fetch from '../../../services/Fetch'
 
 const MedalsPanel = props => {
   const [medals, setMedals] = useState({})

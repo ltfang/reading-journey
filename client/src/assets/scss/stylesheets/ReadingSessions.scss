@@ -5,19 +5,19 @@
 }
 
 .rs-header {
-  font-family: $serif;
-  padding: 0.3em 1em;
-  color: black;
+  font-family: $headline;
+  padding: 1em 1em 0.3em 1em;
+  color: $indigo;
   font-size: 2.2em;
   text-align: center;
 }
 
 .rt-header {
   font-family: $sans-serif;
-  color: black;
+  color: $indigo;
   padding: 0.3em 1em;
   font-size: 2em;
-  margin-top: -.5em;
+  margin-top: -.8em;
   text-align: center;
 }
 
@@ -43,7 +43,7 @@
 }
 
 .add-read-header {
-  color: $bright-green;
+  color: $violet;
   font-size: 2em;
   font-weight: bold;
   font-family: $sans-serif;
@@ -67,11 +67,11 @@
 }
 
 .search-icon {
-  color: $bright-green;
+  color: $portland-orange;
 }
 
 .search-icon:hover {
-  color: $bright-green-secondary;
+  color: darken($portland-orange, 15%);
   cursor: pointer;
 }
 

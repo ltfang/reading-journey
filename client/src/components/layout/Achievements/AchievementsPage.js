@@ -1,20 +1,20 @@
 import React from 'react'
-import Streaks from './Streaks'
-import Rank from './Rank'
+import StreaksPanel from './StreaksPanel'
+import RankPanel from './RankPanel'
 import MedalsPanel from './MedalsPanel'
 
 
 const AchievementsPage = props => {
   return (
     <div>
-      <h1 className="header">My Achievements</h1>
+      <h1 className="page-header">My Achievements</h1>
       <div className="grid-x grid-margin-x achievements-wrapper">
         <div className="cell small-4 achievement-box">
-          <Streaks />
+          <StreaksPanel />
         </div>
         <div className="cell small-4 achievement-box">
           <div className="grid-y rank-wrapper">
-            <Rank />
+            <RankPanel />
           </div>
         </div>
         <div className="cell small-4 achievement-box">

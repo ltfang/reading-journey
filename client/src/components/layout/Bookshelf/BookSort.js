@@ -20,7 +20,7 @@ const BookSort = ({ setSortCriterion }) => {
             Author
           </option>
           <option value="lastTimeRead">
-            Last Time Read
+            Last Date Read
           </option>
         </select>
       </div>
