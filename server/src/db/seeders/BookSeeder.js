@@ -38,6 +38,18 @@ class BookSeeder {
         author: "Carter Higgins",
         title: "Circle Under Berry",
         thumbnailUrl: "http://books.google.com/books/content?id=2tXbzQEACAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api"
+      },
+      {
+        googleBooksId: "L_ryCAAAQBAJ",
+        author: "Crockett Johnson",
+        title: "Harold and the Purple Crayon",
+        thumbnailUrl: "http://books.google.com/books/content?id=L_ryCAAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"
+      },
+      {
+        googleBooksId: "XP1EDQAAQBAJ",
+        author: "Eric Carle",
+        title: "The Very Hungry Caterpillar",
+        thumbnailUrl: "http://books.google.com/books/content?id=XP1EDQAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"
       }
     ]
     

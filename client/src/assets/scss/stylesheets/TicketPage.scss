@@ -4,11 +4,16 @@
   justify-content: center;
 }
 
+.ticket-header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 .ticket-page-icon-wrapper {
   display: grid;
   grid-template: 1fr / 1fr;
   place-items: center;
-  margin-top: -2em;
 }
 
 .ticket-page-icon {
@@ -43,7 +48,7 @@
   box-shadow: $box-shadow-lg;
   padding: 3em;
   border-radius: 10px;
-  width: 1000px;
+  width: 800px;
   display: flex;
   flex-direction: column;
   align-items: center;

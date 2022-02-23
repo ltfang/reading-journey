@@ -20,10 +20,10 @@ const TicketTransactionTile = ({ transaction, editTicketUse, deleteTicketUse }) 
 
   const customStyles = {
     content: {
-      width: '600px',
+      width: '700px',
       height: '500px',
       transform: 'translate(-50%, -50%)',
-      marginLeft: '50%',
+      marginLeft: '48%',
       marginTop: '25%',
       borderRadius: '10px'
     }
