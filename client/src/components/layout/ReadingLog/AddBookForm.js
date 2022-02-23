@@ -4,11 +4,12 @@ import Fetch from '../../../services/Fetch.js'
 import SingleError from '../SingleError.js'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faSearch } from '@fortawesome/free-solid-svg-icons'
-
+import Select from 'react-select'
 
 const AddBookForm = ({ newReadingSession, setNewReadingSession, searchTerms, setSearchTerms }) => {
   const [searchResults, setSearchResults] = useState([])
   const [error, setError] = useState("")
+  const [selectedOption, setSelectedOption] = useState(null)
 
   const handleSearchInputChange = event => {
     setSearchTerms(event.currentTarget.value)
@@ -25,6 +26,7 @@ const AddBookForm = ({ newReadingSession, setNewReadingSession, searchTerms, set
     if (validForSubmission()) {
       searchBooks()
     }
+    setSelectedOption("")
   }
 
   const validForSubmission = () => {
@@ -37,11 +39,12 @@ const AddBookForm = ({ newReadingSession, setNewReadingSession, searchTerms, set
   }
 
   const handleOptionChange = (event) => { 
+    setSelectedOption(event)
     const selectedBook = {
-      googleBooksId: event.currentTarget.selectedOptions[0].getAttribute('googlebooksid'),
-      title: event.currentTarget.selectedOptions[0].getAttribute('title'),
-      author: event.currentTarget.selectedOptions[0].getAttribute('author'),
-      thumbnailUrl: event.currentTarget.selectedOptions[0].getAttribute('thumbnailurl')
+      googleBooksId: event.googleBooksId,
+      title: event.title,
+      author: event.author,
+      thumbnailUrl: event.thumbnailUrl
     }
     setNewReadingSession({
       ...newReadingSession,
@@ -66,25 +69,46 @@ const AddBookForm = ({ newReadingSession, setNewReadingSession, searchTerms, set
       if (result.id) {
         indicatePriorBook = '*MY BOOKSHELF*'
       }
-      
+
       return (
-        <option 
-          key={result.googleBooksId}
-          value={result.googleBooksId}
-          googlebooksid={result.googleBooksId}
-          title={result.title}
-          author={authorString}
-          thumbnailurl={result.thumbnailUrl}
-          >{`${result.title}, ${authorString} ${indicatePriorBook}`}
-        </option>
+        { 
+          googleBooksId: result.googleBooksId,
+          title: result.title,
+          author: authorString,
+          thumbnailUrl: result.thumbnailUrl,
+          label: 
+            <div className="option">
+              <div>
+                <div className="option-title">{result.title}</div>
+                <div>{authorString}</div> 
+                <div className="indicate-prior-book">{indicatePriorBook}</div>
+              </div>
+              <div>
+                <img src={result.thumbnailUrl} className="option-image"/>
+              </div>
+            </div>
+        }
       )
     })
+
+    const customStyles = {
+      option: (provided, state) => ({
+        ...provided,
+        borderBottom: '1px dotted black',
+        backgroundColor: 'white',
+        color: 'black'
+      })
+    }
+    
     resultsDisplay =    
     <form>
-      <select onChange={handleOptionChange}>
-        <option>Search Results</option>
-        {optionsArray}
-      </select>
+      <Select
+        placeholder="Search results..."
+        styles={customStyles}
+        value={selectedOption}
+        options={optionsArray}
+        onChange={handleOptionChange}
+      />
     </form>
   } 
 
