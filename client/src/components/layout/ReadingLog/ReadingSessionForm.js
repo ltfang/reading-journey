@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import AddBookForm from './AddBookForm'
+import AddBookForm2 from './AddBookForm2'
 import SingleError from '../SingleError'
 import _ from 'lodash'
 
@@ -52,7 +53,7 @@ const ReadingSessionForm = ({ date, postReadingSession }) => {
   return (
     <>
       <h2 className="add-read-header">Add a New Read</h2>      
-      <AddBookForm 
+      <AddBookForm2 
         setNewReadingSession={setNewReadingSession}
         newReadingSession={newReadingSession}
         setSearchTerms={setSearchTerms}
