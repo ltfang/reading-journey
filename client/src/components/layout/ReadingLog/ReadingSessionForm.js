@@ -72,7 +72,7 @@ const ReadingSessionForm = ({ date, postReadingSession }) => {
           />
         </label>
 
-      <input type="submit" className="reg-btn auth-btn"></input>
+      <input type="submit" className="app-btn"></input>
       </form>
     </>
   )

@@ -31,15 +31,16 @@
   background-color: white;
   padding: 1em;
   font-family: $sans-serif;
-  max-height: 600px;
+  max-height: 500px;
   min-width: 400px;
+  max-width: 500px;
   box-shadow: $box-shadow-lg;
   padding: 3em;
   border-radius: 10px;
 }
 
 .reading-session-list {
-  min-width: 560px;
+  min-width: 200px;
 }
 
 .add-read-header {
@@ -77,5 +78,23 @@
 
 .minutesRead {
   width: 200px;
+}
+
+.option {
+  display:flex;
+  align-items: center;
+  justify-content: space-between;
+  color: black;
+  .option-title {
+    font-weight: bold;
+  }
+  .option-image {
+    height: 2.5em;
+    margin: 0.5em;
+  }
+  .indicate-prior-book {
+    font-weight: bold;
+    color: $portland-orange;
+  }
 }
 
