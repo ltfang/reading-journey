@@ -72,7 +72,7 @@ const TopBar = ({ user }) => {
     <div className="top-bar app-topbar">
       <div className="top-bar-left">
         <ul className="menu">
-          <li className="app-text">ReadingJourney</li>
+          <li className="app-text">Reading<span>Journey</span></li>
           <li className="home-container icon-container" onClick={handleHomeClick}>
             <FontAwesomeIcon 
               icon={faHouseUser}

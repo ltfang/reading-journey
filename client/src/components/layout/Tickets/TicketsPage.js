@@ -61,13 +61,15 @@ const TicketsPage = props => {
 
   return (
     <div>
-      <h1 className="page-header">My Tickets</h1>
-      <div className="ticket-page-icon-wrapper">
-        <FontAwesomeIcon 
-          icon={faTicketAlt}
-          className="fa-7x ticket-page-icon"
-        />
-        <h2 className="total-tickets">{tickets}</h2>
+      <div className="ticket-header">
+        <h1 className="page-header">My Tickets</h1>
+        <div className="ticket-page-icon-wrapper">
+          <FontAwesomeIcon 
+            icon={faTicketAlt}
+            className="fa-7x ticket-page-icon"
+          />
+          <h2 className="total-tickets">{tickets}</h2>
+        </div>
       </div>
       <div className="grid-y grid-margin-y ticket-container-main">
         <div className="cell small-8 ticket-form-container">

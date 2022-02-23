@@ -10,6 +10,10 @@ class UserSeeder {
       { name: "Lilly",
         email: "lilly@lilly.com", 
         cryptedPassword: cryptedPassword 
+      },
+      { name: "Noah",
+        email: "noah@email.com", 
+        cryptedPassword: cryptedPassword 
       }
     ]
     for (const singleUser of userData){

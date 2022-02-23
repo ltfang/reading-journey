@@ -50,20 +50,22 @@ const Calendar = props => {
   })
 
   return (
-    <div className="calendar">
+    <div className="calendar-page">
       <h1 className="page-header">My Reading Log</h1>
-      <div className="calendar-header">
-        <h1 className="month">{date.monthLong} {date.year}</h1>
-        <MonthNavButtons 
-          date={date}
-          setDate={setDate}
-        />
-      </div>
-      <div className="weekday-container">
-        {weekdayMarkers} 
-      </div>
-      <div className="days-container">
-        {daysToDisplay}
+      <div className="calendar">
+        <div className="calendar-header">
+          <h1 className="month">{date.monthLong} {date.year}</h1>
+          <MonthNavButtons 
+            date={date}
+            setDate={setDate}
+          />
+        </div>
+        <div className="weekday-container">
+          {weekdayMarkers} 
+        </div>
+        <div className="days-container">
+          {daysToDisplay}
+        </div>
       </div>
     </div>
   )

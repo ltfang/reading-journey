@@ -1,6 +1,10 @@
-.calendar {
-  margin: 1em;
+.calendar-page {
+  margin: 1em 3em;
   height: 90vh;
+}
+
+.calendar {
+  margin-bottom: 3em;
 }
 
 .calendar-header {
@@ -52,6 +56,7 @@
   display:grid;
   grid-template-columns: repeat(7, 1fr);
   border: 0.5px solid darken($violet, 15%);
+  margin-bottom: 3em;
 }
 
 .weekday-marker {

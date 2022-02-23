@@ -44,7 +44,7 @@ const StreaksPanel = props => {
   return (
 
     <div>
-      <h2 className="panel-header">My Streaks</h2>
+      <h2 className="panel-header">My Stats</h2>
       <h3 className="panel-subheader">How many days in a row can you read? Keep reading for a new record!</h3>
       <div className="streak-tile">
         <div className="streak-icon-name">

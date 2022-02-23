@@ -4,6 +4,7 @@ import BookSeeder from "./seeders/BookSeeder.js"
 import UserSeeder from "./seeders/UserSeeder.js"
 import ReadingSessionSeeder from "./seeders/ReadingSessionSeeder.js"
 import BadgeSeeder from "./seeders/BadgeSeeder.js"
+import TicketTransactionSeeder from "./seeders/TicketTransactionSeeder.js"
 
 class Seeder {
   static async seed() {
@@ -16,6 +17,9 @@ class Seeder {
 
     console.log("Seeding reading sessions...")
     await ReadingSessionSeeder.seed()
+
+    console.log("Seeding transactions...")
+    await TicketTransactionSeeder.seed()
 
     console.log("Seeding badges...")
     await BadgeSeeder.seed()
