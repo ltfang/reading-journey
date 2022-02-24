@@ -16,7 +16,7 @@ import AuthenticatedRoute from './authentication/AuthenticatedRoute'
 import AchievementsPage from './layout/Achievements/AchievementsPage'
 
 const App = (props) => {
-  const [currentUser, setCurrentUser] = useState(null)
+  const [currentUser, setCurrentUser] = useState(undefined)
   const fetchCurrentUser = async () => {
     try {
       const user = await getCurrentUser()

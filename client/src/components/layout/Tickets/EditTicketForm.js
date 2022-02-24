@@ -21,7 +21,6 @@ const EditTicketForm = ({ transaction, editTicketUse, setModalIsOpen }) => {
   const handleSubmit = (event) => {
     event.preventDefault()
     const result = editTicketUse(ticketTransaction)
-    console.log('result', result)
     if(result) {
       setModalIsOpen(false)
     }

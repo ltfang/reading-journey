@@ -12,7 +12,6 @@ const MainRankBadge = props => {
 
   const getRankData = async () => {
     const body = await Fetch.get('/api/v1/achievements/rank')
-    console.log('body.rankData', body.rankData)
     setRankData(body.rankData)
   }
 

@@ -96,7 +96,7 @@ class ReadingSessionSerializer {
         const latestStreak = streaks[streaks.length-1]
         latestStreak.lastDate=record.date
         const length = latestStreak.lastDate.diff(latestStreak.firstDate, 'days')
-        latestStreak.length = length.days+1
+        latestStreak.streakLength = length.days+1
       }
     })
     return streaks
@@ -112,7 +112,7 @@ class ReadingSessionSerializer {
     return {
       firstDate: "",
       lastDate: "",
-      length: 0
+      streakLength: 0
     }
   }
 
@@ -131,9 +131,9 @@ class ReadingSessionSerializer {
     let streaksInInterval = streaks.filter(streak => {
       return streak.lastDate >= firstDayInInterval
     })
-    let totalLength =  _.sumBy(streaksInInterval, 'length')
+    let totalLength =  _.sumBy(streaksInInterval, 'streakLength')
     const firstStreak = streaksInInterval[0]
-    if (firstStreak.firstDate < firstDayInInterval) {
+    if (firstStreak?.firstDate < firstDayInInterval) {
       let daysInFirstStreak = firstStreak.lastDate.diff(firstDayInInterval, 'days').days+1
       totalLength = totalLength - firstStreak.length + daysInFirstStreak
     }
