@@ -159,7 +159,8 @@ class ReadingSessionSerializer {
       currentRank: currentRank.rank, 
       nextRank: nextRank.rank,
       currentMinutes: parseInt(totalMinutes),
-      maxMinutes: currentRank.minutesMax
+      maxMinutes: currentRank.minutesMax,
+      minMinutes: currentRank.minutesMin
     }
   }
 

@@ -49,12 +49,12 @@ achievementsRouter.get("/rank", async (req, res) => {
   try {
     const badges = await Badge.query()
     const serializedBadges = badges.map(badge => BadgeSerializer.getSummary(badge))
-    const rank = await ReadingSessionSerializer.getRankAndProgress(req.user.id, serializedBadges)
+    const rankData = await ReadingSessionSerializer.getRankAndProgress(req.user.id, serializedBadges)
     return res
       .set({ "Content-Type": "application/json" })
       .status(200)
       .json({ 
-        rank: rank,
+        rankData: rankData,
         badges: serializedBadges
       })
   } catch (error) {
