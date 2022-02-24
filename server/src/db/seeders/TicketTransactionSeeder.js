@@ -1,31 +1,33 @@
 import TicketTransaction from "../../models/TicketTransaction.js"
 import User from "../../models/User.js"
+import Profile from "../../models/Profile.js"
 
 class TicketTransactionSeeder {
   static async seed() {
-    const noah = await User.query().findOne({ email: "noah@email.com" })
+    const lilly = await User.query().findOne({ email: "lilly@lilly.com" })
+    const noah = await Profile.query().findOne({ name: "Noah", userId: lilly.id })
 
     const transactionData = [
       {
-        userId: noah.id,
+        profileId: noah.id,
         number: 20,
         date: '2022-02-12',
         description: 'Play Super Smash Bros.'
       },
       {
-        userId: noah.id,
+        profileId: noah.id,
         number: 15,
         date: '2022-02-13',
         description: 'Watch Wild Kratts'
       },
       {
-        userId: noah.id,
+        profileId: noah.id,
         number: 15,
         date: '2022-02-19',
         description: 'Watch PJ Masks'
       },
       {
-        userId: noah.id,
+        profileId: noah.id,
         number: 10,
         date: '2022-02-19',
         description: 'Play Prodigy'

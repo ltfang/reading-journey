@@ -10,12 +10,9 @@ class UserSeeder {
       { name: "Lilly",
         email: "lilly@lilly.com", 
         cryptedPassword: cryptedPassword 
-      },
-      { name: "Noah",
-        email: "noah@email.com", 
-        cryptedPassword: cryptedPassword 
       }
     ]
+    
     for (const singleUser of userData){
       const currentUser = await User.query().findOne({ email: singleUser.email })
       if(!currentUser){

@@ -1,10 +1,12 @@
 import Book from "../../models/Book.js"
 import User from "../../models/User.js"
+import Profile from "../../models/Profile.js"
 import ReadingSession from "../../models/ReadingSession.js"
 
 class ReadingSessionSeeder {
   static async seed() {
-    const noah = await User.query().findOne({ email: "noah@email.com" })
+    const lilly = await User.query().findOne({ email: "lilly@lilly.com" })
+    const noah = await Profile.query().findOne({ name: "Noah", userId: lilly.id })
     const cat = await Book.query().findOne({ title: "The Cat in the Hat" })
     const llama = await Book.query().findOne({ title: "Llama Llama Red Pajama" })
     const worst = await Book.query().findOne({ title: "The Worst Helper Ever" })
@@ -16,73 +18,73 @@ class ReadingSessionSeeder {
 
     const sessionData = [
       {
-        userId: noah.id,
+        profileId: noah.id,
         bookId: crayon.id,
         date: '2022-02-10',
         minutesRead: 11
       },
       {
-        userId: noah.id,
+        profileId: noah.id,
         bookId: caterpillar.id,
         date: '2022-02-11',
         minutesRead: 7
       },
       {
-        userId: noah.id,
+        profileId: noah.id,
         bookId: cat.id,
         date: '2022-02-12',
         minutesRead: 10
       },
       {
-        userId: noah.id,
+        profileId: noah.id,
         bookId: worst.id,
         date: '2022-02-13',
         minutesRead: 11
       },
       {
-        userId: noah.id,
+        profileId: noah.id,
         bookId: cat.id,
         date: '2022-02-14',
         minutesRead: 7
       },
       {
-        userId: noah.id,
+        profileId: noah.id,
         bookId: llama.id,
         date: '2022-02-14',
         minutesRead: 6
       },
       {
-        userId: noah.id,
+        profileId: noah.id,
         bookId: cat.id,
         date: '2022-02-15',
         minutesRead: 7
       },
       {
-        userId: noah.id,
+        profileId: noah.id,
         bookId: worst.id,
         date: '2022-02-16',
         minutesRead: 9
       },
       {
-        userId: noah.id,
+        profileId: noah.id,
         bookId: circle.id,
         date: '2022-02-19',
         minutesRead: 8
       },
       {
-        userId: noah.id,
+        profileId: noah.id,
         bookId: worst.id,
         date: '2022-02-20',
         minutesRead: 9
       },
       {
-        userId: noah.id,
+        profileId: noah.id,
         bookId: room.id,
         date: '2022-02-21',
         minutesRead: 6
       },
       {
-        userId: noah.id,
+        profileId: noah.id,
         bookId: change.id,
         date: '2022-02-22',
         minutesRead: 7
