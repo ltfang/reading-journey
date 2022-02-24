@@ -9,12 +9,12 @@ const StreaksPanel = props => {
     currentStreak: {
       firstDate: "",
       lastDate: "",
-      length: 0
+      streakLength: 0
     },
     longestStreak: {
       firstDate: "",
       lastDate: "",
-      length: 0
+      streakLength: 0
     },
     percentIn30: 0,
     percentIn7: 0
@@ -52,7 +52,7 @@ const StreaksPanel = props => {
             icon={faFire}
             className="streak-icon fa-3x"
           />
-          <div className="streak-stat">{streaks.currentStreak.length}</div>
+          <div className="streak-stat">{streaks.currentStreak.streakLength}</div>
         </div>
         <div className="streak-label">
           <div className="streak-name">Current Streak</div>
@@ -65,7 +65,7 @@ const StreaksPanel = props => {
           icon={faFire}
           className="streak-icon fa-3x"
           />
-          <div className="streak-stat">{streaks.longestStreak.length}</div>
+          <div className="streak-stat">{streaks.longestStreak.streakLength}</div>
         </div>
         <div className="streak-label">
           <div className="streak-name">Longest Streak</div>
