@@ -2,7 +2,9 @@
   display: flex;
   flex-wrap: wrap;
   margin: 1em;
-  justify-content: center;
+  justify-content: flex-start;
+  align-items: flex-start;
+  align-content: flex-start;
   height: 600px;
   overflow: auto;
 }

@@ -2,27 +2,27 @@ import React, { useState, useEffect } from 'react'
 import Fetch from '../../../services/Fetch'
 
 const MainRankBadge = props => {
-  const [rank, setRank] = useState("")
-  const [currentMinutes, setCurrentMinutes] = useState(0)
-  const [maxMinutes, setMaxMinutes] = useState(100)
-  const [nextRank, setNextRank] = useState("")
+  const [rankData, setRankData] = useState({
+    currentRank: "",
+    nextRank: "",
+    maxMinutes: 100,
+    minMinutes: 1,
+    currentMinutes: 0
+  })
 
-
-  const getRank = async () => {
+  const getRankData = async () => {
     const body = await Fetch.get('/api/v1/achievements/rank')
-    setRank(body.rank.currentRank)
-    setCurrentMinutes(body.rank.currentMinutes)
-    setMaxMinutes(body.rank.maxMinutes)
-    setNextRank(body.rank.nextRank)
+    setRankData(body.rankData)
   }
 
   useEffect(() => {
-    getRank()
+    getRankData()
   }, [])
 
-  let formattedRank = rank.toLowerCase()
+  const { currentRank, nextRank, maxMinutes, minMinutes, currentMinutes } = rankData
+  let formattedRank = currentRank.toLowerCase()
   let badgeClass = `main-badge ${formattedRank}`
-  let percentageComplete = Math.round(currentMinutes/(maxMinutes+1)*100)
+  let percentageComplete = Math.round((currentMinutes-minMinutes)/(maxMinutes+1-minMinutes)*100)
   
   const fillerStyles = {
     height: '100%',
@@ -37,9 +37,9 @@ const MainRankBadge = props => {
     <div className="main-badge-progress-wrapper">
       <div className={badgeClass}>
         <div className="circle">
-          <div className="initial">{rank[0]}</div>
+          <div className="initial">{currentRank[0]}</div>
         </div>
-        <div className="ribbon">{rank}</div>
+        <div className="ribbon">{currentRank}</div>
       </div>
       <div className="progress-bar-container">
         <div style={fillerStyles}>

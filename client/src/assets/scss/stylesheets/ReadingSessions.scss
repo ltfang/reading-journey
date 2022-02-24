@@ -23,7 +23,7 @@
 
 .reading-session-bottom {
   margin: 1em;
-  max-width: 1800px;
+  min-width: 1400px;
 }
 
 .form-container {
@@ -32,8 +32,7 @@
   padding: 1em;
   font-family: $sans-serif;
   max-height: 500px;
-  min-width: 400px;
-  max-width: 500px;
+  min-width: 600px;
   box-shadow: $box-shadow-lg;
   padding: 3em;
   border-radius: 10px;
