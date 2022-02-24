@@ -1,18 +1,18 @@
-import User from "../src/models/User.js"
+import Profile from "../src/models/Profile.js"
 
 class TicketSerializer {
-  static async getTotalTickets(userId) {
-    const user = await User.query().findById(userId)
-    const minutes = await user.$relatedQuery("readingSessions").sum("minutesRead")
+  static async getTotalTickets(profileId) {
+    const profile = await Profile.query().findById(profileId)
+    const minutes = await profile.$relatedQuery("readingSessions").sum("minutesRead")
     const earnedTickets = minutes[0].sum
-    const tickets = await user.$relatedQuery("ticketTransactions").sum("number") 
+    const tickets = await profile.$relatedQuery("ticketTransactions").sum("number") 
     const usedTickets = tickets[0].sum
     return earnedTickets - usedTickets
   }
 
-  static async getRecentTransactions(userId, number) {
-    const user = await User.query().findById(userId)
-    const transactions = await user.$relatedQuery("ticketTransactions").orderBy('date', 'desc').limit(number)
+  static async getRecentTransactions(profileId, number) {
+    const profile = await Profile.query().findById(profileId)
+    const transactions = await profile.$relatedQuery("ticketTransactions").orderBy('date', 'desc').limit(number)
     return transactions
   }
 }

@@ -9,9 +9,9 @@ const readingSessionsRouter = new express.Router();
 readingSessionsRouter.get("/:date", async (req, res) => {
   try {
     const date = DateTime.fromFormat(req.params.date, 'yyyyMMdd')
-    const userId = req.user.id
+    const profileId = req.session.profileId
     const readingSessions = await ReadingSession.query()
-    const serializedReadingSessions = await ReadingSessionSerializer.getReadingSessions(readingSessions, userId, date)
+    const serializedReadingSessions = await ReadingSessionSerializer.getReadingSessions(readingSessions, profileId, date)
     const totalMinutes = ReadingSessionSerializer.getTotalMinutes(serializedReadingSessions)
     return res.status(200).json({ 
       readingSessions: serializedReadingSessions,
@@ -30,7 +30,7 @@ readingSessionsRouter.post("/:date", async (req, res) => {
       date: date,
       minutesRead: minutesRead,
       bookId: bookId,
-      userId: req.user.id
+      profileId: req.session.profileId
     })
     newReadingSession.book = book
     return res.status(201).json({ newReadingSession });

@@ -5,7 +5,7 @@ const booksRouter = new express.Router()
 
 booksRouter.get("/", async (req, res) => {
   try {
-    const bookData = await BookSerializer.getUserBooks(req.user.id)
+    const bookData = await BookSerializer.getProfileBooks(req.session.profileId)
     return res
       .set({ "Content-Type": "application/json" })
       .status(200)

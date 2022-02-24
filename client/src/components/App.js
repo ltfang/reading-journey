@@ -7,7 +7,7 @@ import '../assets/scss/main.scss'
 import RegistrationForm from './registration/RegistrationForm'
 import SignInForm from './authentication/SignInForm'
 import TopBar from './layout/TopBar'
-import HomePage from './layout/HomePage'
+import HomePage2 from './layout/HomePage2'
 import Calendar from './layout/ReadingLog/Calendar'
 import ReadingSessions from './layout/ReadingLog/ReadingSessions'
 import TicketsPage from './layout/Tickets/TicketsPage'
@@ -35,7 +35,7 @@ const App = (props) => {
       <TopBar user={currentUser} />
       <Switch>
         <Route exact path="/">
-          <HomePage user={currentUser} />
+          <HomePage2 user={currentUser} />
         </Route>
         <Route exact path="/users/new" component={RegistrationForm} />
         <Route exact path="/user-sessions/new" component={SignInForm} />

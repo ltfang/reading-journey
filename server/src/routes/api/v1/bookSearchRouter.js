@@ -16,7 +16,7 @@ bookSearchRouter.get("/", async (req, res) => {
       .json(null)
     }
     const googleBookData = BookSerializer.summarizeGoogleBooksData(fullBookData)
-    const existingBooks = await BookSerializer.getUserBooks(req.user.id)
+    const existingBooks = await BookSerializer.getProfileBooks(req.session.profileId)
     const existingBookData = BookSerializer.searchBookTitles(existingBooks, searchTerms)
     const bookData = BookSerializer.concatBooks(existingBookData, googleBookData)
     return res

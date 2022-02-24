@@ -38,6 +38,14 @@ const TopBar = ({ user }) => {
     history.push('/achievements')
   }
 
+  const profiles = user?.profiles.map(profile => {
+    return (
+      <div key={profile.id}>
+        {profile.name}
+      </div>
+    )
+  })
+
   const authenticatedListItems = [
     <li key="calendar" className="cal-container icon-container" onClick={handleCalendarClick}>
       <FontAwesomeIcon 
@@ -68,6 +76,7 @@ const TopBar = ({ user }) => {
     </li>
   ];
 
+
   return (
     <div className="top-bar app-topbar">
       <div className="top-bar-left">
@@ -83,6 +92,7 @@ const TopBar = ({ user }) => {
       </div>
       <div className="top-bar-right nav-right">
         <ul className="menu">{user ? authenticatedListItems : unauthenticatedListItems}</ul>
+        {profiles}
       </div>
     </div>
   );

@@ -7,6 +7,7 @@ import booksRouter from './api/v1/booksRouter.js'
 import minutesRouter from './api/v1/minutesRouter.js'
 import ticketsRouter from './api/v1/ticketsRouter.js'
 import achievementsRouter from './api/v1/achievementsRouter.js'
+import profilesRouter from './api/v1/profilesRouter.js'
 import clientRouter from './clientRouter.js'
 
 const rootRouter = new express.Router()
@@ -14,6 +15,7 @@ rootRouter.use('/', clientRouter)
 
 rootRouter.use('/api/v1/user-sessions', userSessionsRouter)
 rootRouter.use('/api/v1/users', usersRouter) 
+rootRouter.use('/api/v1/profiles', profilesRouter)
 rootRouter.use('/api/v1/log', readingSessionsRouter)
 rootRouter.use('/api/v1/book-search', bookSearchRouter)
 rootRouter.use('/api/v1/books', booksRouter)
