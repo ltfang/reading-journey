@@ -5,7 +5,7 @@ import Fetch from '../../services/Fetch'
 const ProfileDropdown = ({ user, currentProfile, setCurrentProfile }) => {
 
   const setProfile = async (id) => {
-    await Fetch.post('/api/v1/profiles', { id })
+    await Fetch.update('/api/v1/profiles', { id })
   }
 
   const handleOptionChange = async (event) => {

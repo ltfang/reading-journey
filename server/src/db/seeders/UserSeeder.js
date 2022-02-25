@@ -7,7 +7,7 @@ class UserSeeder {
     const cryptedPassword = Bcrypt.hashSync(password, 10)
 
     const userData = [
-      { name: "Lilly",
+      { 
         email: "lilly@lilly.com", 
         cryptedPassword: cryptedPassword 
       }

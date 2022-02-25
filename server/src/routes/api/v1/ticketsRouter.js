@@ -6,7 +6,7 @@ const ticketsRouter = new express.Router()
 
 ticketsRouter.get("/total", async (req, res) => {
   try {
-    const totalTickets = await TicketSerializer.getTotalTickets(req.session.profileId)
+    const totalTickets = await TicketSerializer.getTotalTickets(req.user.currentProfileId)
     return res
       .set({ "Content-Type": "application/json" })
       .status(200)
@@ -18,7 +18,7 @@ ticketsRouter.get("/total", async (req, res) => {
 
 ticketsRouter.get("/recent", async (req, res) => {
   try {
-    const recentTransactions = await TicketSerializer.getRecentTransactions(req.session.profileId, 4)
+    const recentTransactions = await TicketSerializer.getRecentTransactions(req.user.currentProfileId, 4)
     return res
       .set({ "Content-Type": "application/json" })
       .status(200)
@@ -30,7 +30,7 @@ ticketsRouter.get("/recent", async (req, res) => {
 
 ticketsRouter.post("/", async (req, res) => {
   const { date, number, description } = req.body
-  const profileId = req.session.profileId
+  const profileId = req.user.currentProfileId
   try {
     const totalTickets = await TicketSerializer.getTotalTickets(profileId)
     const newTotal = totalTickets-number
@@ -48,7 +48,7 @@ ticketsRouter.patch("/", async (req, res) => {
   const { id, date, number, description } = req.body
   try {
     const transactionToBeUpdated = await TicketTransaction.query().findById(id)
-    const totalTickets = await TicketSerializer.getTotalTickets(req.session.profileId)
+    const totalTickets = await TicketSerializer.getTotalTickets(req.user.currentProfileId)
     const newTotal = totalTickets+transactionToBeUpdated.number-number
     if (newTotal < 0) {
       return res.status(201).json({error: 'Not enough tickets!'})
@@ -64,7 +64,7 @@ ticketsRouter.delete('/', async (req, res) => {
   try {
     const ticketTransactionId = req.body.id
     await TicketTransaction.query().deleteById(ticketTransactionId)
-    const totalTickets = await TicketSerializer.getTotalTickets(req.session.profileId) 
+    const totalTickets = await TicketSerializer.getTotalTickets(req.user.currentProfileId) 
     return res.status(201).json({ totalTickets })
   } catch (error) {
     return res.status(500).json({ errors: error })

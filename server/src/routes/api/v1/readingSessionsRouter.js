@@ -1,5 +1,5 @@
 import express from "express"
-import { ReadingSession } from "../../../models/index.js"
+import { ReadingSession, User } from "../../../models/index.js"
 import ReadingSessionSerializer from "../../../../serializers/ReadingSessionSerializer.js"
 import BookSerializer from "../../../../serializers/BookSerializer.js"
 import { DateTime } from "luxon"
@@ -9,7 +9,7 @@ const readingSessionsRouter = new express.Router();
 readingSessionsRouter.get("/:date", async (req, res) => {
   try {
     const date = DateTime.fromFormat(req.params.date, 'yyyyMMdd')
-    const profileId = req.session.profileId
+    const profileId = req.user.currentProfileId
     const readingSessions = await ReadingSession.query()
     const serializedReadingSessions = await ReadingSessionSerializer.getReadingSessions(readingSessions, profileId, date)
     const totalMinutes = ReadingSessionSerializer.getTotalMinutes(serializedReadingSessions)
@@ -30,7 +30,7 @@ readingSessionsRouter.post("/:date", async (req, res) => {
       date: date,
       minutesRead: minutesRead,
       bookId: bookId,
-      profileId: req.session.profileId
+      profileId: req.user.currentProfileId
     })
     newReadingSession.book = book
     return res.status(201).json({ newReadingSession });

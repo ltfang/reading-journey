@@ -2,7 +2,6 @@ import React from 'react'
 import { Link, useHistory } from 'react-router-dom'
 
 const HomePage = ({ user, profile }) => {
-  console.log('profile', profile)
   const history = useHistory()
 
   const handleTicketClick = () => {
