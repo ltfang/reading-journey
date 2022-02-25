@@ -21,22 +21,4 @@ rootRouter.use('/api/v1/minutes', minutesRouter)
 rootRouter.use('/api/v1/tickets', ticketsRouter)
 rootRouter.use('/api/v1/achievements', achievementsRouter)
 
-//Testing cookie sessions
-rootRouter.get("/set-name", (req, res) => {
-  const name = req.query.name
-  req.session.name = name
-  res.send("Your name has been saved as a cookie")
-})
-
-rootRouter.get("/get-name", (req, res) => {
-  const cookieName = req.session.name
-  let greeting
-  if(cookieName) {
-    greeting = cookieName
-  } else {
-    greeting = "friend"
-  }
-  res.render("index", { greeting })
-})
-
 export default rootRouter;

@@ -6,7 +6,6 @@ import { DateTime } from "luxon"
 const minutesRouter = new express.Router()
 
 minutesRouter.get("/", async (req, res) => {
-  console.log('cookie name', req.session.name)
   const startDate = DateTime.fromFormat(req.query.start, 'yyyyMMdd')
   const endDate = DateTime.fromFormat(req.query.end, 'yyyyMMdd')
   try {
