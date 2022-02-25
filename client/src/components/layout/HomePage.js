@@ -1,8 +1,8 @@
 import React from 'react'
 import { Link, useHistory } from 'react-router-dom'
 
-const HomePage = ({ user }) => {
-
+const HomePage = ({ user, profile }) => {
+  console.log('profile', profile)
   const history = useHistory()
 
   const handleTicketClick = () => {
@@ -38,7 +38,7 @@ const HomePage = ({ user }) => {
   const name = user?.name 
   const authenticatedWelcome = 
     <div>
-      <h2 className="greeting">{`Hi ${name}!`}</h2>
+      <h2 className="greeting">{`Hi ${profile.name}!`}</h2>
       <ul className="greeting-ul">
         <li 
           className="homepage-list box1"

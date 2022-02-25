@@ -171,13 +171,13 @@ class ReadingSessionSerializer {
       seven: 0
     }
     streaks.forEach(streak => {
-      if (streak.length>=3) {
+      if (streak.streakLength>=3) {
         medals.three++
       }
-      if (streak.length>=5) {
+      if (streak.streakLength>=5) {
         medals.five++
       }
-      if (streak.length>=7) {
+      if (streak.streakLength>=7) {
         medals.seven++
       }
     })

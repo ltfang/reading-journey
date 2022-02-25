@@ -2,11 +2,9 @@ import React from 'react'
 import Fetch from '../../services/Fetch'
 
 const ProfileIcon = ({ id, name }) => {
-  console.log('id', id)
 
   const setProfile = async () => {
-    const body = await Fetch.post('/api/v1/profiles', { id })
-    console.log('Profile id set to', body)
+    await Fetch.post('/api/v1/profiles', { id })
   }
 
   const handleClick = () => {

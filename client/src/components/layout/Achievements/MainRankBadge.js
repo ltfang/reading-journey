@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import Fetch from '../../../services/Fetch'
 
-const MainRankBadge = props => {
+const MainRankBadge = ({ profile }) => {
   const [rankData, setRankData] = useState({
     currentRank: "",
     nextRank: "",
@@ -17,7 +17,7 @@ const MainRankBadge = props => {
 
   useEffect(() => {
     getRankData()
-  }, [])
+  }, [profile])
 
   const { currentRank, nextRank, maxMinutes, minMinutes, currentMinutes } = rankData
   let formattedRank = currentRank.toLowerCase()

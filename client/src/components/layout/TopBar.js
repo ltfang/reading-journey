@@ -4,8 +4,9 @@ import SignOutButton from "../authentication/SignOutButton";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faHouseUser, faCalendar, faBookOpen, faTicketAlt, faMedal } from '@fortawesome/free-solid-svg-icons'
 import { useHistory } from 'react-router-dom'
+import ProfileDropdown from "./ProfileDropdown";
 
-const TopBar = ({ user }) => {
+const TopBar = ({ user, currentProfile, setCurrentProfile }) => {
   const unauthenticatedListItems = [
     <li key="sign-in">
       <Link to="/user-sessions/new" className="sign-in-link">Sign In</Link>
@@ -38,15 +39,13 @@ const TopBar = ({ user }) => {
     history.push('/achievements')
   }
 
-  const profiles = user?.profiles.map(profile => {
-    return (
-      <div key={profile.id}>
-        {profile.name}
-      </div>
-    )
-  })
-
   const authenticatedListItems = [
+    <ProfileDropdown
+      key="profile-dropdown" 
+      user={user} 
+      currentProfile={currentProfile}
+      setCurrentProfile={setCurrentProfile}
+    />,
     <li key="calendar" className="cal-container icon-container" onClick={handleCalendarClick}>
       <FontAwesomeIcon 
         icon={faCalendar}
@@ -92,7 +91,6 @@ const TopBar = ({ user }) => {
       </div>
       <div className="top-bar-right nav-right">
         <ul className="menu">{user ? authenticatedListItems : unauthenticatedListItems}</ul>
-        {profiles}
       </div>
     </div>
   );

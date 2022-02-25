@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from 'react'
-import { DateTime, Interval } from 'luxon'
+import { DateTime } from 'luxon'
 import CalendarDay from './CalendarDay'
 import MonthNavButtons from './MonthNavButtons'
 import Fetch from '../../../services/Fetch'
 
-const Calendar = props => {
+
+const Calendar = ({ profile }) => {
   const [date, setDate] = useState(DateTime.now())
   const [dailyMinutes, setDailyMinutes] = useState([])
 
@@ -36,7 +37,7 @@ const Calendar = props => {
   
   useEffect(() => {
     getDailyMinutes()
-  }, [date])
+  }, [date, profile])
 
   const daysToDisplay = dailyMinutes.map(day => {
     const dateString = day.date
@@ -51,7 +52,7 @@ const Calendar = props => {
 
   return (
     <div className="calendar-page">
-      <h1 className="page-header">My Reading Log</h1>
+      <h1 className="page-header">{profile.name}'s Reading Log</h1>
       <div className="calendar">
         <div className="calendar-header">
           <h1 className="month">{date.monthLong} {date.year}</h1>
