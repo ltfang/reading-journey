@@ -10,7 +10,7 @@ Users can:
 
 See the app in production here: https://reading-journey.herokuapp.com/
 
-The app is built with React, Express, Node, and Postgres.  It uses the Google Books API and certain React libraries, including react-select, react-modal, luxon, and font-awesome. 
+The app is built with React, Express, Node, and Postgres and integrates the Google Books API.  Front-end libraries includereact-select, react-modal, luxon, and font-awesome. 
 
 ## Instructions
 
@@ -34,6 +34,11 @@ The app is built with React, Express, Node, and Postgres.  It uses the Google Bo
          
 * Navigate to localhost:3000 in your browser to see the app
 
+![image](https://user-images.githubusercontent.com/22434679/156003801-507079c4-1474-40ab-979a-87cddbb576a0.png)
+![image](https://user-images.githubusercontent.com/22434679/156005283-596369d2-2c70-4e45-89c4-2cef10b7ab4a.png)
+![image](https://user-images.githubusercontent.com/22434679/156005310-1bee9e24-551d-44d3-95ca-d9223ed2495f.png)
+![image](https://user-images.githubusercontent.com/22434679/156005416-6b118062-5135-4426-9680-6031c6a82af8.png)
+![image](https://user-images.githubusercontent.com/22434679/156005497-0cc4bfc9-9b74-4cba-b99f-7a087cdd21e5.png)
 ## TODO
 * Enable a user to have multiple profiles
 * Add animations
