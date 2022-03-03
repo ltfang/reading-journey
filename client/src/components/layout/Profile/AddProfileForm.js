@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import Fetch from '../../../services/Fetch'
 import ErrorList from '../ErrorList'
 
-const AddProfileForm = ({ setModalIsOpenToFalse, user, setUser, profile, setProfile }) => {
+const AddProfileForm = ({ setModalIsOpenToFalse, user, setUser, setCurrentProfile }) => {
   const [profileName, setProfileName] = useState('')
   const [errors, setErrors] = useState({})
 
@@ -23,8 +23,7 @@ const AddProfileForm = ({ setModalIsOpenToFalse, user, setUser, profile, setProf
       ...user,
       profiles: [...user.profiles, newProfile]
     })
-    setProfile({...newProfile, label: newProfile.name})
-    setErrors('')
+    setCurrentProfile({...newProfile, label: newProfile.name})
   }
 
   return (

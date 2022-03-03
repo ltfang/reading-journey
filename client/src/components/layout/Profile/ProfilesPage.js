@@ -5,7 +5,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faTimes, faPlus } from '@fortawesome/free-solid-svg-icons'
 import AddProfileForm from './AddProfileForm'
 
-const ProfilesPage = ({ user, setUser, profile, setProfile }) => {
+const ProfilesPage = ({ user, setUser, currentProfile, setCurrentProfile }) => {
 
   const [modalIsOpen, setModalIsOpen] = useState(false)
 
@@ -35,7 +35,8 @@ const ProfilesPage = ({ user, setUser, profile, setProfile }) => {
         key={profile.id}
         id={profile.id}
         name={profile.name}
-        setProfile={setProfile}
+        currentProfile={currentProfile}
+        setCurrentProfile={setCurrentProfile}
         user={user}
         setUser={setUser}
       />
@@ -70,8 +71,7 @@ const ProfilesPage = ({ user, setUser, profile, setProfile }) => {
         setModalIsOpenToFalse={setModalIsOpenToFalse}
         user={user}
         setUser={setUser}
-        profile={profile}
-        setProfile={setProfile}
+        setCurrentProfile={setCurrentProfile}
       />
     </Modal>
     </div>

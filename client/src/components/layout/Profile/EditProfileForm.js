@@ -2,13 +2,13 @@ import React, { useState } from 'react'
 import Fetch from '../../../services/Fetch'
 import ErrorList from '../ErrorList'
 
-const EditProfileForm = ({ setModalIsOpenToFalse, profiles, setProfiles }) => {
+const EditProfileForm = ({ setModalIsOpenToFalse, id, user, setUser, currentProfile, setCurrentProfile }) => {
   const [profileName, setProfileName] = useState('')
   const [errors, setErrors] = useState({})
 
-  const createProfile = async (profileName, setErrors) => {
-    const body = await Fetch.post('/api/v1/profiles', { profileName }, setErrors)
-    return body.newProfile
+  const updateProfile = async (profileName, setErrors) => {
+    const body = await Fetch.update('/api/v1/profiles', { id, profileName }, setErrors)
+    return body.updatedProfile
   }
 
   const handleInputChange = event => {
@@ -17,13 +17,22 @@ const EditProfileForm = ({ setModalIsOpenToFalse, profiles, setProfiles }) => {
 
   const handleSubmit = async (event) => {
     event.preventDefault()
-    const newProfile = await createProfile(profileName, setErrors)
-    setModalIsOpenToFalse()
-    setProfiles([
-      ...profiles,
-      newProfile
-    ])
-    setError('')
+    const body = await updateProfile(profileName, setErrors)
+    if (body) {
+      const profiles = [...user.profiles]
+      const updatedProfile = profiles.find(profile=>profile.id===id)
+      updatedProfile.name = profileName
+      setUser({
+        ...user,
+        profiles: profiles
+      })
+      setCurrentProfile({
+        ...currentProfile,
+        name: profileName,
+        label: profileName
+      })
+      setModalIsOpenToFalse()
+    }    
   }
 
   return (

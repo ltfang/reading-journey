@@ -51,10 +51,10 @@ ticketsRouter.patch("/", async (req, res) => {
     const totalTickets = await TicketSerializer.getTotalTickets(req.user.currentProfileId)
     const newTotal = totalTickets+transactionToBeUpdated.number-number
     if (newTotal < 0) {
-      return res.status(201).json({error: 'Not enough tickets!'})
+      return res.status(200).json({error: 'Not enough tickets!'})
     }
     await TicketTransaction.query().patchAndFetchById(id, { date, number, description })    
-    return res.status(201).json({ totalTickets: newTotal })
+    return res.status(200).json({ totalTickets: newTotal })
   } catch (error) {
     return res.status(500).json({ errors: error })
   }
@@ -65,7 +65,7 @@ ticketsRouter.delete('/', async (req, res) => {
     const ticketTransactionId = req.body.id
     await TicketTransaction.query().deleteById(ticketTransactionId)
     const totalTickets = await TicketSerializer.getTotalTickets(req.user.currentProfileId) 
-    return res.status(201).json({ totalTickets })
+    return res.status(200).json({ totalTickets })
   } catch (error) {
     return res.status(500).json({ errors: error })
   }

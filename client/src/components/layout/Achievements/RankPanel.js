@@ -3,7 +3,7 @@ import SmallRankBadge from './SmallRankBadge'
 import MainRankBadge from './MainRankBadge'
 import Fetch from '../../../services/Fetch'
 
-const RankPanel = ({ profile }) => {
+const RankPanel = ({ currentProfile }) => {
   const [badges, setBadges] = useState([])
 
   const getBadges = async () => {
@@ -13,7 +13,7 @@ const RankPanel = ({ profile }) => {
 
   useEffect(()=> {
     getBadges()
-  }, [profile])
+  }, [currentProfile])
 
   const badgeList = badges.map(badge => {
     return (
@@ -26,10 +26,10 @@ const RankPanel = ({ profile }) => {
 
   return(
     <>
-      <h2 className="panel-header">{profile.name}'s Rank</h2>
+      <h2 className="panel-header">{currentProfile.name}'s Rank</h2>
       <h3 className="panel-subheader">Earn your next rank based on your total reading time!</h3>
       <div className="cell small-8 main-badge-wrapper">
-        <MainRankBadge profile={profile} />
+        <MainRankBadge currentProfile={currentProfile} />
       </div>
       <div className="cell small-4 badge-list-wrapper">
         {badgeList}

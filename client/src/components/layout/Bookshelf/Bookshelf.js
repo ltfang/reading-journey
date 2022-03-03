@@ -6,7 +6,7 @@ import BookSort from './BookSort'
 import _ from 'lodash'
 import SortBooks from '../../../services/SortBooks.js'
 
-const Bookshelf = ({ profile }) => {
+const Bookshelf = ({ currentProfile }) => {
   const [books, setBooks] = useState([])
   const [searchText, setSearchText] = useState('')
   const [sortCriterion, setSortCriterion] = useState(null)
@@ -18,7 +18,7 @@ const Bookshelf = ({ profile }) => {
 
   useEffect(()=> {
     getBooks()
-  }, [profile])
+  }, [currentProfile])
 
   let displayedBooks = books.filter(book => {
     return book.title.toLowerCase().includes(searchText)
@@ -53,7 +53,7 @@ const Bookshelf = ({ profile }) => {
           setSortCriterion={setSortCriterion}
         />
       </div>
-      <h1 className="page-header">{profile.name}'s Bookshelf</h1>
+      <h1 className="page-header">{currentProfile.name}'s Bookshelf</h1>
       <div className="bookshelf-container">
         {bookList}
       </div>

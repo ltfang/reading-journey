@@ -5,7 +5,7 @@ import TicketTransactionTile from './TicketTransactionTile'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faTicketAlt } from '@fortawesome/free-solid-svg-icons'
 
-const TicketsPage = ({ profile }) => {
+const TicketsPage = ({ currentProfile }) => {
   const [tickets, setTickets] = useState(0)
   const [recentTransactions, setRecentTransactions] = useState([])
 
@@ -22,7 +22,7 @@ const TicketsPage = ({ profile }) => {
   useEffect(() => {
     getTickets()
     getRecentTransactions()
-  }, [tickets, profile])
+  }, [tickets, currentProfile])
 
   const useTickets = async (ticketTransaction) => {
     const responseBody = await Fetch.post('/api/v1/tickets', ticketTransaction)
@@ -62,7 +62,7 @@ const TicketsPage = ({ profile }) => {
   return (
     <div>
       <div className="ticket-header">
-        <h1 className="page-header">{profile.name}'s Tickets</h1>
+        <h1 className="page-header">{currentProfile.name}'s Tickets</h1>
         <div className="ticket-page-icon-wrapper">
           <FontAwesomeIcon 
             icon={faTicketAlt}

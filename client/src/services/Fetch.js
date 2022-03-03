@@ -64,7 +64,7 @@ class Fetch {
     }
   }
 
-  static update = async (endpoint, body) =>{
+  static update = async (endpoint, body, setErrors=null) => {
     try {
       const response = await fetch(endpoint, {
         method:"PATCH",
@@ -76,6 +76,8 @@ class Fetch {
       if(!response.ok){
         if(response.status === 422){
           const responseBody = await response.json()
+          const newErrors = translateServerErrors(responseBody.errors)
+          setErrors(newErrors)
         } else {
           throw (new Error(`${response.status} ${response.statusText}`))
         }

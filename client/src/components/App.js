@@ -34,7 +34,7 @@ const App = (props) => {
   }
 
   const fetchCurrentProfile = async () => {
-    const body = await Fetch.get('/api/v1/profiles')
+    const body = await Fetch.get('/api/v1/profiles/current')
     //Add label property so the select option will render with a name when currentProfile is passed to ProfileDropdown via TopBar
     const currentProfile = {...body.currentProfile, label: body.currentProfile.name}
     setCurrentProfile(currentProfile)
@@ -57,7 +57,7 @@ const App = (props) => {
       />
       <Switch>
         <Route exact path="/">
-          <HomePage user={currentUser} profile={currentProfile}/>
+          <HomePage user={currentUser} currentProfile={currentProfile}/>
         </Route>
         <Route exact path="/users/new" component={RegistrationForm} />
         <Route exact path="/user-sessions/new" component={SignInForm} />
@@ -65,39 +65,39 @@ const App = (props) => {
           exact path="/log" 
           component={Calendar} 
           user={currentUser} 
-          profile={currentProfile}
+          currentProfile={currentProfile}
         />
         <AuthenticatedRoute 
           exact path="/log/:date" 
           component={ReadingSessions} 
           user={currentUser} 
-          profile={currentProfile}
+          currentProfile={currentProfile}
         />
         <AuthenticatedRoute 
           exact path="/bookshelf" 
           component={Bookshelf} 
           user={currentUser} 
-          profile={currentProfile}
+          currentProfile={currentProfile}
         />
         <AuthenticatedRoute 
           exact path="/tickets" 
           component={TicketsPage} 
           user={currentUser} 
-          profile={currentProfile}
+          currentProfile={currentProfile}
         />
         <AuthenticatedRoute 
           exact path="/achievements" 
           component={AchievementsPage} 
           user={currentUser} 
-          profile={currentProfile}
+          currentProfile={currentProfile}
         />
         <AuthenticatedRoute 
           exact path="/profiles" 
           component={ProfilesPage} 
           user={currentUser} 
           setUser={setCurrentUser}
-          profile={currentProfile}
-          setProfile={setCurrentProfile}
+          currentProfile={currentProfile}
+          setCurrentProfile={setCurrentProfile}
         />
       </Switch>
     </Router>

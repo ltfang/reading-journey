@@ -5,12 +5,15 @@ import Fetch from '../../../services/Fetch'
 const ProfileDropdown = ({ user, currentProfile, setCurrentProfile }) => {
 
   const setProfile = async (id) => {
-    await Fetch.update('/api/v1/profiles', { id })
+    const body = await Fetch.update('/api/v1/profiles/current', { id })
+    return body
   }
 
   const handleOptionChange = async (event) => {
-    await setProfile(event.id)
-    setCurrentProfile(event)
+    const body = await setProfile(event.id)
+    if (body) {
+      setCurrentProfile(event)
+    }
   }
 
   const customStyles = {
