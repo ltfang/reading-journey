@@ -1,0 +1,83 @@
+.profile-container {
+  margin: 1em auto;
+  background-color: white;
+  padding: 3em;
+  font-family: $sans-serif;
+  box-shadow: $box-shadow-lg;
+  padding: 3em;
+  border-radius: 10px;
+  display: flex;
+  width: 1000px;
+  flex-direction: column;
+  align-items: center;
+}
+
+.profile-header {
+  font-family: $sans-serif;
+  color: $violet;
+  font-weight: bold;
+  text-align: center;
+}
+
+.profile-ul {
+  list-style-type: none;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.profile-icon {
+  margin: 0.5em;
+  border: 5px solid $portland-orange;
+  color: white;
+  font-weight: bold;
+  background-color: $portland-orange;
+  border-radius: 50%;
+  height: 200px;
+  width: 200px;
+  font-size: 3em;
+  text-align: center;
+  box-shadow: $box-shadow-lg;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  flex-direction: column;
+}
+
+.profile-icon-add {
+  margin: 0.5em;
+  color: white;
+  font-weight: bold;
+  background-color: $light-orange;
+  border-radius: 50%;
+  height: 200px;
+  width: 200px;
+  font-size: 3em;
+  line-height: 200px;
+  text-align: center;
+  box-shadow: $box-shadow-lg;
+}
+
+.add-profile-form {
+  display: flex;
+  justify-content: center;
+}
+
+.profile-form-contents {
+  width: 300px;
+  margin: 3em;
+}
+
+.profile-small-icon-wrapper {
+  display: flex;
+}
+
+.profile-small-icon {
+  color: #fa7c60;
+  margin: 0 0.2em;
+}
+
+.profile-small-icon:hover {
+  color: $light-orange;
+  cursor: pointer;
+}

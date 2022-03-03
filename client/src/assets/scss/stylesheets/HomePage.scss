@@ -89,22 +89,3 @@
   cursor:pointer;
 }
 
-.profile-ul {
-  list-style-type: none;
-  display: flex;
-  justify-content: center;
-}
-
-.profile-icon {
-  margin: 0.5em;
-  border: 5px solid $portland-orange;
-  color: white;
-  font-weight: bold;
-  background-color: $portland-orange;
-  border-radius: 50%;
-  height: 200px;
-  width: 200px;
-  font-size: 3em;
-  line-height: 200px;
-  text-align: center;
-}

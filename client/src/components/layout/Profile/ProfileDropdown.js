@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from 'react'
+import React from 'react'
 import Select from 'react-select'
-import Fetch from '../../services/Fetch'
+import Fetch from '../../../services/Fetch'
 
 const ProfileDropdown = ({ user, currentProfile, setCurrentProfile }) => {
 
@@ -11,6 +11,18 @@ const ProfileDropdown = ({ user, currentProfile, setCurrentProfile }) => {
   const handleOptionChange = async (event) => {
     await setProfile(event.id)
     setCurrentProfile(event)
+  }
+
+  const customStyles = {
+    option: (provided, state) => ({
+      ...provided,
+      borderBottom: '1px dotted black',
+      backgroundColor: 'white',
+      color: 'black'
+    }),
+    container: () => ({
+      width: '130px'
+    })
   }
 
   let optionsArray = null
@@ -26,9 +38,10 @@ const ProfileDropdown = ({ user, currentProfile, setCurrentProfile }) => {
     })
   }
   return (
-    <form>
+    <form className="profile-dropdown">
       <Select
         value={currentProfile}
+        styles={customStyles}
         options={optionsArray}
         onChange={handleOptionChange}
       />

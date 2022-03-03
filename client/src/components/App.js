@@ -7,7 +7,7 @@ import '../assets/scss/main.scss'
 import RegistrationForm from './registration/RegistrationForm'
 import SignInForm from './authentication/SignInForm'
 import TopBar from './layout/TopBar'
-import HomePage2 from './layout/HomePage2'
+import ProfilesPage from './layout/Profile/ProfilesPage'
 import HomePage from './layout/HomePage'
 import Calendar from './layout/ReadingLog/Calendar'
 import ReadingSessions from './layout/ReadingLog/ReadingSessions'
@@ -35,12 +35,16 @@ const App = (props) => {
 
   const fetchCurrentProfile = async () => {
     const body = await Fetch.get('/api/v1/profiles')
+    //Add label property so the select option will render with a name when currentProfile is passed to ProfileDropdown via TopBar
     const currentProfile = {...body.currentProfile, label: body.currentProfile.name}
     setCurrentProfile(currentProfile)
   }
 
   useEffect(() => {
     fetchCurrentUser()
+  }, [])
+
+  useEffect(() => {
     fetchCurrentProfile()
   }, [])
 
@@ -86,6 +90,14 @@ const App = (props) => {
           component={AchievementsPage} 
           user={currentUser} 
           profile={currentProfile}
+        />
+        <AuthenticatedRoute 
+          exact path="/profiles" 
+          component={ProfilesPage} 
+          user={currentUser} 
+          setUser={setCurrentUser}
+          profile={currentProfile}
+          setProfile={setCurrentProfile}
         />
       </Switch>
     </Router>

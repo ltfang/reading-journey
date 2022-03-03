@@ -66,7 +66,7 @@ const TicketTransactionTile = ({ transaction, editTicketUse, deleteTicketUse }) 
               onClick={handleDeleteClick}
               className="ticket-trash-icon"
             />
-          </div>
+        </div>
       </div>
       <div>
       <Modal isOpen={modalIsOpen} style={customStyles}>

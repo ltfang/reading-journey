@@ -1,10 +1,10 @@
-import React from "react";
-import { Link } from "react-router-dom";
-import SignOutButton from "../authentication/SignOutButton";
+import React from "react"
+import { Link } from "react-router-dom"
+import SignOutButton from "../authentication/SignOutButton"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faHouseUser, faCalendar, faBookOpen, faTicketAlt, faMedal } from '@fortawesome/free-solid-svg-icons'
+import { faHome, faCalendar, faBookOpen, faTicketAlt, faMedal, faUser } from '@fortawesome/free-solid-svg-icons'
 import { useHistory } from 'react-router-dom'
-import ProfileDropdown from "./ProfileDropdown";
+import ProfileDropdown from "./Profile/ProfileDropdown"
 
 const TopBar = ({ user, currentProfile, setCurrentProfile }) => {
   const unauthenticatedListItems = [
@@ -39,13 +39,11 @@ const TopBar = ({ user, currentProfile, setCurrentProfile }) => {
     history.push('/achievements')
   }
 
+  const handleProfileClick = () => {
+    history.push('/profiles')
+  }
+
   const authenticatedListItems = [
-    <ProfileDropdown
-      key="profile-dropdown" 
-      user={user} 
-      currentProfile={currentProfile}
-      setCurrentProfile={setCurrentProfile}
-    />,
     <li key="calendar" className="cal-container icon-container" onClick={handleCalendarClick}>
       <FontAwesomeIcon 
         icon={faCalendar}
@@ -65,11 +63,23 @@ const TopBar = ({ user, currentProfile, setCurrentProfile }) => {
       />
     </li>,
     <li key="achievements" className="medal-container icon-container" onClick={handleAchievementsClick}>
-    <FontAwesomeIcon 
-      icon={faMedal}
-      className="ticket-icon fa-2xl"
-    />
-  </li>,
+      <FontAwesomeIcon 
+        icon={faMedal}
+        className="ticket-icon fa-2xl"
+      />
+    </li>,
+    <li key="profiles" className="home-container icon-container" onClick={handleProfileClick}>
+      <FontAwesomeIcon 
+        icon={faUser}
+        className="ticket-icon fa-2xl"
+      />
+    </li>,
+    <ProfileDropdown
+      key="profile-dropdown" 
+      user={user} 
+      currentProfile={currentProfile}
+      setCurrentProfile={setCurrentProfile}
+    />,
     <li key="sign-out" className="sign-out-container">
       <SignOutButton />
     </li>
@@ -83,7 +93,7 @@ const TopBar = ({ user, currentProfile, setCurrentProfile }) => {
           <li className="app-text">Reading<span>Journey</span></li>
           <li className="home-container icon-container" onClick={handleHomeClick}>
             <FontAwesomeIcon 
-              icon={faHouseUser}
+              icon={faHome}
               className="home-icon fa-2xl"
             />
           </li>
