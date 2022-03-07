@@ -1,8 +1,8 @@
 # ReadingJourney
 ## Description
-ReadingJourney is a kids’ app that allows users to track their daily reading habits and rewards consistent daily reading. 
+ReadingJourney is an app that helps parents track their kids' daily reading habits and rewards consistent daily reading. 
 
-Users can:
+With the help of their parents, kids can:
 * Log the books they read and the time spent reading them;
 * Earn a ticket for every minute they read, which can be redeemed for other rewards or activities;
 * Attain progressively higher ranks based on the total minutes they have read; and
@@ -10,7 +10,7 @@ Users can:
 
 See the app in production here: https://reading-journey.herokuapp.com/
 
-The app is built with React, Express, Node, and Postgres and integrates the Google Books API.  Front-end libraries includereact-select, react-modal, luxon, and font-awesome. 
+The app is built with React, Express, Node, and Postgres; integrates the Google Books API; and uses the react-router, react-select, react-modal, luxon, and font-awesome libraries. 
 
 ## Instructions
 
