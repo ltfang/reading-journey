@@ -1,10 +1,8 @@
 const cleanUserInput = formInput => {
   Object.keys(formInput).forEach(field => {
-    if(formInput[field] === ""){
+    if (formInput[field].trim === ""){
       delete formInput[field]
-    }else if(typeof formInput[field]=== "string" && formInput[field].trim() === ""){
-      delete formInput[field]
-    }
+    } 
   })
   return formInput
 }

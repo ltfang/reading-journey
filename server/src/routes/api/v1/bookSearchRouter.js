@@ -19,7 +19,6 @@ bookSearchRouter.get("/", async (req, res) => {
     const existingBooks = await BookSerializer.getProfileBooks(req.user.currentProfileId)
     const existingBookData = BookSerializer.searchBookTitles(existingBooks, searchTerms)
     const bookData = BookSerializer.concatBooks(existingBookData, googleBookData)
-    console.log('bookData', bookData)
     return res
       .set({ "Content-Type": "application/json" })
       .status(200)

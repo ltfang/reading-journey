@@ -30,6 +30,10 @@ const ProfilesPage = ({ user, setUser, currentProfile, setCurrentProfile }) => {
   }
 
   const profileIcons = user.profiles.map(profile => {
+    let profileIconClassName = 'profile-icon'
+    if (profile.id===currentProfile.id) {
+      profileIconClassName += ' current'
+    }
     return (
       <ProfileIcon
         key={profile.id}
@@ -39,6 +43,7 @@ const ProfilesPage = ({ user, setUser, currentProfile, setCurrentProfile }) => {
         setCurrentProfile={setCurrentProfile}
         user={user}
         setUser={setUser}
+        profileIconClassName={profileIconClassName}
       />
     )
   })

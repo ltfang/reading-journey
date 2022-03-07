@@ -33,18 +33,32 @@ const App = (props) => {
     }
   }
 
+  // const fetchCurrentProfile = async () => {
+  //   const body = await Fetch.get('/api/v1/profiles/current')
+  //   //Add label property so the select option will render with a name when currentProfile is passed to ProfileDropdown via TopBar
+  //   const currentProfile = {...body.currentProfile, label: body.currentProfile.name}
+  //   setCurrentProfile(currentProfile)    
+  // }
+
   const fetchCurrentProfile = async () => {
-    const body = await Fetch.get('/api/v1/profiles/current')
-    //Add label property so the select option will render with a name when currentProfile is passed to ProfileDropdown via TopBar
-    const currentProfile = {...body.currentProfile, label: body.currentProfile.name}
-    setCurrentProfile(currentProfile)
+    try {
+      const response = await fetch('/api/v1/profiles/current')
+      if(!response.ok){
+        console.log('fetching')
+        //location.href = "/profiles"
+        throw new Error(`${response.status} ${response.statusText}`)
+      }
+      const body = await response.json()
+      //Add label property so the select option will render with a name when currentProfile is passed to ProfileDropdown via TopBar
+      const currentProfile = {...body.currentProfile, label: body.currentProfile.name}
+      setCurrentProfile(currentProfile)    
+    } catch (error) {
+      console.error(`Error in fetch: ${error}`)
+    }
   }
 
   useEffect(() => {
     fetchCurrentUser()
-  }, [])
-
-  useEffect(() => {
     fetchCurrentProfile()
   }, [])
 

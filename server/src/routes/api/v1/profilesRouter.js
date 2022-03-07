@@ -8,7 +8,6 @@ import { ValidationError } from "objection"
 const profilesRouter = new express.Router()
 
 profilesRouter.post("/", async (req, res) => {
-  console.log('req.body', req.body)
   const name = cleanUserInput(req.body.profileName)
   try {
     const user = await User.query().findById(req.user.id)
@@ -59,6 +58,10 @@ profilesRouter.delete("/", async (req, res) => {
 profilesRouter.get("/current", async (req, res) => {
   try {
     const user = await User.query().findById(req.user.id)
+    // if (user.currentProfileId===null) {
+    //   console.log("hi")
+    //   return res.redirect(307, "/profiles")
+    // }
     let currentProfile = await Profile.query().findById(user.currentProfileId)
     //Set to first existing profile in case profile corresponding to id no longer exists  
     if (currentProfile === undefined) {

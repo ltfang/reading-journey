@@ -1,8 +1,16 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Link, useHistory } from 'react-router-dom'
+import { Redirect } from 'react-router-dom'
 
 const HomePage = ({ user, currentProfile }) => {
   const history = useHistory()
+  const [shouldRedirect, setShouldRedirect] = useState(false)
+  console.log('user', user)
+  // if (user?.profiles.length===0) {
+  //   setShouldRedirect(true)
+  // } else {
+  //   setShouldRedirect(false)
+  // }
 
   const handleTicketClick = () => {
     history.push('/tickets')
@@ -23,7 +31,7 @@ const HomePage = ({ user, currentProfile }) => {
   const unauthenticatedWelcome = 
     <div>
       <p className="unauth-text">
-        Start your reading adventure by tracking how much you read each day.  Earn tickets every time you read!
+        Start your reading journey by logging how much you read each day. Earn a ticket for every minute you read. Celebrate your achievements with badges and medals.   
       </p>
       <div className="sign-up-btn-container">
         <Link to="/users/new" className="app-btn">Sign up to get started!</Link>
@@ -38,7 +46,7 @@ const HomePage = ({ user, currentProfile }) => {
   const authenticatedWelcome = 
     <div>
       <h2 className="greeting">{`Hi ${currentProfile.name}!`}</h2>
-      <ul className="greeting-ul">
+      <ul className="homepage-ul">
         <li 
           className="homepage-list box1"
           onClick={handleCalendarClick}
@@ -55,6 +63,10 @@ const HomePage = ({ user, currentProfile }) => {
         >Track your achievements</li>
       </ul>
     </div>
+
+  if (shouldRedirect) {
+    return <Redirect push to="/profiles" />
+  }
 
   return (
     <div className="homepage-callout">

@@ -5,7 +5,7 @@ import { faTimes, faPen, faTrashAlt } from '@fortawesome/free-solid-svg-icons'
 import Modal from 'react-modal'
 import EditProfileForm from './EditProfileForm'
 
-const ProfileIcon = ({ id, name, currentProfile, setCurrentProfile, user, setUser }) => {
+const ProfileIcon = ({ id, name, currentProfile, setCurrentProfile, user, setUser, profileIconClassName }) => {
 
   Modal.setAppElement('#app')
   
@@ -75,7 +75,7 @@ const ProfileIcon = ({ id, name, currentProfile, setCurrentProfile, user, setUse
   return (
     <div>
       <div 
-        className="profile-icon"
+        className={profileIconClassName}
         onClick={handleIconClick}>
         {name}
         <div className="profile-small-icon-wrapper">

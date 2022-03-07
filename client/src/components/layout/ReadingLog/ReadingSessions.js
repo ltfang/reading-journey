@@ -14,7 +14,6 @@ const ReadingSessions = (props) => {
 
   const getReadingSessions = async () => {
     const body = await Fetch.get(`/api/v1/log/${props.match.params.date}`)
-    console.log(body.readingSessions)
     setReadingSessions(body.readingSessions)
     setTotalMinutes(body.totalMinutes)
   }

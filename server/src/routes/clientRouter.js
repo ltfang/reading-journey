@@ -1,6 +1,5 @@
 import express from "express";
 import getClientIndexPath from "../config/getClientIndexPath.js";
-import { Profile } from "../models/index.js"
 
 const router = new express.Router();
 
@@ -19,4 +18,5 @@ router.get(authedClientRoutes, async (req, res) => {
     res.redirect("/user-sessions/new")
   }
 });
+
 export default router;
