@@ -23,6 +23,4 @@ rootRouter.use('/api/v1/minutes', minutesRouter)
 rootRouter.use('/api/v1/tickets', ticketsRouter)
 rootRouter.use('/api/v1/achievements', achievementsRouter)
 
-
-
 export default rootRouter;
