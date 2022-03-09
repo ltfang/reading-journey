@@ -6,6 +6,8 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faTimes, faPen, faTrashAlt } from '@fortawesome/free-solid-svg-icons'
 
 const TicketTransactionTile = ({ transaction, editTicketUse, deleteTicketUse }) => {
+  Modal.setAppElement('#app')
+  
   const date = DateTime.fromISO(transaction.date)
 
   const [modalIsOpen, setModalIsOpen] = useState(false)
@@ -66,7 +68,7 @@ const TicketTransactionTile = ({ transaction, editTicketUse, deleteTicketUse }) 
               onClick={handleDeleteClick}
               className="ticket-trash-icon"
             />
-          </div>
+        </div>
       </div>
       <div>
       <Modal isOpen={modalIsOpen} style={customStyles}>

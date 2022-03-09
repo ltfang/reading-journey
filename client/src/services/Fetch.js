@@ -1,3 +1,5 @@
+import translateServerErrors from "./translateServerErrors.js"
+
 class Fetch {
   static get = async (endpoint) => {
     try {
@@ -12,7 +14,7 @@ class Fetch {
     }
   }
 
-  static post = async (endpoint, body) =>{
+  static post = async (endpoint, body, setErrors=null) =>{
     try {
       const response = await fetch(endpoint, {
         method:"POST",
@@ -24,6 +26,8 @@ class Fetch {
       if(!response.ok){
         if(response.status === 422){
           const responseBody = await response.json()
+          const newErrors = translateServerErrors(responseBody.errors)
+          setErrors(newErrors)
         } else {
           throw (new Error(`${response.status} ${response.statusText}`))
         }
@@ -60,7 +64,7 @@ class Fetch {
     }
   }
 
-  static update = async (endpoint, body) =>{
+  static update = async (endpoint, body, setErrors=null) => {
     try {
       const response = await fetch(endpoint, {
         method:"PATCH",
@@ -72,6 +76,8 @@ class Fetch {
       if(!response.ok){
         if(response.status === 422){
           const responseBody = await response.json()
+          const newErrors = translateServerErrors(responseBody.errors)
+          setErrors(newErrors)
         } else {
           throw (new Error(`${response.status} ${response.statusText}`))
         }

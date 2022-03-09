@@ -16,7 +16,8 @@ exports.up = async (knex) => {
     return knex.schema.createTable(tableName, (table) => {
       table.bigIncrements("id");
       table.string("email").notNullable().unique();
-      table.string("name").notNullable();
+      table.string("username").notNullable();
+      table.integer("currentProfileId");
       table.string("cryptedPassword").notNullable();
       table.timestamp("createdAt").notNullable().defaultTo(knex.fn.now());
       table.timestamp("updatedAt").notNullable().defaultTo(knex.fn.now());

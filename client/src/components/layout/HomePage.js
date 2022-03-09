@@ -1,8 +1,7 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Link, useHistory } from 'react-router-dom'
 
-const HomePage = ({ user }) => {
-
+const HomePage = ({ user, currentProfile }) => {
   const history = useHistory()
 
   const handleTicketClick = () => {
@@ -24,7 +23,7 @@ const HomePage = ({ user }) => {
   const unauthenticatedWelcome = 
     <div>
       <p className="unauth-text">
-        Start your reading adventure by tracking how much you read each day.  Earn tickets every time you read!
+        Start your reading journey by logging how much you read each day. Earn a ticket for every minute you read. Celebrate your achievements with badges and medals.   
       </p>
       <div className="sign-up-btn-container">
         <Link to="/users/new" className="app-btn">Sign up to get started!</Link>
@@ -38,8 +37,8 @@ const HomePage = ({ user }) => {
   const name = user?.name 
   const authenticatedWelcome = 
     <div>
-      <h2 className="greeting">{`Hi ${name}!`}</h2>
-      <ul className="greeting-ul">
+      <h2 className="greeting">{`Hi ${currentProfile.name}!`}</h2>
+      <ul className="homepage-ul">
         <li 
           className="homepage-list box1"
           onClick={handleCalendarClick}

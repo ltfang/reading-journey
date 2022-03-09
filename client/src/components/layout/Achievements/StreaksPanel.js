@@ -4,7 +4,7 @@ import { DateTime } from 'luxon'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faFire } from '@fortawesome/free-solid-svg-icons'
 
-const StreaksPanel = props => {
+const StreaksPanel = ({ currentProfile }) => {
   const [streaks, setStreaks] = useState({
     currentStreak: {
       firstDate: "",
@@ -27,7 +27,7 @@ const StreaksPanel = props => {
 
   useEffect(() => {
     getStreaks()
-  }, [])
+  }, [currentProfile])
 
   const formatDateRange = (date1, date2) => {
     if (date1!=="") {
@@ -44,7 +44,7 @@ const StreaksPanel = props => {
   return (
 
     <div>
-      <h2 className="panel-header">My Stats</h2>
+      <h2 className="panel-header">{currentProfile.name}'s Stats</h2>
       <h3 className="panel-subheader">How many days in a row can you read? Keep reading for a new record!</h3>
       <div className="streak-tile">
         <div className="streak-icon-name">

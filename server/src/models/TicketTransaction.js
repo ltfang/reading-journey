@@ -18,15 +18,15 @@ class TicketTransaction extends Model {
   }
 
   static get relationMappings() {
-    const User = require("./User.js")
+    const Profile = require("./Profile.js")
 
     return {
-      users: {
+      profiles: {
         relation: Model.BelongsToOneRelation,
-        modelClass: User,
+        modelClass: Profile,
         join: {
-          from: "ticketTransactions.userId",
-          to: "users.id"
+          from: "ticketTransactions.profileId",
+          to: "profiles.id"
         }
       }
     }

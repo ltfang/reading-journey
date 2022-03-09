@@ -1,6 +1,6 @@
 import BookSerializer from "./BookSerializer.js"
+import Profile from "../src/models/Profile.js"
 import { DateTime, Interval } from "luxon"
-import User from "../src/models/User.js"
 import _ from "lodash"
 
 class ReadingSessionSerializer {
@@ -16,9 +16,9 @@ class ReadingSessionSerializer {
     return serializedReadingSession
   }
 
-  static async getReadingSessions(readingSessions, userId, date) {
+  static async getReadingSessions(readingSessions, profileId, date) {
     const filteredReadingSessions = readingSessions.filter(readingSession => {
-      return readingSession.userId === userId && readingSession.date.toISOString().substring(0,10) === date.toFormat('yyyy-MM-dd')
+      return readingSession.profileId == profileId && readingSession.date.toISOString().substring(0,10) === date.toFormat('yyyy-MM-dd')
     })
     const serializedReadingSessions = await Promise.all(filteredReadingSessions.map(async (readingSession) => {
       return await ReadingSessionSerializer.getDetails(readingSession)
@@ -26,9 +26,9 @@ class ReadingSessionSerializer {
     return serializedReadingSessions
   }
 
-  static async getLastDateRead(bookId, userId) {
-    const user = await User.query().findById(userId)
-    const readingSessions = await user.$relatedQuery("readingSessions").where('bookId', bookId).orderBy('date', 'desc')
+  static async getLastDateRead(bookId, profileId) {
+    const profile = await Profile.query().findById(profileId)
+    const readingSessions = await profile.$relatedQuery("readingSessions").where('bookId', bookId).orderBy('date', 'desc')
     const lastReadingSessionDate = readingSessions[0].date
     return lastReadingSessionDate
   }
@@ -57,17 +57,17 @@ class ReadingSessionSerializer {
     return dailyMinutesArray
   }
 
-  static async getDailyMinutes(startDate, endDate, userId) {
-    const user = await User.query().findById(userId)
+  static async getDailyMinutes(startDate, endDate, profileId) {
+    const profile = await Profile.query().findById(profileId)
     const interval = Interval.fromDateTimes(startDate, endDate)
-    const readingSessions = await user.$relatedQuery("readingSessions")
+    const readingSessions = await profile.$relatedQuery("readingSessions")
     const dailyMinutesArray = ReadingSessionSerializer.getDailyMinutesArray(readingSessions, interval, true)
     return dailyMinutesArray
   }
 
-  static async getAllDailyMinutes(userId) { 
-    const user = await User.query().findById(userId)
-    const readingSessions = await user.$relatedQuery("readingSessions").orderBy("date")
+  static async getAllDailyMinutes(profileId) { 
+    const profile = await Profile.query().findById(profileId)
+    const readingSessions = await profile.$relatedQuery("readingSessions").orderBy("date")
     if (readingSessions.length > 0) {
       const startDate = DateTime.fromJSDate(readingSessions[0].date)
       const lastDate = DateTime.fromJSDate(readingSessions[readingSessions.length-1].date)
@@ -79,8 +79,8 @@ class ReadingSessionSerializer {
     return []
   }
 
-  static async getStreaks(userId) {
-    let dailyMinutesArray = await ReadingSessionSerializer.getAllDailyMinutes(userId)
+  static async getStreaks(profileId) {
+    let dailyMinutesArray = await ReadingSessionSerializer.getAllDailyMinutes(profileId)
     dailyMinutesArray = dailyMinutesArray.map(record => {
       record.date = DateTime.fromFormat(record.date, 'yyyyMMdd')
       return record
@@ -140,14 +140,14 @@ class ReadingSessionSerializer {
     return totalLength/intervalDays
   }
 
-  static async getTotalMinutesByUser(userId) {
-    const user = await User.query().findById(userId)
-    const totalMinutes = await user.$relatedQuery('readingSessions').sum('minutesRead')
+  static async getTotalMinutesByProfile(profileId) {
+    const profile = await Profile.query().findById(profileId)
+    const totalMinutes = await profile.$relatedQuery('readingSessions').sum('minutesRead')
     return totalMinutes[0].sum
   }
 
-  static async getRankAndProgress(userId, badges) {
-    const totalMinutes = await ReadingSessionSerializer.getTotalMinutesByUser(userId)
+  static async getRankAndProgress(profileId, badges) {
+    const totalMinutes = await ReadingSessionSerializer.getTotalMinutesByProfile(profileId)
     let currentRank = badges[0]
     for (const badge of badges) {
       if (totalMinutes >= badge.minutesMin && totalMinutes <= badge.minutesMax) {

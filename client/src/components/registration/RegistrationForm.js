@@ -4,7 +4,7 @@ import config from "../../config";
 
 const RegistrationForm = () => {
   const [userPayload, setUserPayload] = useState({
-    name: "",
+    username: "",
     email: "",
     password: "",
     passwordConfirmation: "",
@@ -16,14 +16,14 @@ const RegistrationForm = () => {
 
   const validateInput = (payload) => {
     setErrors({});
-    const { name, email, password, passwordConfirmation } = payload;
+    const { username, email, password, passwordConfirmation } = payload;
     const emailRegexp = config.validation.email.regexp.emailRegex;
     let newErrors = {};
     
-    if (name.trim() == "") {
+    if (username.trim() == "") {
       newErrors = {
         ...newErrors,
-        name: "is required",
+        username: "is required",
       };
     }
 
@@ -64,6 +64,7 @@ const RegistrationForm = () => {
 
   const onSubmit = async (event) => {
     event.preventDefault();
+    //Can refactor to use Fetch helper functions
     if (validateInput(userPayload)) {
       try {
           const response = await fetch("/api/v1/users", {
@@ -103,11 +104,11 @@ const RegistrationForm = () => {
       <form onSubmit={onSubmit} className="auth-form">
         <div className="input-div">
           <label>
-            Name
-            <input type="text" name="name" value={userPayload.name} onChange={onInputChange} />
-            <FormError error={errors.name} />
+            Username
+            <input type="text" name="username" value={userPayload.username} onChange={onInputChange} />
+            <FormError error={errors.username} />
           </label>
-        </div>
+        </div>  
         <div className="input-div">
           <label>
             Email

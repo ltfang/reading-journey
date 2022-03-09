@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import Medal from './Medal'
 import Fetch from '../../../services/Fetch'
 
-const MedalsPanel = props => {
+const MedalsPanel = ({ currentProfile }) => {
   const [medals, setMedals] = useState({})
   
   const getMedals = async () => {
@@ -12,7 +12,7 @@ const MedalsPanel = props => {
 
   useEffect(() => {
     getMedals()
-  }, [])
+  }, [currentProfile])
 
   let medalsArray = []
   const addMedals = (key) => {
@@ -32,7 +32,7 @@ const MedalsPanel = props => {
 
   return (
     <div>
-      <h2 className="panel-header">My Medals</h2>
+      <h2 className="panel-header">{currentProfile.name}'s Medals</h2>
       <h3 className="panel-subheader">Complete streaks to earn medals!  Each streak earns you one medal of each qualifying type!</h3>
       <div className="medals-wrapper">
         {medalsArray}

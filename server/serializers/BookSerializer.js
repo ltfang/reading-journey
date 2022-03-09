@@ -1,5 +1,5 @@
 import Book from "../src/models/Book.js"
-import User from "../src/models/User.js"
+import Profile from "../src/models/Profile.js"
 import ReadingSessionSerializer from "./ReadingSessionSerializer.js"
 import _ from "lodash"
 
@@ -38,12 +38,12 @@ class BookSerializer {
     return newBook.id
   }
 
-  static async getUserBooks(userId) {
-    const user = await User.query().findById(userId)
-    const books = await user.$relatedQuery("books").distinctOn("id")
+  static async getProfileBooks(profileId) {
+    const profile = await Profile.query().findById(profileId)
+    const books = await profile.$relatedQuery("books").distinctOn("id")
     const serializedBooks = books.map(book => BookSerializer.getSummary(book))
     const booksWithLastRead = await Promise.all(serializedBooks.map(async book => {
-      book.lastDateRead = await ReadingSessionSerializer.getLastDateRead(book.id, userId)
+      book.lastDateRead = await ReadingSessionSerializer.getLastDateRead(book.id, profileId)
       return book
     }))
     const orderedBooks = _.orderBy(booksWithLastRead, ['lastDateRead', 'title'], ['desc', 'asc'])

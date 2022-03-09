@@ -7,7 +7,7 @@ const achievementsRouter = new express.Router()
 
 achievementsRouter.get("/streaks", async (req, res) => {
   try {
-    const streaks = await ReadingSessionSerializer.getStreaks(req.user.id)
+    const streaks = await ReadingSessionSerializer.getStreaks(req.user.currentProfileId)
     if (streaks.length>0) {
       const currentStreak = ReadingSessionSerializer.getCurrentStreak(streaks)
       const longestStreak = ReadingSessionSerializer.getLongestStreak(streaks)
@@ -49,7 +49,7 @@ achievementsRouter.get("/rank", async (req, res) => {
   try {
     const badges = await Badge.query()
     const serializedBadges = badges.map(badge => BadgeSerializer.getSummary(badge))
-    const rankData = await ReadingSessionSerializer.getRankAndProgress(req.user.id, serializedBadges)
+    const rankData = await ReadingSessionSerializer.getRankAndProgress(req.user.currentProfileId, serializedBadges)
     return res
       .set({ "Content-Type": "application/json" })
       .status(200)
@@ -64,7 +64,7 @@ achievementsRouter.get("/rank", async (req, res) => {
 
 achievementsRouter.get("/medals", async (req, res) => {
   try {
-    const streaks = await ReadingSessionSerializer.getStreaks(req.user.id)
+    const streaks = await ReadingSessionSerializer.getStreaks(req.user.currentProfileId)
     const medals = ReadingSessionSerializer.getMedals(streaks)
     return res
       .set({ "Content-Type": "application/json" })

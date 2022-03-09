@@ -4,21 +4,21 @@ import RankPanel from './RankPanel'
 import MedalsPanel from './MedalsPanel'
 
 
-const AchievementsPage = props => {
+const AchievementsPage = ({ currentProfile }) => {
   return (
     <div>
-      <h1 className="page-header">My Achievements</h1>
+      <h1 className="page-header">{currentProfile.name}'s Achievements</h1>
       <div className="grid-x grid-margin-x achievements-wrapper">
         <div className="cell small-4 achievement-box">
-          <StreaksPanel />
+          <StreaksPanel currentProfile={currentProfile}/>
         </div>
         <div className="cell small-4 achievement-box">
           <div className="grid-y rank-wrapper">
-            <RankPanel />
+            <RankPanel currentProfile={currentProfile}/>
           </div>
         </div>
         <div className="cell small-4 achievement-box">
-          <MedalsPanel />
+          <MedalsPanel currentProfile={currentProfile}/>
         </div>
       </div>
     </div>

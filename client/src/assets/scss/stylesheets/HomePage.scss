@@ -37,11 +37,9 @@
   color: $violet;
 }
 
-.greeting-ul {
-  list-style-type: none;
+.homepage-ul {
   display: flex;
-  justify-content: center;
-  margin-top: 2em;
+  margin: 1em;
 }
 
 .homepage-list {
@@ -51,7 +49,7 @@
   justify-content: center;
   margin: .5em;
   padding: 1em;
-  border-radius: 30px;
+  border-radius: 20px;
   width: 180px; 
   height: 180px;
   font-size: 1.5em;
@@ -95,3 +93,4 @@
   background-color: darken($violet, 15%);
   cursor:pointer;
 }
+

@@ -6,16 +6,20 @@
  * @param {Knex} knex
  */
  exports.up = async (knex) => {
-  return knex.schema.createTable("ticketTransactions", table => {
+  return knex.schema.createTable("readingSessions", table => {
     table.bigIncrements("id")
-    table.integer("number").notNullable()
     table.date("date").notNullable()
-    table.string("description")
-    table.bigInteger("userId")
+    table.integer("minutesRead").notNullable()
+    table.bigInteger("profileId")
       .notNullable()
       .unsigned()
       .index()
-      .references("users.id")
+      .references("profiles.id")
+    table.bigInteger("bookId")
+      .notNullable()
+      .unsigned()
+      .index()
+      .references("books.id")
     table.timestamp("createdAt").notNullable().defaultTo(knex.fn.now())
     table.timestamp("updatedAt").notNullable().defaultTo(knex.fn.now())
   })
@@ -25,5 +29,5 @@
  * @param {Knex} knex
  */
 exports.down = async (knex) => {
-  return knex.schema.dropTableIfExists("ticketTransactions")
+  return knex.schema.dropTableIfExists("readingSessions")
 }

@@ -20,7 +20,7 @@ const ReadingSessions = (props) => {
 
   useEffect(() => {
     getReadingSessions()
-  }, [])
+  }, [props.profile])
 
   const postReadingSession = async (newReadingSession) => {
     const responseBody = await Fetch.post(`/api/v1/log/${props.match.params.date}`, newReadingSession)

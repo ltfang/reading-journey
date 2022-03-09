@@ -26,50 +26,26 @@ class User extends uniqueFunc(Model) {
   static get jsonSchema() {
     return {
       type: "object",
-      required: ["name", "email"],
-
+      required: ["email", "username"],
       properties: {
-        name: { type: "string" },
         email: { type: "string", format: "email" },
-        cryptedPassword: { type: "string" },
+        username: { type: "string" },
+        currentProfileId: {type: ["integer", "string"] },
+        cryptedPassword: { type: "string" }
       },
     };
   }
 
   static get relationMappings() {
-    const Book = require("./Book.js")
-    const ReadingSession = require("./ReadingSession.js")
-    const TicketTransaction = require("./TicketTransaction.js")
+    const Profile = require("./Profile.js")
 
     return {
-      books: {
-        relation: Model.ManyToManyRelation,
-        modelClass: Book,
-        join: {
-          from: "users.id",
-          through: {
-            from: "readingSessions.userId",
-            to: "readingSessions.bookId"
-          },
-          to: "books.id"
-        }
-      },
-
-      readingSessions: {
+      profiles: {
         relation: Model.HasManyRelation,
-        modelClass: ReadingSession,
+        modelClass: Profile,
         join: {
           from: "users.id",
-          to: "readingSessions.userId"
-        }
-      },
-
-      ticketTransactions: {
-        relation: Model.HasManyRelation,
-        modelClass: TicketTransaction,
-        join: {
-          from: "users.id",
-          to: "ticketTransactions.userId"
+          to: "profiles.userId"
         }
       }
     }
