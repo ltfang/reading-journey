@@ -1,16 +1,8 @@
 import React, { useState } from 'react'
 import { Link, useHistory } from 'react-router-dom'
-import { Redirect } from 'react-router-dom'
 
 const HomePage = ({ user, currentProfile }) => {
   const history = useHistory()
-  const [shouldRedirect, setShouldRedirect] = useState(false)
-  console.log('user', user)
-  // if (user?.profiles.length===0) {
-  //   setShouldRedirect(true)
-  // } else {
-  //   setShouldRedirect(false)
-  // }
 
   const handleTicketClick = () => {
     history.push('/tickets')
@@ -63,10 +55,6 @@ const HomePage = ({ user, currentProfile }) => {
         >Track your achievements</li>
       </ul>
     </div>
-
-  if (shouldRedirect) {
-    return <Redirect push to="/profiles" />
-  }
 
   return (
     <div className="homepage-callout">

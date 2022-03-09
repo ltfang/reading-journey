@@ -64,6 +64,7 @@ const RegistrationForm = () => {
 
   const onSubmit = async (event) => {
     event.preventDefault();
+    //Can refactor to use Fetch helper functions
     if (validateInput(userPayload)) {
       try {
           const response = await fetch("/api/v1/users", {

@@ -55,7 +55,9 @@ const ProfileIcon = ({ id, name, currentProfile, setCurrentProfile, user, setUse
   }
 
   const handleDeleteClick = () => {
-    if (confirm('Are you sure you want to delete this profile?')) {
+    if (user.profiles.length===1) {
+      alert('You must have at least one profile.  If you would like to delete this profile, please create another profile first.')
+    } else if (confirm('Are you sure you want to delete this profile? If so, the profile and all associated data will be deleted.')) {
       deleteProfile()
     }
   }

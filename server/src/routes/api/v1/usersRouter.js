@@ -1,13 +1,18 @@
 import express from "express";
 import passport from "passport";
-import { User } from "../../../models/index.js";
+import { Profile, User } from "../../../models/index.js";
 
 const usersRouter = new express.Router();
 
 usersRouter.post("/", async (req, res) => {
-  const { name, email, password, passwordConfirmation } = req.body;
+  const { username, email, password, passwordConfirmation } = req.body;
   try {
-    const persistedUser = await User.query().insertAndFetch({ name, email, password });
+    const persistedUser = await User.query().insertAndFetch({ username, email, password });
+    const newProfile = await Profile.query().insertAndFetch({
+      name: username,
+      userId: persistedUser.id
+    })
+    await persistedUser.$query().patchAndFetch({ currentProfileId: newProfile.id })
     return req.login(persistedUser, () => {
       return res.status(201).json({ user: persistedUser });
     });
