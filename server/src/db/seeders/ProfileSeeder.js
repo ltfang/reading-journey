@@ -6,6 +6,9 @@ class ProfileSeeder {
     const lilly = await User.query().findOne({ email: "lilly@lilly.com" })
 
     const profileData = [
+      { userId: lilly.id,
+        name: "Lilly"
+      },
       {
         userId: lilly.id,
         name: "Noah",
