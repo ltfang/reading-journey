@@ -135,8 +135,9 @@ class ReadingSessionSerializer {
     const firstStreak = streaksInInterval[0]
     if (firstStreak?.firstDate < firstDayInInterval) {
       let daysInFirstStreak = firstStreak.lastDate.diff(firstDayInInterval, 'days').days+1
-      totalLength = totalLength - firstStreak.length + daysInFirstStreak
+      totalLength = totalLength - firstStreak.streakLength + daysInFirstStreak
     }
+    debugger
     return totalLength/intervalDays
   }
 
