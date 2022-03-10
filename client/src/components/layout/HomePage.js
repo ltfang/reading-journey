@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { Link, useHistory } from 'react-router-dom'
 
 const HomePage = ({ user, currentProfile }) => {
@@ -34,7 +34,6 @@ const HomePage = ({ user, currentProfile }) => {
       </div>
     </div>
 
-  const name = user?.name 
   const authenticatedWelcome = 
     <div>
       <h2 className="greeting">{`Hi ${currentProfile.name}!`}</h2>
@@ -54,6 +53,9 @@ const HomePage = ({ user, currentProfile }) => {
           onClick={handleAchievementsClick}
         >Track your achievements</li>
       </ul>
+      <div className="existing-user-sign-in">
+        <Link to="/profiles">Manage profiles</Link>
+      </div>
     </div>
 
   return (

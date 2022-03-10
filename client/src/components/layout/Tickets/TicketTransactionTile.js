@@ -61,12 +61,12 @@ const TicketTransactionTile = ({ transaction, editTicketUse, deleteTicketUse }) 
             <FontAwesomeIcon
               icon={faPen}
               onClick={setModalIsOpenToTrue}
-              className="ticket-pen-icon"
+              className="ticket-small-icon"
             />
             <FontAwesomeIcon
               icon={faTrashAlt}
               onClick={handleDeleteClick}
-              className="ticket-trash-icon"
+              className="ticket-small-icon"
             />
         </div>
       </div>

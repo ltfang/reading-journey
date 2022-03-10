@@ -7,6 +7,10 @@
   width: 300px;
 }
 
+.trx-tile:hover .ticket-small-icon {
+  color: $light-orange;
+}
+
 .trx-tickets {
   font-weight: bold;
   font-size: 1.2em;
@@ -51,7 +55,12 @@
   bottom: 1em;
 }
 
-.ticket-pen-icon, .ticket-trash-icon {
+.ticket-small-icon {
   margin: 0 3px -4px 3px;
+  color: white;
+}
+
+.ticket-small-icon:hover {
   color: $light-orange;
+  cursor: pointer;
 }

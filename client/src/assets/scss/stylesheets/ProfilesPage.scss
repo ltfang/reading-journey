@@ -27,6 +27,7 @@
 }
 
 .profile-icon {
+  padding-top: .5em;
   margin: 0.5em;
   color: white;
   font-weight: bold;
@@ -62,6 +63,11 @@
   box-shadow: $box-shadow-lg;
 }
 
+.profile-icon-add:hover {
+  background-color: $portland-orange;
+  cursor:pointer;
+}
+
 .add-profile-form {
   display: flex;
   flex-direction: column;
@@ -79,7 +85,7 @@
 }
 
 .profile-small-icon {
-  color: #fa7c60;
+  color: $portland-orange;
   margin: 0 0.2em;
 }
 
@@ -89,7 +95,5 @@
 }
 
 .current {
-  box-sizing: content-box;
-  background-color: darken($portland-orange, 15%);
-  border: 5px solid darken($portland-orange, 15%);
+  border: 10px solid darken($portland-orange, 15%);
 }

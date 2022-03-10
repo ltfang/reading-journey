@@ -79,7 +79,7 @@ const ProfileIcon = ({ id, name, currentProfile, setCurrentProfile, user, setUse
       <div 
         className={profileIconClassName}
         onClick={handleIconClick}>
-        {name}
+        <div>{name}</div>
         <div className="profile-small-icon-wrapper">
           <FontAwesomeIcon
             icon={faPen}
