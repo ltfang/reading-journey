@@ -41,6 +41,7 @@ class BookSerializer {
   static async getProfileBooks(profileId) {
     const profile = await Profile.query().findById(profileId)
     const books = await profile.$relatedQuery("books").distinctOn("id")
+    console.log("inGetProfileBooks", books)
     const serializedBooks = books.map(book => BookSerializer.getSummary(book))
     const booksWithLastRead = await Promise.all(serializedBooks.map(async book => {
       book.lastDateRead = await ReadingSessionSerializer.getLastDateRead(book.id, profileId)

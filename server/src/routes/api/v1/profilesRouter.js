@@ -16,7 +16,6 @@ profilesRouter.post("/", async (req, res) => {
       userId: user.id 
     })
     const serializedNewProfile = ProfileSerializer.getSummary(newProfile)
-    console.log('serializedNewProfile', serializedNewProfile)
     await user.$query().patchAndFetch({ currentProfileId: newProfile.id })
     return res.status(201).json({ newProfile: serializedNewProfile })
   } catch (error) {
@@ -57,6 +56,7 @@ profilesRouter.delete("/", async (req, res) => {
 
 profilesRouter.get("/current", async (req, res) => {
   try {
+    console.log('req.user.id', req.user.id)
     const user = await User.query().findById(req.user.id)
     let currentProfile = await Profile.query().findById(user.currentProfileId)
     //Set to first existing profile in case profile corresponding to id no longer exists  
