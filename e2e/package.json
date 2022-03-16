@@ -8,6 +8,7 @@
   },
   "devDependencies": {
     "@testing-library/cypress": "^7.0.3",
-    "cypress": "^6.1.0"
+    "bcrypt": "^5.0.0",
+    "cypress": "^6.1.0" 
   }
 }

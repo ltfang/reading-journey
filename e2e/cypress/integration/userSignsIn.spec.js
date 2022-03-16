@@ -4,18 +4,25 @@ describe("As a user visiting the sign in page", () => {
   const visitSignInPage = () => {
     cy.visit("/user-sessions/new");
   };
-
+  /*
   before(() => {
+    const cryptedPassword = "$2b$10$PGkEjKksq3Oz4MFw/nZi.eGVkGMvTJ8JRrZHJFrydakufDu7pCVve"
+
     cy.task("db:truncate", "User");
     cy.task("db:insert", {
       modelName: "User",
-      json: { email: "user@example.com", password: "password" },
+      json: { 
+        username: "User", 
+        email: "user@example.com", 
+        password: cryptedPassword 
+      }
     });
   });
-
+*/
   it("If I provide a valid email and password, I will be signed in", () => {
     visitSignInPage();
     cy.get("form").within(() => {
+
       cy.findByLabelText("Email").type("user@example.com");
 
       cy.findByLabelText("Password").type("password");

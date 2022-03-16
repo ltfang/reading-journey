@@ -5,7 +5,6 @@ class UserSeeder {
   static async seed() {
     const password = "password"
     const cryptedPassword = Bcrypt.hashSync(password, 10)
-
     const userData = [
       { 
         email: "lilly@lilly.com", 

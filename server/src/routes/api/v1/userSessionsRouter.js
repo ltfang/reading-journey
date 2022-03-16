@@ -26,6 +26,7 @@ sessionRouter.get("/current", async (req, res) => {
     const user = await UserSerializer.getSummary(req.user)
     res.status(200).json(user);
   } else {
+    console.log("no current user")
     res.status(401).json(undefined);
   }
 });

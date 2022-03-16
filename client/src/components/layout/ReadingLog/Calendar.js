@@ -27,7 +27,7 @@ const Calendar = ({ currentProfile }) => {
     firstDay = date.startOf('month').startOf('week').minus({days: 1})
   }
   const lastDay = date.endOf('month').endOf('week')
-
+  
   const getDailyMinutes = async () => {
     const startDay = firstDay.toFormat('yyyyMMdd') 
     const endDay = lastDay.toFormat('yyyyMMdd')
