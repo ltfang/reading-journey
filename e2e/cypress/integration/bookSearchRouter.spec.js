@@ -18,12 +18,6 @@ context("api/v1/bookSearchRouter", () => {
       cy.wait(500)
     });
 
-    it("requesting current user returns the correct status code", () => {
-      cy.request("/api/v1/user-sessions/current")
-      .its("status")
-      .should("be.equal", 200)
-    })
-
     const searchTerms = "green eggs"
     const url = `/api/v1/book-search?searchTerms=${searchTerms}`
     it("has the correct response type", () => {

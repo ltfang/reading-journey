@@ -35,7 +35,6 @@ readingSessionsRouter.post("/:date", async (req, res) => {
     newReadingSession.book = book
     return res.status(201).json({ newReadingSession });
   } catch (error) {
-
     return res.status(500).json({ errors: error });
   }
 })
