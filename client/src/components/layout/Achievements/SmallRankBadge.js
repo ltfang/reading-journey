@@ -1,6 +1,6 @@
 import React from 'react'
 
-const SmallRankBadge = ({ rank, minutes }) => {
+const SmallRankBadge = ({ rank }) => {
   let formattedRank = rank.toLowerCase()
   let badgeClass = `badge ${formattedRank}`
   return (

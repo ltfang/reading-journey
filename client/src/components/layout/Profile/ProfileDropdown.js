@@ -1,13 +1,16 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import Select from 'react-select'
 import Fetch from '../../../services/Fetch'
+import { ProfileContext } from '../../ProfileContext'
 
-const ProfileDropdown = ({ user, currentProfile, setCurrentProfile }) => {
+const ProfileDropdown = ({ user, setCurrentProfile }) => {
 
   const setProfile = async (id) => {
     const body = await Fetch.update('/api/v1/profiles/current', { id })
     return body
   }
+
+  const currentProfile = useContext(ProfileContext)
 
   const handleOptionChange = async (event) => {
     const body = await setProfile(event.id)

@@ -1,15 +1,17 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useContext } from 'react'
 import BookTile from './BookTile'
 import Fetch from '../../../services/Fetch'
 import BookSearch from './BookSearch'
 import BookSort from './BookSort'
 import _ from 'lodash'
 import SortBooks from '../../../services/SortBooks.js'
+import { ProfileContext } from '../../ProfileContext'
 
-const Bookshelf = ({ currentProfile }) => {
+const Bookshelf = (props) => {
   const [books, setBooks] = useState([])
   const [searchText, setSearchText] = useState('')
   const [sortCriterion, setSortCriterion] = useState(null)
+  const currentProfile = useContext(ProfileContext)
 
   const getBooks = async () => {
     const body = await Fetch.get('/api/v1/books')

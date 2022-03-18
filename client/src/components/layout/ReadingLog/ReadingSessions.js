@@ -1,13 +1,15 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useContext } from 'react'
 import { DateTime } from 'luxon'
 import ReadingSessionTile from './ReadingSessionTile'
 import ReadingSessionForm from './ReadingSessionForm'
 import Fetch from '../../../services/Fetch'
 import { withRouter } from 'react-router'
+import { ProfileContext } from '../../ProfileContext'
 
 const ReadingSessions = (props) => {
   const [readingSessions, setReadingSessions] = useState([])
   const [totalMinutes, setTotalMinutes] = useState(null)
+  const currentProfile = useContext(ProfileContext)
 
   const date = DateTime.fromFormat(props.match.params.date, 'yyyyMMdd')
   const formattedDate = date.toLocaleString(DateTime.DATE_FULL)
@@ -20,7 +22,7 @@ const ReadingSessions = (props) => {
 
   useEffect(() => {
     getReadingSessions()
-  }, [props.profile])
+  }, [currentProfile])
 
   const postReadingSession = async (newReadingSession) => {
     const responseBody = await Fetch.post(`/api/v1/log/${props.match.params.date}`, newReadingSession)

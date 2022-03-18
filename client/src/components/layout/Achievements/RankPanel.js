@@ -1,10 +1,12 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useContext } from 'react'
 import SmallRankBadge from './SmallRankBadge'
 import MainRankBadge from './MainRankBadge'
 import Fetch from '../../../services/Fetch'
+import { ProfileContext } from '../../ProfileContext'
 
-const RankPanel = ({ currentProfile }) => {
+const RankPanel = (props) => {
   const [badges, setBadges] = useState([])
+  const currentProfile = useContext(ProfileContext)
 
   const getBadges = async () => {
     const body = await Fetch.get('/api/v1/achievements/rank')
@@ -29,7 +31,7 @@ const RankPanel = ({ currentProfile }) => {
       <h2 className="panel-header">{currentProfile.name}'s Rank</h2>
       <h3 className="panel-subheader">Earn your next rank based on your total reading time!</h3>
       <div className="cell small-8 main-badge-wrapper">
-        <MainRankBadge currentProfile={currentProfile} />
+        <MainRankBadge />
       </div>
       <div className="cell small-4 badge-list-wrapper">
         {badgeList}
