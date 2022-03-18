@@ -1,16 +1,16 @@
 import React, { useContext } from 'react'
 import Select from 'react-select'
 import Fetch from '../../../services/Fetch'
-import { ProfileContext } from '../../ProfileContext'
+import { UserContext } from '../../UserContext'
 
-const ProfileDropdown = ({ user, setCurrentProfile }) => {
+const ProfileDropdown = ({ setCurrentProfile }) => {
 
   const setProfile = async (id) => {
     const body = await Fetch.update('/api/v1/profiles/current', { id })
     return body
   }
 
-  const currentProfile = useContext(ProfileContext)
+  const { currentUser, currentProfile } = useContext(UserContext)
 
   const handleOptionChange = async (event) => {
     const body = await setProfile(event.id)
@@ -32,8 +32,8 @@ const ProfileDropdown = ({ user, setCurrentProfile }) => {
   }
 
   let optionsArray = null
-  if (user.profiles.length > 0) {
-    optionsArray = user.profiles.map(profile => {
+  if (currentUser.profiles.length > 0) {
+    optionsArray = currentUser.profiles.map(profile => {
       return (
         {
           id: profile.id,

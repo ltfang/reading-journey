@@ -10,6 +10,10 @@ class UserSerializer {
     const profiles = await user.$relatedQuery("profiles")
     const serializedProfiles = profiles.map(profile => ProfileSerializer.getSummary(profile))
     serializedUser.profiles = serializedProfiles
+    console.log('user in serializer', user)
+    const currentProfile = serializedProfiles.find(profile => profile.id==user.currentProfileId)
+    const currentProfileWithLabel = {...currentProfile, label: currentProfile.name}
+    serializedUser.currentProfile = currentProfileWithLabel
     return serializedUser
   }
 }

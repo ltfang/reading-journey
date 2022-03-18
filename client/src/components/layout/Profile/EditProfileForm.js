@@ -1,12 +1,12 @@
 import React, { useState, useContext } from 'react'
 import Fetch from '../../../services/Fetch'
 import ErrorList from '../ErrorList'
-import { ProfileContext } from '../../ProfileContext'
+import { UserContext } from '../../UserContext'
 
-const EditProfileForm = ({ setModalIsOpenToFalse, id, user, setUser, setCurrentProfile }) => {
+const EditProfileForm = ({ setModalIsOpenToFalse, id, setUser, setCurrentProfile }) => {
   const [profileName, setProfileName] = useState('')
   const [errors, setErrors] = useState({})
-  const currentProfile = useContext(ProfileContext)
+  const { currentUser, currentProfile } = useContext(UserContext)
 
   const updateProfile = async (profileName, setErrors) => {
     const body = await Fetch.update('/api/v1/profiles', { id, profileName }, setErrors)
@@ -21,11 +21,11 @@ const EditProfileForm = ({ setModalIsOpenToFalse, id, user, setUser, setCurrentP
     event.preventDefault()
     const body = await updateProfile(profileName, setErrors)
     if (body) {
-      const profiles = [...user.profiles]
+      const profiles = [...currentUser.profiles]
       const updatedProfile = profiles.find(profile=>profile.id===id)
       updatedProfile.name = profileName
       setUser({
-        ...user,
+        ...currentUser,
         profiles: profiles
       })
       setCurrentProfile({

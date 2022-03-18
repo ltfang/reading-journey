@@ -1,9 +1,13 @@
 import React, { useContext } from 'react'
 import { Link, useHistory } from 'react-router-dom'
-import { ProfileContext } from '../ProfileContext'
+import { UserContext } from '../UserContext'
 
-const HomePage = ({ user }) => {
-  const currentProfile = useContext(ProfileContext)
+const HomePage = (props) => {
+
+  const { currentUser, currentProfile } = useContext(UserContext)
+  
+  // const currentUser = useContext(UserContext)
+  // const currentProfile = currentUser.currentProfile
 
   const history = useHistory()
 
@@ -64,7 +68,7 @@ const HomePage = ({ user }) => {
   return (
     <div className="homepage-callout">
       <h1 className="homepage-header">Welcome to your Reading Journey!</h1>
-      <div>{user ? authenticatedWelcome : unauthenticatedWelcome}</div>
+      <div>{currentUser ? authenticatedWelcome : unauthenticatedWelcome}</div>
     </div>
   )
 }

@@ -1,10 +1,12 @@
-import React, { useState } from 'react'
+import React, { useState, useContext } from 'react'
 import Fetch from '../../../services/Fetch'
 import ErrorList from '../ErrorList'
+import { UserContext } from '../../UserContext'
 
-const AddProfileForm = ({ setModalIsOpenToFalse, user, setUser, setCurrentProfile }) => {
+const AddProfileForm = ({ setModalIsOpenToFalse, setUser, setCurrentProfile }) => {
   const [profileName, setProfileName] = useState('')
   const [errors, setErrors] = useState({})
+  const { currentUser } = useContext(UserContext)
 
   const createProfile = async (profileName, setErrors) => {
     const body = await Fetch.post('/api/v1/profiles', { profileName }, setErrors)
@@ -20,8 +22,8 @@ const AddProfileForm = ({ setModalIsOpenToFalse, user, setUser, setCurrentProfil
     const newProfile = await createProfile(profileName, setErrors)
     setModalIsOpenToFalse()
     setUser({
-      ...user,
-      profiles: [...user.profiles, newProfile]
+      ...currentUser,
+      profiles: [...currentUser.profiles, newProfile]
     })
     setCurrentProfile({...newProfile, label: newProfile.name})
   }

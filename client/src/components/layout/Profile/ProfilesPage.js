@@ -4,12 +4,12 @@ import Modal from 'react-modal'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faTimes, faPlus } from '@fortawesome/free-solid-svg-icons'
 import AddProfileForm from './AddProfileForm'
-import { ProfileContext } from '../../ProfileContext'
+import { UserContext } from '../../UserContext'
 
-const ProfilesPage = ({ user, setUser, setCurrentProfile }) => {
+const ProfilesPage = ({ setUser, setCurrentProfile }) => {
 
   const [modalIsOpen, setModalIsOpen] = useState(false)
-  const currentProfile = useContext(ProfileContext)
+  const { currentUser, currentProfile } = useContext(UserContext)
 
   const setModalIsOpenToTrue = () => {
     setModalIsOpen(true)
@@ -31,7 +31,7 @@ const ProfilesPage = ({ user, setUser, setCurrentProfile }) => {
     }
   }
 
-  const profileIcons = user.profiles.map(profile => {
+  const profileIcons = currentUser.profiles.map(profile => {
     let profileIconClassName = 'profile-icon'
     if (profile.id===currentProfile.id) {
       profileIconClassName += ' current'
@@ -42,7 +42,6 @@ const ProfilesPage = ({ user, setUser, setCurrentProfile }) => {
         id={profile.id}
         name={profile.name}
         setCurrentProfile={setCurrentProfile}
-        user={user}
         setUser={setUser}
         profileIconClassName={profileIconClassName}
       />
@@ -75,7 +74,6 @@ const ProfilesPage = ({ user, setUser, setCurrentProfile }) => {
       />
       <AddProfileForm 
         setModalIsOpenToFalse={setModalIsOpenToFalse}
-        user={user}
         setUser={setUser}
         setCurrentProfile={setCurrentProfile}
       />

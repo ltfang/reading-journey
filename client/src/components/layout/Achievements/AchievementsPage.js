@@ -2,10 +2,10 @@ import React, { useContext } from 'react'
 import StreaksPanel from './StreaksPanel'
 import RankPanel from './RankPanel'
 import MedalsPanel from './MedalsPanel'
-import { ProfileContext } from '../../ProfileContext'
+import { UserContext } from '../../UserContext'
 
 const AchievementsPage = (props) => {
-  const currentProfile = useContext(ProfileContext)
+  const { currentProfile } = useContext(UserContext)
   return (
     <div>
       <h1 className="page-header">{currentProfile.name}'s Achievements</h1>

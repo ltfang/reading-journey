@@ -1,11 +1,14 @@
-import React from "react"
+import React, { useContext } from "react"
 import { Link, useHistory } from "react-router-dom"
 import SignOutButton from "../authentication/SignOutButton"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faHome, faCalendar, faBookOpen, faTicketAlt, faMedal, faUser } from '@fortawesome/free-solid-svg-icons'
 import ProfileDropdown from "./Profile/ProfileDropdown"
+import { UserContext } from "../UserContext"
 
-const TopBar = ({ user, setCurrentProfile }) => {
+const TopBar = ({ setCurrentProfile }) => {
+  const { currentUser } = useContext(UserContext)
+
   const unauthenticatedListItems = [
     <li key="sign-in">
       <Link to="/user-sessions/new" className="sign-in-link">Sign In</Link>
@@ -75,7 +78,7 @@ const TopBar = ({ user, setCurrentProfile }) => {
     </li>,
     <ProfileDropdown
       key="profile-dropdown" 
-      user={user} 
+      currentUser={currentUser} 
       setCurrentProfile={setCurrentProfile}
     />,
     <li key="sign-out" className="sign-out-container">
@@ -98,7 +101,7 @@ const TopBar = ({ user, setCurrentProfile }) => {
         </ul>
       </div>
       <div className="top-bar-right nav-right">
-        <ul className="menu">{user ? authenticatedListItems : unauthenticatedListItems}</ul>
+        <ul className="menu">{currentUser ? authenticatedListItems : unauthenticatedListItems}</ul>
       </div>
     </div>
   );

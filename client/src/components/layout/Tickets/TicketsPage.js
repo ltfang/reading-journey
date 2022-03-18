@@ -4,12 +4,12 @@ import TicketForm from './TicketForm'
 import TicketTransactionTile from './TicketTransactionTile'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faTicketAlt } from '@fortawesome/free-solid-svg-icons'
-import { ProfileContext } from '../../ProfileContext'
+import { UserContext } from '../../UserContext'
 
 const TicketsPage = (props) => {
   const [tickets, setTickets] = useState(0)
   const [recentTransactions, setRecentTransactions] = useState([])
-  const currentProfile = useContext(ProfileContext)
+  const { currentProfile } = useContext(UserContext)
 
   const getTickets = async () => {
     const body = await Fetch.get('/api/v1/tickets/total')
