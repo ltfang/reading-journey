@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React from 'react'
 
 const Medal = ({ level }) => {
   let medalClass = `medal-circle medal-circle-${level}`

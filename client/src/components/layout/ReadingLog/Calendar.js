@@ -1,13 +1,15 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useContext } from 'react'
 import { DateTime } from 'luxon'
 import CalendarDay from './CalendarDay'
 import MonthNavButtons from './MonthNavButtons'
 import Fetch from '../../../services/Fetch'
+import { ProfileContext } from '../../ProfileContext'
 
 
-const Calendar = ({ currentProfile }) => {
+const Calendar = (props) => {
   const [date, setDate] = useState(DateTime.now())
   const [dailyMinutes, setDailyMinutes] = useState([])
+  const currentProfile = useContext(ProfileContext)
 
   const weekdays = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat']
 

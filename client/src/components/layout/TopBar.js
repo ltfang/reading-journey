@@ -1,12 +1,11 @@
 import React from "react"
-import { Link } from "react-router-dom"
+import { Link, useHistory } from "react-router-dom"
 import SignOutButton from "../authentication/SignOutButton"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faHome, faCalendar, faBookOpen, faTicketAlt, faMedal, faUser } from '@fortawesome/free-solid-svg-icons'
-import { useHistory } from 'react-router-dom'
 import ProfileDropdown from "./Profile/ProfileDropdown"
 
-const TopBar = ({ user, currentProfile, setCurrentProfile }) => {
+const TopBar = ({ user, setCurrentProfile }) => {
   const unauthenticatedListItems = [
     <li key="sign-in">
       <Link to="/user-sessions/new" className="sign-in-link">Sign In</Link>
@@ -77,7 +76,6 @@ const TopBar = ({ user, currentProfile, setCurrentProfile }) => {
     <ProfileDropdown
       key="profile-dropdown" 
       user={user} 
-      currentProfile={currentProfile}
       setCurrentProfile={setCurrentProfile}
     />,
     <li key="sign-out" className="sign-out-container">

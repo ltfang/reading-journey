@@ -1,7 +1,10 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { Link, useHistory } from 'react-router-dom'
+import { ProfileContext } from '../ProfileContext'
 
-const HomePage = ({ user, currentProfile }) => {
+const HomePage = ({ user }) => {
+  const currentProfile = useContext(ProfileContext)
+
   const history = useHistory()
 
   const handleTicketClick = () => {

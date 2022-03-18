@@ -16,6 +16,7 @@ import Bookshelf from './layout/Bookshelf/Bookshelf'
 import AuthenticatedRoute from './authentication/AuthenticatedRoute'
 import AchievementsPage from './layout/Achievements/AchievementsPage'
 import Fetch from '../services/Fetch'
+import { ProfileContext } from './ProfileContext'
 
 const App = (props) => {
   const [currentUser, setCurrentUser] = useState(undefined)
@@ -46,58 +47,53 @@ const App = (props) => {
   }, [])
 
   return (
-    <Router>
-      <TopBar 
-        user={currentUser} 
-        currentProfile={currentProfile}
-        setCurrentProfile={setCurrentProfile}
-      />
-      <Switch>
-        <Route exact path="/">
-          <HomePage user={currentUser} currentProfile={currentProfile}/>
-        </Route>
-        <Route exact path="/users/new" component={RegistrationForm} />
-        <Route exact path="/user-sessions/new" component={SignInForm} />
-        <AuthenticatedRoute 
-          exact path="/log" 
-          component={Calendar} 
+    <ProfileContext.Provider value={currentProfile}>
+      <Router>
+        <TopBar 
           user={currentUser} 
-          currentProfile={currentProfile}
-        />
-        <AuthenticatedRoute 
-          exact path="/log/:date" 
-          component={ReadingSessions} 
-          user={currentUser} 
-          currentProfile={currentProfile}
-        />
-        <AuthenticatedRoute 
-          exact path="/bookshelf" 
-          component={Bookshelf} 
-          user={currentUser} 
-          currentProfile={currentProfile}
-        />
-        <AuthenticatedRoute 
-          exact path="/tickets" 
-          component={TicketsPage} 
-          user={currentUser} 
-          currentProfile={currentProfile}
-        />
-        <AuthenticatedRoute 
-          exact path="/achievements" 
-          component={AchievementsPage} 
-          user={currentUser} 
-          currentProfile={currentProfile}
-        />
-        <AuthenticatedRoute 
-          exact path="/profiles" 
-          component={ProfilesPage} 
-          user={currentUser} 
-          setUser={setCurrentUser}
-          currentProfile={currentProfile}
           setCurrentProfile={setCurrentProfile}
         />
-      </Switch>
-    </Router>
+        <Switch>
+          <Route exact path="/">
+            <HomePage user={currentUser}/>
+          </Route>
+          <Route exact path="/users/new" component={RegistrationForm} />
+          <Route exact path="/user-sessions/new" component={SignInForm} />
+          <AuthenticatedRoute 
+            exact path="/log" 
+            component={Calendar} 
+            user={currentUser} 
+          />
+          <AuthenticatedRoute 
+            exact path="/log/:date" 
+            component={ReadingSessions} 
+            user={currentUser} 
+          />
+          <AuthenticatedRoute 
+            exact path="/bookshelf" 
+            component={Bookshelf} 
+            user={currentUser} 
+          />
+          <AuthenticatedRoute 
+            exact path="/tickets" 
+            component={TicketsPage} 
+            user={currentUser} 
+          />
+          <AuthenticatedRoute 
+            exact path="/achievements" 
+            component={AchievementsPage} 
+            user={currentUser} 
+          />
+          <AuthenticatedRoute 
+            exact path="/profiles" 
+            component={ProfilesPage} 
+            user={currentUser} 
+            setUser={setCurrentUser}
+            setCurrentProfile={setCurrentProfile}
+          />
+        </Switch>
+      </Router>
+    </ProfileContext.Provider>
   );
 };
 

@@ -1,15 +1,17 @@
-import React, { useState } from 'react'
+import React, { useState, useContext } from 'react'
 import Fetch from '../../../services/Fetch'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faTimes, faPen, faTrashAlt } from '@fortawesome/free-solid-svg-icons'
 import Modal from 'react-modal'
 import EditProfileForm from './EditProfileForm'
+import { ProfileContext } from '../../ProfileContext'
 
-const ProfileIcon = ({ id, name, currentProfile, setCurrentProfile, user, setUser, profileIconClassName }) => {
+const ProfileIcon = ({ id, name, setCurrentProfile, user, setUser, profileIconClassName }) => {
 
   Modal.setAppElement('#app')
   
   const [modalIsOpen, setModalIsOpen] = useState(false)
+  const currentProfile = useContext(ProfileContext)
 
   const setModalIsOpenToTrue = () => {
     setModalIsOpen(true)
@@ -107,7 +109,6 @@ const ProfileIcon = ({ id, name, currentProfile, setCurrentProfile, user, setUse
             id={id}
             user={user}
             setUser={setUser}
-            currentProfile={currentProfile}
             setCurrentProfile={setCurrentProfile}
           />
       </Modal>

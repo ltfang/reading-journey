@@ -1,9 +1,11 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useContext } from 'react'
 import Medal from './Medal'
 import Fetch from '../../../services/Fetch'
+import { ProfileContext } from '../../ProfileContext'
 
-const MedalsPanel = ({ currentProfile }) => {
+const MedalsPanel = (props) => {
   const [medals, setMedals] = useState({})
+  const currentProfile = useContext(ProfileContext)
   
   const getMedals = async () => {
     const body = await Fetch.get('/api/v1/achievements/medals')
