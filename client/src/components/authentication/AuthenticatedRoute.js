@@ -1,5 +1,6 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Redirect, Route } from "react-router";
+import { ProfileContext } from '../ProfileContext'
 
 const AuthenticationCheck = ({ component: Component, user, setUser, setCurrentProfile }) => {
   if (user === undefined) {
@@ -11,7 +12,9 @@ const AuthenticationCheck = ({ component: Component, user, setUser, setCurrentPr
   return <Redirect to="/user-sessions/new" />;
 };
 
-const AuthenticatedRoute = ({ component, user, setUser, setCurrentProfile, ...rest }) => {
+const AuthenticatedRoute = ({ component, setUser, setCurrentProfile, ...rest }) => {
+  const { currentUser } = useContext(ProfileContext)
+  const user = currentUser
   return (
     <Route
       {...rest}

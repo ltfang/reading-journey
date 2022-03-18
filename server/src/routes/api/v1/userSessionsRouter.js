@@ -24,6 +24,7 @@ sessionRouter.post("/", (req, res, next) => {
 sessionRouter.get("/current", async (req, res) => {
   if (req.user) {
     const user = await UserSerializer.getSummary(req.user)
+    console.log('user', user)
     res.status(200).json(user);
   } else {
     console.log("no current user")

@@ -9,7 +9,7 @@ import { ProfileContext } from '../../ProfileContext'
 const Calendar = (props) => {
   const [date, setDate] = useState(DateTime.now())
   const [dailyMinutes, setDailyMinutes] = useState([])
-  const currentProfile = useContext(ProfileContext)
+  const { currentProfile } = useContext(ProfileContext)
 
   const weekdays = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat']
 

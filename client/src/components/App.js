@@ -17,9 +17,11 @@ import AuthenticatedRoute from './authentication/AuthenticatedRoute'
 import AchievementsPage from './layout/Achievements/AchievementsPage'
 import Fetch from '../services/Fetch'
 import { ProfileContext } from './ProfileContext'
+import { UserContext } from './UserContext'
 
 const App = (props) => {
   const [currentUser, setCurrentUser] = useState(undefined)
+
   const [currentProfile, setCurrentProfile] = useState({
     id: "",
     name: ""
@@ -29,25 +31,28 @@ const App = (props) => {
     try {
       const user = await getCurrentUser()
       setCurrentUser(user)
+      setCurrentProfile(user.currentProfile)
     } catch(err) {
       setCurrentUser(null)
     }
   }
 
+  /*
   const fetchCurrentProfile = async () => {
     const body = await Fetch.get('/api/v1/profiles/current')
     //Add label property so the select option will render with a name when currentProfile is passed to ProfileDropdown via TopBar
     const currentProfile = {...body.currentProfile, label: body.currentProfile.name}
     setCurrentProfile(currentProfile)    
   }
+  */
 
   useEffect(() => {
     fetchCurrentUser()
-    fetchCurrentProfile()
+    //fetchCurrentProfile()
   }, [])
-
+  
   return (
-    <ProfileContext.Provider value={currentProfile}>
+    <ProfileContext.Provider value={ {currentUser, currentProfile} }>
       <Router>
         <TopBar 
           user={currentUser} 
@@ -62,7 +67,6 @@ const App = (props) => {
           <AuthenticatedRoute 
             exact path="/log" 
             component={Calendar} 
-            user={currentUser} 
           />
           <AuthenticatedRoute 
             exact path="/log/:date" 
