@@ -4,14 +4,14 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faTimes, faPen, faTrashAlt } from '@fortawesome/free-solid-svg-icons'
 import Modal from 'react-modal'
 import EditProfileForm from './EditProfileForm'
-import { ProfileContext } from '../../ProfileContext'
+import { UserContext } from '../../UserContext'
 
-const ProfileIcon = ({ id, name, setCurrentProfile, user, setUser, profileIconClassName }) => {
+const ProfileIcon = ({ id, name, setCurrentProfile, setUser, profileIconClassName }) => {
 
   Modal.setAppElement('#app')
   
   const [modalIsOpen, setModalIsOpen] = useState(false)
-  const currentProfile = useContext(ProfileContext)
+  const { currentUser } = useContext(UserContext)
 
   const setModalIsOpenToTrue = () => {
     setModalIsOpen(true)
@@ -24,7 +24,7 @@ const ProfileIcon = ({ id, name, setCurrentProfile, user, setUser, profileIconCl
   const selectProfile = async () => {
     const body = await Fetch.update('/api/v1/profiles/current', { id })
     if (body) {
-      const selectedProfile = user.profiles.find(profile => profile.id===id)
+      const selectedProfile = currentUser.profiles.find(profile => profile.id===id)
       setCurrentProfile({
         ...selectedProfile,
         label: selectedProfile.name
@@ -41,12 +41,12 @@ const ProfileIcon = ({ id, name, setCurrentProfile, user, setUser, profileIconCl
     const body = await Fetch.update('/api/v1/profiles/default', { id })
     const deletedProfile = await Fetch.delete('/api/v1/profiles', id)
     if (deletedProfile) {
-      const profiles = user.profiles.filter(profile => {
+      const profiles = currentUser.profiles.filter(profile => {
         //Using != instead of !== because of possible type differences
         return profile.id != id
       })
       setUser({
-        ...user,
+        ...currentUser,
         profiles: profiles
       })
       setCurrentProfile({
@@ -57,7 +57,7 @@ const ProfileIcon = ({ id, name, setCurrentProfile, user, setUser, profileIconCl
   }
 
   const handleDeleteClick = () => {
-    if (user.profiles.length===1) {
+    if (currentUser.profiles.length===1) {
       alert('You must have at least one profile.  If you would like to delete this profile, please create another profile first.')
     } else if (confirm('Are you sure you want to delete this profile? If so, the profile and all associated data will be deleted.')) {
       deleteProfile()
@@ -107,7 +107,6 @@ const ProfileIcon = ({ id, name, setCurrentProfile, user, setUser, profileIconCl
           <EditProfileForm 
             setModalIsOpenToFalse={setModalIsOpenToFalse}
             id={id}
-            user={user}
             setUser={setUser}
             setCurrentProfile={setCurrentProfile}
           />

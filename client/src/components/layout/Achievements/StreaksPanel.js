@@ -3,7 +3,7 @@ import Fetch from '../../../services/Fetch'
 import { DateTime } from 'luxon'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faFire } from '@fortawesome/free-solid-svg-icons'
-import { ProfileContext } from '../../ProfileContext'
+import { UserContext } from '../../UserContext'
 
 const StreaksPanel = (props) => {
   const [streaks, setStreaks] = useState({
@@ -21,7 +21,7 @@ const StreaksPanel = (props) => {
     percentIn7: 0
   })
 
-  const currentProfile = useContext(ProfileContext)
+  const { currentProfile } = useContext(UserContext)
 
   const getStreaks = async () => {
     const body = await Fetch.get('/api/v1/achievements/streaks')

@@ -5,13 +5,13 @@ import BookSearch from './BookSearch'
 import BookSort from './BookSort'
 import _ from 'lodash'
 import SortBooks from '../../../services/SortBooks.js'
-import { ProfileContext } from '../../ProfileContext'
+import { UserContext } from '../../UserContext'
 
 const Bookshelf = (props) => {
   const [books, setBooks] = useState([])
   const [searchText, setSearchText] = useState('')
   const [sortCriterion, setSortCriterion] = useState(null)
-  const currentProfile = useContext(ProfileContext)
+  const { currentProfile } = useContext(UserContext)
 
   const getBooks = async () => {
     const body = await Fetch.get('/api/v1/books')

@@ -15,8 +15,6 @@ import TicketsPage from './layout/Tickets/TicketsPage'
 import Bookshelf from './layout/Bookshelf/Bookshelf'
 import AuthenticatedRoute from './authentication/AuthenticatedRoute'
 import AchievementsPage from './layout/Achievements/AchievementsPage'
-import Fetch from '../services/Fetch'
-import { ProfileContext } from './ProfileContext'
 import { UserContext } from './UserContext'
 
 const App = (props) => {
@@ -37,67 +35,32 @@ const App = (props) => {
     }
   }
 
-  /*
-  const fetchCurrentProfile = async () => {
-    const body = await Fetch.get('/api/v1/profiles/current')
-    //Add label property so the select option will render with a name when currentProfile is passed to ProfileDropdown via TopBar
-    const currentProfile = {...body.currentProfile, label: body.currentProfile.name}
-    setCurrentProfile(currentProfile)    
-  }
-  */
-
   useEffect(() => {
     fetchCurrentUser()
-    //fetchCurrentProfile()
   }, [])
   
   return (
-    <ProfileContext.Provider value={ {currentUser, currentProfile} }>
+    <UserContext.Provider value={{ currentUser, currentProfile }}>
       <Router>
-        <TopBar 
-          user={currentUser} 
-          setCurrentProfile={setCurrentProfile}
-        />
+        <TopBar setCurrentProfile={setCurrentProfile} />
         <Switch>
-          <Route exact path="/">
-            <HomePage user={currentUser}/>
-          </Route>
+          <Route exact path="/" component={HomePage} />
           <Route exact path="/users/new" component={RegistrationForm} />
           <Route exact path="/user-sessions/new" component={SignInForm} />
-          <AuthenticatedRoute 
-            exact path="/log" 
-            component={Calendar} 
-          />
-          <AuthenticatedRoute 
-            exact path="/log/:date" 
-            component={ReadingSessions} 
-            user={currentUser} 
-          />
-          <AuthenticatedRoute 
-            exact path="/bookshelf" 
-            component={Bookshelf} 
-            user={currentUser} 
-          />
-          <AuthenticatedRoute 
-            exact path="/tickets" 
-            component={TicketsPage} 
-            user={currentUser} 
-          />
-          <AuthenticatedRoute 
-            exact path="/achievements" 
-            component={AchievementsPage} 
-            user={currentUser} 
-          />
+          <AuthenticatedRoute exact path="/log" component={Calendar} />
+          <AuthenticatedRoute exact path="/log/:date" component={ReadingSessions} />
+          <AuthenticatedRoute exact path="/bookshelf" component={Bookshelf} />
+          <AuthenticatedRoute exact path="/tickets" component={TicketsPage} />
+          <AuthenticatedRoute exact path="/achievements" component={AchievementsPage} />
           <AuthenticatedRoute 
             exact path="/profiles" 
             component={ProfilesPage} 
-            user={currentUser} 
             setUser={setCurrentUser}
             setCurrentProfile={setCurrentProfile}
           />
         </Switch>
       </Router>
-    </ProfileContext.Provider>
+    </UserContext.Provider>
   );
 };
 

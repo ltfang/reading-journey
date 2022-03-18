@@ -1,18 +1,14 @@
 import React, { useContext } from 'react'
 import { Link, useHistory } from 'react-router-dom'
 import { UserContext } from '../UserContext'
-import { ProfileContext } from '../ProfileContext'
 
 const HomePage = (props) => {
-  /*
-  const user = useContext(UserContext)
-  if (user === undefined) {
-    return <div>Loading...</div>
-  } 
-  const currentProfile = user.currentProfile
-  */
-  const { currentUser, currentProfile } = useContext(ProfileContext)
+
+  const { currentUser, currentProfile } = useContext(UserContext)
   
+  // const currentUser = useContext(UserContext)
+  // const currentProfile = currentUser.currentProfile
+
   const history = useHistory()
 
   const handleTicketClick = () => {

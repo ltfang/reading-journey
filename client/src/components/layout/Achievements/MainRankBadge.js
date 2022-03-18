@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useContext } from 'react'
 import Fetch from '../../../services/Fetch'
-import { ProfileContext } from '../../ProfileContext'
+import { UserContext } from '../../UserContext'
 
 const MainRankBadge = (props) => {
   const [rankData, setRankData] = useState({
@@ -10,7 +10,7 @@ const MainRankBadge = (props) => {
     minMinutes: 1,
     currentMinutes: 0
   })
-  const currentProfile = useContext(ProfileContext)
+  const { currentProfile } = useContext(UserContext)
 
   const getRankData = async () => {
     const body = await Fetch.get('/api/v1/achievements/rank')

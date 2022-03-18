@@ -4,12 +4,12 @@ import ReadingSessionTile from './ReadingSessionTile'
 import ReadingSessionForm from './ReadingSessionForm'
 import Fetch from '../../../services/Fetch'
 import { withRouter } from 'react-router'
-import { ProfileContext } from '../../ProfileContext'
+import { UserContext } from '../../UserContext'
 
 const ReadingSessions = (props) => {
   const [readingSessions, setReadingSessions] = useState([])
   const [totalMinutes, setTotalMinutes] = useState(null)
-  const currentProfile = useContext(ProfileContext)
+  const { currentProfile } = useContext(UserContext)
 
   const date = DateTime.fromFormat(props.match.params.date, 'yyyyMMdd')
   const formattedDate = date.toLocaleString(DateTime.DATE_FULL)

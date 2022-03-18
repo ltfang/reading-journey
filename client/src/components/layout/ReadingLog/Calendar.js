@@ -3,13 +3,13 @@ import { DateTime } from 'luxon'
 import CalendarDay from './CalendarDay'
 import MonthNavButtons from './MonthNavButtons'
 import Fetch from '../../../services/Fetch'
-import { ProfileContext } from '../../ProfileContext'
+import { UserContext } from '../../UserContext'
 
 
 const Calendar = (props) => {
   const [date, setDate] = useState(DateTime.now())
   const [dailyMinutes, setDailyMinutes] = useState([])
-  const { currentProfile } = useContext(ProfileContext)
+  const { currentProfile } = useContext(UserContext)
 
   const weekdays = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat']
 

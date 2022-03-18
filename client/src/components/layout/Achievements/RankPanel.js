@@ -2,11 +2,11 @@ import React, { useState, useEffect, useContext } from 'react'
 import SmallRankBadge from './SmallRankBadge'
 import MainRankBadge from './MainRankBadge'
 import Fetch from '../../../services/Fetch'
-import { ProfileContext } from '../../ProfileContext'
+import { UserContext } from '../../UserContext'
 
 const RankPanel = (props) => {
   const [badges, setBadges] = useState([])
-  const currentProfile = useContext(ProfileContext)
+  const { currentProfile } = useContext(UserContext)
 
   const getBadges = async () => {
     const body = await Fetch.get('/api/v1/achievements/rank')
